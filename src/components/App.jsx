@@ -1,7 +1,29 @@
 import React from 'react';
 import './App.scss';
+import fetch from 'isomorphic-fetch'
 
 export default class App extends React.Component {
+
+  constructor() {
+    super();
+    this.state = { items: [] };
+  }
+
+  componentDidMount() {
+    fetch(`/rest/node/1?_format=hal_json`)
+      .then((response) => {
+        console.log(1)
+        return response.json()
+      })
+      .then((responseJson) => {
+        console.log(responseJson)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
+
   render() {
     return (
       <div style={{textAlign: 'center'}}>
