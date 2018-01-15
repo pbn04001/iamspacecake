@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.scss';
 import fetch from 'isomorphic-fetch'
 
 export default class App extends React.Component {

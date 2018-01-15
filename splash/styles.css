@@ -1,0 +1,22 @@
+body,
+html{
+    color: #FFFFFF;
+    background-color: #000000;
+    margin: 0px;
+    height: 0px;
+    font-family: Arial, SansSerif;
+    font-size: 16px;
+}
+
+img{
+    display: block;
+    position: relative;
+    width: 50%;
+    margin: 100px 0 15px 0;
+    left: 25%;
+}
+
+div.coming-soon{
+    text-align: center;
+    font-size: 28px;
+}
