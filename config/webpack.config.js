@@ -1,4 +1,5 @@
 const path = require('path');
+const cmd=require('node-cmd');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './src/index.html',
@@ -10,12 +11,14 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve('dist'),
-    filename: 'index_bundle.js'
+    filename: 'index_bundle.js',
+    publicPath: '/'
   },
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/, loader: "style-loader!css-loader" }
     ],
     rules: [{
       test: /\.js$/,
@@ -30,15 +33,21 @@ module.exports = {
         loader: 'babel-loader'
       }
     },{
-      test: /\.scss$/,
+      test: /\.css$/,
       use: [{
         loader: "style-loader"
       }, {
         loader: "css-loader"
-      }, {
-        loader: "sass-loader"
       }]
     }]
   },
-  plugins: [HtmlWebpackPluginConfig]
+  plugins: [HtmlWebpackPluginConfig],
+  devServer: {
+    contentBase: './src',
+    watchContentBase: true,
+    before(){
+      console.log("Compiling css");
+      cmd.run('yarn run compile-css');
+    }
+  }
 }

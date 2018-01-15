@@ -21,6 +21,7 @@
     "clean-css": "^4.1.9",
     "css-loader": "^0.28.7",
     "node-bourbon": "^4.2.8",
+    "node-cmd": "^3.0.0",
     "node-sass": "^4.7.2",
     "sass-glob-importer": "^1.0.1",
     "sass-loader": "^6.0.6",
