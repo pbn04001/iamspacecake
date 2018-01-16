@@ -58,5 +58,8 @@ module.exports = {
     new ExtractTextPlugin({
       filename: 'style-min.css'
     })
-  ]
+  ],
+  devServer: {
+    contentBase: ['./public','./assets']
+  }
 }
