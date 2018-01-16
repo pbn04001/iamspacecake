@@ -1,11 +1,8 @@
 const path = require('path');
 const cmd=require('node-cmd');
+const globImporter = require('node-sass-glob-importer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './src/index.html',
-  filename: 'index.html',
-  inject: 'body'
-})
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -17,8 +14,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.css$/, loader: "style-loader!css-loader" }
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
     ],
     rules: [{
       test: /\.js$/,
@@ -33,21 +29,34 @@ module.exports = {
         loader: 'babel-loader'
       }
     },{
-      test: /\.css$/,
+      test: /\.scss$/,
       use: [{
         loader: "style-loader"
       }, {
-        loader: "css-loader"
+        loader: "css-loader",
+        options: {
+          sourceMap: true,
+          minimize: true,
+          discardComments: {
+            removeAll: true
+          }
+        }
+      }, {
+        loader: "sass-loader",
+        options: {
+          importer: globImporter()
+        }
       }]
     }]
   },
-  plugins: [HtmlWebpackPluginConfig],
-  devServer: {
-    contentBase: './src',
-    watchContentBase: true,
-    before(){
-      console.log("Compiling css");
-      cmd.run('yarn run compile-css');
-    }
-  }
+  plugins: [
+    new HtmlWebpackPlugin({
+        template: './src/index.html',
+        filename: 'index.html',
+        inject: 'body'
+      }),
+    new ExtractTextPlugin({
+      filename: 'style-min.css'
+    })
+  ]
 }

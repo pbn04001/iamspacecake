@@ -1,5 +1,6 @@
 import React from 'react';
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
+import '../styles/main.scss';
 
 export default class App extends React.Component {
 
