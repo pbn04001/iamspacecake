@@ -28,6 +28,7 @@ export default class App extends React.Component {
     return (
       <div style={{textAlign: 'center'}}>
         <h1>I am space cake</h1>
+        <div style={{margin:"1000px 0 1000px 0"}}>Force Screen Size</div>
       </div>);
   }
 }

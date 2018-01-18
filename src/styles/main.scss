@@ -1,26 +1,19 @@
 @import 'common/**/*.scss';
 
 body {
-  background-color: #000000;
-  color: red;
+  color: $black;
   font-family: $font;
   font-size: $font-size-body;
   background-size: cover;
+  background-color: #FFFFFF;
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed;
+  background-image: url(/img/background-image-xlarge.jpg);
 
-  @include breakpoint(xlarge){
-     background-image: url(/img/background-image-xlarge.jpg);
-  }
   @include breakpoint(large){
-    background-image: url(/img/background-image-large.jpg);
+     background-image: url(/img/background-image-large.jpg);
   }
   @include breakpoint(medium){
-    background-image: url(/img/background-image-medium.jpg);
-  }
-  @include breakpoint(small){
     background-image: none;
   }
-
 }
