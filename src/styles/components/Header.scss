@@ -1,0 +1,44 @@
+header{
+  position: relative;
+  margin: 0 45px 0 45px;
+  font-size: 18px;
+
+  .sp-search{
+    background: url(/icons/search.svg) no-repeat;
+    background-size: 20px 20px;
+    padding: 0 0 0 24px;
+    height: 20px;
+  }
+
+  .sp-right{
+    position: absolute;
+    right: 0px;
+    top: 0px;
+
+    .sp-shopping-cart{
+      background: url(/icons/shopping-cart.svg) no-repeat;
+      background-size: 20px 20px;
+      padding: 0 0 0 24px;
+      height: 20px;
+    }
+
+    .sp-facebook,
+    .sp-instagram {
+
+      display: inline-block;
+      background-size: 19px 19px;
+      height: 19px;
+      width: 19px;
+    }
+
+    .sp-facebook{
+      margin-left: 26px;
+      background: url(/icons/facebook.svg) no-repeat;
+    }
+
+    .sp-instagram{
+      margin-left: 10px;
+      background: url(/icons/instagram.svg) no-repeat;
+    }
+  }
+}

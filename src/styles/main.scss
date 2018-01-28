@@ -16,4 +16,10 @@ body {
   @include breakpoint(medium){
     background-image: none;
   }
+
+  button{
+    font-size: 18px;
+    display: inline-block;
+    border: none;
+  }
 }

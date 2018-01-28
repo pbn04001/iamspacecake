@@ -1,12 +1,13 @@
-import React from 'react';
-import fetch from 'isomorphic-fetch';
-import '../styles/main.scss';
+import React from 'react'
+import fetch from 'isomorphic-fetch'
+import '../styles/main.scss'
+import Header from './Header.jsx'
 
 export default class App extends React.Component {
 
   constructor() {
     super();
-    this.state = { items: [] };
+    this.state = { items: [] }
   }
 
   // componentDidMount() {
@@ -19,16 +20,14 @@ export default class App extends React.Component {
   //       console.log(responseJson)
   //     })
   //     .catch((error) => {
-  //       console.error(error);
-  //     });
+  //       console.error(error)
+  //     })
   // }
 
 
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
-        <h1>I am space cake</h1>
-        <div style={{margin:"1000px 0 1000px 0"}}>Force Screen Size</div>
-      </div>);
+      <Header></Header>
+    )
   }
 }
