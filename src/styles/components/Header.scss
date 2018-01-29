@@ -1,42 +1,59 @@
-header{
+header {
   position: relative;
-  margin: 0 45px 0 45px;
-  font-size: 18px;
+  margin: 10px 45px 10px 45px;
+  font-size: 20px;
 
-  .sp-search{
+  .sp-search {
     background: url(/icons/search.svg) no-repeat;
-    background-size: 20px 20px;
-    padding: 0 0 0 24px;
-    height: 20px;
+    background-size: 25px 25px;
+    padding: 0 0 0 30px;
+    height: 25px;
+
+    @include breakpoint(large){
+      background-size: 20px 20px;
+      height: 20px;
+      padding: 0 0 0 24px;
+    }
   }
 
-  .sp-right{
+  .sp-right {
     position: absolute;
     right: 0px;
     top: 0px;
 
-    .sp-shopping-cart{
+    .sp-shopping-cart {
       background: url(/icons/shopping-cart.svg) no-repeat;
-      background-size: 20px 20px;
-      padding: 0 0 0 24px;
-      height: 20px;
+      background-size: 25px 25px;
+      padding: 0 0 0 30px;
+      height: 25px;
+
+      @include breakpoint(large){
+        background-size: 20px 20px;
+        height: 20px;
+        padding: 0 0 0 24px;
+      }
     }
 
     .sp-facebook,
     .sp-instagram {
-
       display: inline-block;
-      background-size: 19px 19px;
-      height: 19px;
-      width: 19px;
+      background-size: 25px 25px;
+      height: 25px;
+      width: 25px;
+
+      @include breakpoint(large){
+        background-size: 20px 20px;
+        height: 20px;
+        width: 20px;
+      }
     }
 
-    .sp-facebook{
+    .sp-facebook {
       margin-left: 26px;
       background: url(/icons/facebook.svg) no-repeat;
     }
 
-    .sp-instagram{
+    .sp-instagram {
       margin-left: 10px;
       background: url(/icons/instagram.svg) no-repeat;
     }

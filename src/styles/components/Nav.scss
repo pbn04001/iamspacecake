@@ -1,0 +1,47 @@
+nav {
+  position: relative;
+  background: url(/img/menu-curve.svg) no-repeat 300px 26px;
+  background-size: 132px 71px;
+
+  @include breakpoint(large){
+    background-size: 140px 45px;
+    background-position: 210px 31px;
+  }
+
+  .sp-menu-back-left {
+    background-color: $black;
+    height: 97px;
+    width: 300px;
+
+    @include breakpoint(large){
+      height: 76px;
+      width: 240px;
+    }
+  }
+
+  .sp-logo {
+    position: absolute;
+    z-index: 10;
+    left: 50px;
+    top: 11px;
+    background: url(/img/spacecake-logo.svg) no-repeat;
+    background-size: 294px 75px;
+    width: 294px;
+    height: 75px;
+
+    @include breakpoint(large){
+      background-size: 212px 54px;
+      width: 212px;
+      height: 54px;
+    }
+  }
+
+  .sp-nav-items {
+    position: absolute;
+    top: 0px;
+    display: inline-block;
+    background-color: $black;
+    height: 40px;
+    width: 100%;
+  }
+}

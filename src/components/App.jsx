@@ -1,12 +1,12 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import '../styles/main.scss'
 import Header from './Header.jsx'
+import Nav from './Nav.jsx'
 
 export default class App extends React.Component {
 
   constructor() {
-    super();
+    super()
     this.state = { items: [] }
   }
 
@@ -27,7 +27,10 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Header></Header>
+      <div>
+        <Header></Header>
+        <Nav></Nav>
+      </div>
     )
   }
 }
