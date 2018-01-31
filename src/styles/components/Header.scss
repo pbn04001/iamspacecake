@@ -9,7 +9,7 @@ header {
     padding: 0 0 0 30px;
     height: 25px;
 
-    @include breakpoint(large){
+    @include breakpoint(medium){
       background-size: 20px 20px;
       height: 20px;
       padding: 0 0 0 24px;
@@ -27,7 +27,7 @@ header {
       padding: 0 0 0 30px;
       height: 25px;
 
-      @include breakpoint(large){
+      @include breakpoint(medium){
         background-size: 20px 20px;
         height: 20px;
         padding: 0 0 0 24px;
@@ -41,7 +41,7 @@ header {
       height: 25px;
       width: 25px;
 
-      @include breakpoint(large){
+      @include breakpoint(medium){
         background-size: 20px 20px;
         height: 20px;
         width: 20px;

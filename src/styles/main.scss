@@ -25,8 +25,13 @@ body {
     margin: 0px;
     padding: 0px;
 
-    @include breakpoint(large){
+    @include breakpoint(medium){
       font-size: 18px;
     }
+  }
+
+  h2 {
+    font-size: 40px;
+    font-weight: 300;
   }
 }

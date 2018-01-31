@@ -1,9 +1,15 @@
-nav {
+.sp-nav-bar {
+  z-index: 100;
   position: relative;
   background: url(/img/menu-curve.svg) no-repeat 300px 26px;
   background-size: 132px 71px;
 
-  @include breakpoint(large){
+  @include breakpoint(large) {
+    background-size: 220px 60px;
+    background-position: 205px 28px;
+  }
+
+  @include breakpoint(medium) {
     background-size: 140px 45px;
     background-position: 210px 31px;
   }
@@ -13,7 +19,12 @@ nav {
     height: 97px;
     width: 300px;
 
-    @include breakpoint(large){
+    @include breakpoint(large) {
+      height: 88px;
+      width: 260px;
+    }
+
+    @include breakpoint(medium) {
       height: 76px;
       width: 240px;
     }
@@ -29,19 +40,51 @@ nav {
     width: 294px;
     height: 75px;
 
-    @include breakpoint(large){
+    @include breakpoint(large) {
+      background-size: 247px 63px;
+      width: 247px;
+      height: 63px;
+    }
+
+    @include breakpoint(medium) {
       background-size: 212px 54px;
       width: 212px;
       height: 54px;
     }
   }
 
-  .sp-nav-items {
+  nav {
     position: absolute;
     top: 0px;
     display: inline-block;
     background-color: $black;
     height: 40px;
     width: 100%;
+
+    ul {
+      margin: 0px;
+      position: absolute;
+      right: 50px;
+      list-style: none;
+
+      li {
+        display: inline-block;
+        padding: 10px 0 0 60px;
+
+        @include breakpoint(large) {
+          padding-left: 35px;
+        }
+
+        a {
+          text-decoration: none;
+          font-size: 20px;
+          color: $white;
+
+          @include breakpoint(large) {
+            font-size: 18px;
+          }
+        }
+      }
+    }
   }
 }
