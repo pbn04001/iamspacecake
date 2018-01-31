@@ -17,6 +17,7 @@ export default class Nav extends React.Component {
         <div className='sp-menu-back-left'></div>
         <nav>
           <ul>
+            <button className='mobile-menu'></button>
             <li><NavLink to='/shop'>Shop</NavLink></li>
             <li><NavLink to='/gallery'>Gallery</NavLink></li>
             <li><NavLink to='/news'>News</NavLink></li>

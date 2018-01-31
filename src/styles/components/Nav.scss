@@ -66,6 +66,29 @@
       position: absolute;
       right: 50px;
       list-style: none;
+      overflow: visible;
+
+      .mobile-menu {
+        display: none;
+
+        @include breakpoint(medium) {
+          display: block;
+          position: absolute;
+          right: 20px;
+          top: 10px;
+          background: $black url(/icons/menu.svg) no-repeat;
+          background-size: 22px 20px;
+          width: 22px;
+          height: 20px;
+        }
+      }
+
+      @include breakpoint(medium) {
+         right: 15px;
+         top: 0px;
+         padding: 35px 10px 5px 0;
+         background-color: $black;
+      }
 
       li {
         display: inline-block;
@@ -73,6 +96,11 @@
 
         @include breakpoint(large) {
           padding-left: 35px;
+        }
+
+        @include breakpoint(medium) {
+           display: none;
+           padding: 5px 20px;
         }
 
         a {
@@ -83,6 +111,18 @@
           @include breakpoint(large) {
             font-size: 18px;
           }
+
+          @include breakpoint(medium) {
+            font-size: 16px;
+            display: block;
+            text-align: right;
+          }
+        }
+      }
+
+      &:hover li {
+        @include breakpoint(medium) {
+          display: block;
         }
       }
     }
