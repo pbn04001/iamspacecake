@@ -71,6 +71,7 @@
       .mobile-menu {
         display: none;
 
+
         @include breakpoint(medium) {
           display: block;
           position: absolute;

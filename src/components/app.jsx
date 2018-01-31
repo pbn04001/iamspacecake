@@ -1,9 +1,11 @@
 import React from 'react'
 import fetch from 'isomorphic-fetch'
-import Header from './Header.jsx'
-import Nav from './Nav.jsx'
-import Home from './home/Home.jsx'
-import { Switch, Route } from 'react-router-dom';
+import Header from './header/header.jsx'
+import Nav from './nav/nav.jsx'
+import Home from './home/home.jsx'
+import { Switch, Route } from 'react-router-dom'
+import store from '../redux/configureStore'
+import { Provider } from 'react-redux'
 
 export default class App extends React.Component {
 
@@ -29,13 +31,15 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Header></Header>
-        <Nav></Nav>
-        <Switch>
-          <Route path='/' component={Home}></Route>
-        </Switch>
-      </div>
+      <Provider store={store}>
+        <div>
+          <Header></Header>
+          <Nav></Nav>
+          <Switch>
+            <Route path='/' component={Home}></Route>
+          </Switch>
+        </div>
+      </Provider>
     )
   }
 }
