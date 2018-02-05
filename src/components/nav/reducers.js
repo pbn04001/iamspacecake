@@ -1,7 +1,7 @@
-import * as types from '../../redux/actionTypes';
+import * as types from '../../redux/actionTypes'
 
 const initialState = {
-  isMenuActive: false,
+  isMenuActive: false
 };
 
 function nav(state = initialState, action) {
@@ -10,10 +10,10 @@ function nav(state = initialState, action) {
       return {
         ...state,
         isMenuActive: action.isMenuActive
-      };
+      }
     default:
-      return state;
+      return state
   }
 }
 
-export default nav;
+export default nav

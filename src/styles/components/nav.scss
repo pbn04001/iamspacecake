@@ -68,9 +68,9 @@
       list-style: none;
       overflow: visible;
 
-      .mobile-menu {
+      .sp-mobile-menu {
         display: none;
-
+        cursor: pointer;
 
         @include breakpoint(medium) {
           display: block;
@@ -120,6 +120,11 @@
           }
         }
       }
+
+      &.sp-active  li {
+        display: block;
+      }
+
 
       &:hover li {
         @include breakpoint(medium) {
