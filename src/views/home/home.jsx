@@ -1,5 +1,5 @@
 import React from 'react'
-import News from '../news/news.jsx'
+import News from '../../components/news/news.jsx'
 
 export default class Home extends React.Component {
 
