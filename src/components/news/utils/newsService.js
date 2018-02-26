@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
 const NewsService = {
-  fetchRecentNews: () => fetch('/rest/api/events')
+  fetchRecentNews: () => fetch('/rest/api/news')
     .then(response => response.json())
     .catch(error => {
       const response = {
