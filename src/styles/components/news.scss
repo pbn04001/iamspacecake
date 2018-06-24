@@ -6,7 +6,15 @@
   padding: 80px 41px 41px 41px;
 
   article {
+    .sp-right-content {
+      width: 400px;
 
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+    }
   }
 
 }
