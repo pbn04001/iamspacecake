@@ -1,9 +1,14 @@
 export const getImages = (image, folder) => {
   const images = {};
-  const imageExternalUrl = `/rest/${image.split('/drupal/')[1]}`;
-  images.mobile = imageExternalUrl.replace(folder, `styles/medium/public/${folder}`);
-  images.small = imageExternalUrl.replace(folder, `styles/large/public/${folder}`);
-  images.medium = imageExternalUrl.replace(folder, `styles/max_650x650/public/${folder}`);
-  images.large = imageExternalUrl.replace(folder, `styles/max_1300x1300/public/${folder}`);
+  const imageUrl = `/rest/${image.split('/drupal/')[1]}`;
+  images.thumbnail = parseImageSize(imageUrl, folder, 'thumbnail')
+  images.mobile = parseImageSize(imageUrl, folder, 'mobile')
+  images.small = parseImageSize(imageUrl, folder, 'small')
+  images.medium = parseImageSize(imageUrl, folder, 'medium')
+  images.large = parseImageSize(imageUrl, folder, 'large')
   return images;
+}
+
+function parseImageSize(imageUrl, folder, size) {
+  return imageUrl.replace(folder, `styles/${size}/public/${folder}`);
 }

@@ -1,70 +1,70 @@
 .sp-nav-bar {
   z-index: 100;
   position: relative;
-  background: url(/img/menu-curve.svg) no-repeat 300px 26px;
-  background-size: 132px 71px;
+  background: url(/img/menu-curve.svg) no-repeat 18.75rem 1.625rem;
+  background-size: 8.25rem 4.4375rem;
 
   @include breakpoint(large) {
-    background-size: 220px 60px;
-    background-position: 205px 28px;
+    background-size: 13.75rem 3.75rem;
+    background-position: 12.8125rem 1.75rem;
   }
 
   @include breakpoint(medium) {
-    background-size: 140px 45px;
-    background-position: 210px 31px;
+    background-size: 8.75rem 2.8125rem;
+    background-position: 13.125rem 1.9375rem;
   }
 
   .sp-menu-back-left {
     background-color: $black;
-    height: 97px;
-    width: 300px;
+    height: 6.0625rem;
+    width: 18.75rem;
 
     @include breakpoint(large) {
-      height: 88px;
-      width: 260px;
+      height: 5.5rem;
+      width: 16.25rem;
     }
 
     @include breakpoint(medium) {
-      height: 76px;
-      width: 240px;
+      height: 4.75rem;
+      width: 15rem;
     }
   }
 
   .sp-logo {
     position: absolute;
     z-index: 10;
-    left: 50px;
-    top: 11px;
+    left: 3.125rem;
+    top: 0.6875rem;
     background: url(/img/spacecake-logo.svg) no-repeat;
-    background-size: 294px 75px;
-    width: 294px;
-    height: 75px;
+    background-size: 18.375rem 4.6875rem;
+    width: 18.375rem;
+    height: 4.6875rem;
 
     @include breakpoint(large) {
-      background-size: 247px 63px;
-      width: 247px;
-      height: 63px;
+      background-size: 15.4375rem 3.9375rem;
+      width: 15.4375rem;
+      height: 3.9375rem;
     }
 
     @include breakpoint(medium) {
-      background-size: 212px 54px;
-      width: 212px;
-      height: 54px;
+      background-size: 13.25rem 3.375rem;
+      width: 13.25rem;
+      height: 3.375rem;
     }
   }
 
   nav {
     position: absolute;
-    top: 0px;
+    top: 0;
     display: inline-block;
     background-color: $black;
-    height: 40px;
+    height: 2.5rem;
     width: 100%;
 
     ul {
-      margin: 0px;
+      margin: 0;
       position: absolute;
-      right: 50px;
+      right: 3.125rem;
       list-style: none;
       overflow: visible;
 
@@ -75,46 +75,46 @@
         @include breakpoint(medium) {
           display: block;
           position: absolute;
-          right: 20px;
-          top: 10px;
+          right: 1.25rem;
+          top: 0.625rem;
           background: $black url(/icons/menu.svg) no-repeat;
-          background-size: 22px 20px;
-          width: 22px;
-          height: 20px;
+          background-size: 1.375rem 1.25rem;
+          width: 1.375rem;
+          height: 1.25rem;
         }
       }
 
       @include breakpoint(medium) {
-         right: 15px;
-         top: 0px;
-         padding: 35px 10px 5px 0;
+         right: 0.9375rem;
+         top: 0;
+         padding: 2.1875rem 0.625rem 0.3125rem 0;
          background-color: $black;
       }
 
       li {
         display: inline-block;
-        padding: 10px 0 0 60px;
+        padding: 0.625rem 0 0 3.75rem;
 
         @include breakpoint(large) {
-          padding-left: 35px;
+          padding-left: 2.1875rem;
         }
 
         @include breakpoint(medium) {
            display: none;
-           padding: 5px 20px;
+           padding: 0.3125rem 1.25rem;
         }
 
         a {
           text-decoration: none;
-          font-size: 20px;
+          font-size: $font-size-large;
           color: $white;
 
           @include breakpoint(large) {
-            font-size: 18px;
+            font-size: $font-size-medium;
           }
 
           @include breakpoint(medium) {
-            font-size: 16px;
+            font-size: $font-size-medium;
             display: block;
             text-align: right;
           }

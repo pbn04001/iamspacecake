@@ -1,9 +1,9 @@
 body {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   color: $black;
   font-family: $font;
-  font-size: $font-size-body;
+  font-size: $font-size-medium;
   background-size: cover;
   background-color: #FFFFFF;
   background-repeat: no-repeat;
@@ -19,19 +19,19 @@ body {
 
   button{
     vertical-align: top;
-    font-size: 20px;
+    font-size: $font-size-large;
     display: inline-block;
     border: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 
     @include breakpoint(medium){
-      font-size: 18px;
+      font-size: $font-size-medium;
     }
   }
 
   h2 {
-    font-size: 40px;
+    font-size: $font-size-xxlarge;
     font-weight: 300;
   }
 }
