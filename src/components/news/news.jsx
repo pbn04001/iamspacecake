@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actionCreators from './actions'
 import PropTypes from 'prop-types'
-import _ from 'lodash'
-import { getImages } from '../../utils/images';
+import { isEmpty } from 'lodash'
+import { getPicture } from '../../utils/images';
 
 class News extends React.Component {
 
@@ -20,30 +20,24 @@ class News extends React.Component {
   renderNews() {
     if (!_.isEmpty(this.props.recentNews)) {
       let mainNews = this.props.recentNews[0]
-      let images = getImages(mainNews.field_image[0].url, 'news_images');
+      const title = _.first(mainNews.title).value
+      const rightContent = (!isEmpty(mainNews.field_image)) ?
+          (<div className='sp-right-content'>
+            {getPicture(mainNews.field_image[0].url,
+                title,
+                { large: true, medium: true, small: true },
+                'news_images')}
+          </div>) : null;
       return (<article>
         <div className='sp-left-content'>
-          <h2>{_.first(mainNews.title).value}</h2>
-          <div className='sp-article-body'
-               dangerouslySetInnerHTML={{ __html: _.first(mainNews.body).value }}></div>
+          <h2>{title}</h2>
+          {rightContent}
+          <div
+              className='sp-article-body'
+              dangerouslySetInnerHTML={{ __html: _.first(mainNews.body).value }}>
+          </div>
         </div>
-        <div className='sp-right-content'>
-          <picture>
-            <source
-                srcSet={images.large}
-                media="(min-width: 1440px)" type="image/png" />
-            <source
-                srcSet={images.medium}
-                media="(min-width: 1024px)" type="image/png" />
-            <source
-                srcSet={images.small}
-                media="(min-width: 768px)" type="image/png" />
-            <source
-                srcSet={images.mobile}
-                type="image/png" />
-            <img src={images.medium} alt={mainNews.title} />
-          </picture>
-        </div>
+        {rightContent}
       </article>)
     }
   }
