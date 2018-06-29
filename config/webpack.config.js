@@ -1,8 +1,9 @@
 const path = require('path');
-const cmd=require('node-cmd');
 const globImporter = require('node-sass-glob-importer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const project = require('./project.config')
+const webpack = require('webpack')
 
 module.exports = {
   entry: './src/index.js',
@@ -47,15 +48,33 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: './src/index.html',
-        filename: 'index.html',
-        inject: 'body'
-      }),
+      template: project.paths.client('index.html'),
+      hash: false,
+      favicon  : project.paths.public('favicon.ico'),
+      filename: 'index.html',
+      inject: 'body',
+      excludeChunks : ['tests'],
+      minify   : {
+        collapseWhitespace : true
+      }
+    }),
     new ExtractTextPlugin({
       filename: 'style-min.css'
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        REST_ENDPOINT: JSON.stringify(project.rest_context_path)
+      }
     })
   ],
   devServer: {
     contentBase: ['./public','./assets']
+  },
+  resolve : {
+    extensions : ['.js', '.jsx', '.json'],
+    modules : [
+      project.paths.client(),
+      'node_modules'
+    ]
   }
 }
