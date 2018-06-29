@@ -1,5 +1,6 @@
 import React from 'react'
-import News from '../../components/news/news.jsx'
+import News from 'components/news/news.jsx'
+import NewProducts from 'components/products/newProducts'
 
 export default class Home extends React.Component {
 
@@ -11,7 +12,8 @@ export default class Home extends React.Component {
   render() {
     return (
       <div className='sp-page-home'>
-        <News></News>
+        <News/>
+        <NewProducts/>
       </div>
     )
   }

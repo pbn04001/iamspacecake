@@ -1,9 +1,9 @@
-import * as types from '../../redux/actionTypes'
-import NewsService from './utils/newsService'
+import * as types from '../../../redux/actionTypes'
+import newsService from './service'
 
 export function getRecentNews() {
   return dispatch => {
-    NewsService.fetchRecentNews()
+    newsService.fetchRecentNews()
       .then((response) => {
         dispatch(updateRecentNews(response));
       })

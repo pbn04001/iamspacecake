@@ -33,7 +33,9 @@
     "webpack-dev-server": "^2.11.0"
   },
   "scripts": {
-    "start": "webpack-dev-server --config ./config/webpack.config.js --port 8080",
-    "build": "webpack --config ./config/webpack.config.js"
+    "start": "NODE_ENV=development webpack-dev-server --config ./config/webpack.config.js --port 8080",
+    "build-test": "NODE_ENV=test webpack --config ./config/webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js"
+
   }
 }

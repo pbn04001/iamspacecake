@@ -6,19 +6,19 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { getPicture } from '../../utils/images';
 
-class News extends React.Component {
+class NewProducts extends React.Component {
 
   componentWillMount() {
-    this.props.getRecentNews();
+    this.props.getNewestProducts();
   }
 
-  renderNews() {
-    if (!_.isEmpty(this.props.recentNews)) {
-      let mainNews = this.props.recentNews[0]
-      const title = _.first(mainNews.title).value
-      const rightContent = (!isEmpty(mainNews.field_image)) ?
+  renderNewProducts() {
+    if (!_.isEmpty(this.props.newProducts)) {
+      let newProducts = this.props.newProducts[0]
+      const title = _.first(newProducts.title).value
+      const rightContent = (!isEmpty(newProducts.field_image)) ?
           (<div className='sp-right-content'>
-            {getPicture(mainNews.field_image[0].url,
+            {getPicture(newProducts.field_image[0].url,
                 title,
                 { large: true, medium: true, small: true },
                 'news_images')}
@@ -29,7 +29,7 @@ class News extends React.Component {
           {rightContent}
           <div
               className='sp-article-body'
-              dangerouslySetInnerHTML={{ __html: _.first(mainNews.body).value }}>
+              dangerouslySetInnerHTML={{ __html: _.first(newProducts.body).value }}>
           </div>
         </div>
         {rightContent}
@@ -40,20 +40,20 @@ class News extends React.Component {
   render() {
     return (
         <section className='sp-news'>
-          {this.renderNews()}
+          {this.renderNewProducts()}
         </section>
     )
   }
 }
 
-News.propTypes = {
-  recentNews: PropTypes.array,
-  getRecentNews: PropTypes.func,
+NewProducts.propTypes = {
+  newProducts: PropTypes.array,
+  getNewestProducts: PropTypes.func,
 }
 
 function mapStateToProps(state) {
   return {
-    recentNews: state.news.recentNews
+    newProducts: state.products.newProducts
   }
 }
 
@@ -61,4 +61,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(News)
+export default connect(mapStateToProps, mapDispatchToProps)(NewProducts)
