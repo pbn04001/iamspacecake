@@ -12,13 +12,14 @@ module.exports = {
     filename: 'index_bundle.js',
     publicPath: '/'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       { test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         options: {
           babelrc        : false,
-          cacheDirectory : false,
+          cacheDirectory : true,
           plugins        : ['transform-runtime'],
           presets        : [['es2015', {'modules': false}], 'react', 'stage-0']
         },
