@@ -1,4 +1,5 @@
 import React from 'react'
+import ShoppingCartIcon from 'components/shoppingCart/shoppingCartIcon'
 
 export default class Header extends React.Component {
 
@@ -13,8 +14,7 @@ export default class Header extends React.Component {
         <button className='sp-search'
                 title='Search items for sale'>Search</button>
         <div className='sp-right'>
-          <button className='sp-shopping-cart'
-                  title='View shopping cart'>Shopping Cart</button>
+          <ShoppingCartIcon />
           <a className='sp-facebook'
              href='https://www.facebook.com/SpaceCakesArt/'
              target='_blank'

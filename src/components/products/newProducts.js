@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actionCreators from './state/actions'
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { getPicture } from '../../utils/images';
 
-class NewProducts extends React.Component {
+class NewProducts extends Component {
 
   componentWillMount() {
     this.props.getNewestProducts();

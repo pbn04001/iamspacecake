@@ -1,15 +1,15 @@
 import * as types from 'store/actionTypes'
 
 const initialState = {
-  recentNews: []
+  items: []
 }
 
 function news(state = initialState, action) {
   switch (action.type) {
-    case types.NEWS_MOST_RECENT:
+    case types.ADD_ITEM_TO_SHOPPING_CART:
       return {
         ...state,
-        recentNews: action.recentNews
+        shoppingCart: state.items.push(action.payload.item),
       }
     default:
       return state

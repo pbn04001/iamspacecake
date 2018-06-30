@@ -16,6 +16,12 @@ module.exports = {
     loaders: [
       { test: /\.(js|jsx)$/,
         loader: 'babel-loader',
+        options: {
+          babelrc        : false,
+          cacheDirectory : true,
+          plugins        : ['transform-runtime'],
+          presets        : [['es2015', {'modules': false}], 'react', 'stage-0']
+        },
         exclude: /node_modules/
       }
     ],

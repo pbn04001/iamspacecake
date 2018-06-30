@@ -1,4 +1,4 @@
-import * as types from '../../../redux/actionTypes'
+import * as types from 'store/actionTypes'
 import productsService from './service'
 
 export function getNewestProducts() {
