@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import mapDispatchToProps from './state/mapDispatchToProps'
-import mapStateToProps from './state/mapStateToProps'
+import { bindActionCreators } from 'redux';
+import { addItemToShoppingCart } from './state/actions';
+import { getShoppingCartCount } from './state/selectors';
 
 export class ShoppingCartIcon extends Component {
 
@@ -24,4 +25,10 @@ ShoppingCartIcon.propTypes = {
   shoppingCartCount: PropTypes.number,
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartIcon)
+function mapStateToProps(state) {
+  return {
+    shoppingCartCount: getShoppingCartCount(state)
+  }
+}
+
+export default connect(mapStateToProps, null)(ShoppingCartIcon)

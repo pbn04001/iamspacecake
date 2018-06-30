@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as actionCreators from './state/actions'
 import PropTypes from 'prop-types'
+import BuyButton from 'components/shoppingCart/buyButton';
 import { isEmpty } from 'lodash'
 import { getPicture } from '../../utils/images';
 
@@ -33,6 +34,7 @@ class NewProducts extends Component {
           </div>
         </div>
         {rightContent}
+        <BuyButton />
       </article>)
     }
   }
