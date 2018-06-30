@@ -12,7 +12,7 @@ module.exports = {
     filename: 'index_bundle.js',
     publicPath: '/'
   },
-  devtool: 'source-map',
+  devtool: project.devtool,
   module: {
     loaders: [
       { test: /\.(js|jsx)$/,

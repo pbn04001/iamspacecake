@@ -1,5 +1,8 @@
 {
   "parser"  : "babel-eslint",
+  "extends" : [
+    "airbnb"
+  ],
   "env"     : {
     "browser" : true
   },
@@ -18,6 +21,7 @@
       "ignoreComments": false,
       "ignorePattern": "\\s*<"
     }],
+    "semi": 0,
     "generator-star-spacing": 0,
     "brace-style": "off",
     "import/no-extraneous-dependencies": "off",

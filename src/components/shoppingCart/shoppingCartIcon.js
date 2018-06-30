@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux';
-import { addItemToShoppingCart } from './state/actions';
 import { getShoppingCartCount } from './state/selectors';
 
 export class ShoppingCartIcon extends Component {

@@ -1,23 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { bindActionCreators } from 'redux';
-import { addItemToShoppingCart } from './state/actions';
+import { bindActionCreators } from 'redux'
+import { addItemToShoppingCart } from './state/actions'
 
 class BuyButton extends Component {
 
-  addItemToShoppingCart() {
+  addItemToShoppingCart = () => {
+    debugger;
     this.props.addItemToShoppingCart();
   }
 
   render() {
     return (
-        <button
-          className="sp-buy-button"
-          onClick={() => this.addItemToShoppingCart()}
-        >
-          Buy Now
-        </button>)
+      <button
+        className="sp-buy-button"
+        onClick={this.addItemToShoppingCart}
+      >
+        Buy Now
+      </button>)
   }
 }
 
@@ -27,8 +28,8 @@ BuyButton.propTypes = {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(
-    { addItemToShoppingCart },
-    dispatch,
+  { addItemToShoppingCart },
+  dispatch,
 )
 
 export default connect(null, mapDispatchToProps)(BuyButton)
