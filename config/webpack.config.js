@@ -13,7 +13,6 @@ module.exports = {
     filename: 'index_bundle.js',
     publicPath: '/',
   },
-  devtool: project.devtool,
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
@@ -54,6 +53,11 @@ module.exports = {
           importer: globImporter(),
         },
       }],
+    },
+    // Modernizr
+    {
+      test: /\.modernizrrc$/,
+      use: 'webpack-modernizr-loader?useConfigFile',
     }],
   },
   plugins: [
@@ -85,5 +89,8 @@ module.exports = {
       project.paths.client(),
       'node_modules',
     ],
+    alias: {
+      modernizr$: project.paths.base('.modernizrrc'),
+    },
   },
 }

@@ -12,7 +12,7 @@ class BuyButton extends Component {
       <button
         type="button"
         className="sp-buy-button"
-        onClick={() => this.addItemToShoppingCart()}
+        onClick={this.addItemToShoppingCart}
       >
         Buy Now
       </button>)
