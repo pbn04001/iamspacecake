@@ -5,14 +5,14 @@ import { bindActionCreators } from 'redux'
 import { addItemToShoppingCart } from './state/actions'
 
 class BuyButton extends Component {
-  addItemToShoppingCart = () => this.props.addItemToShoppingCart
+  addItemToShoppingCart = () => this.props.addItemToShoppingCart()
 
   render() {
     return (
       <button
         type="button"
         className="sp-buy-button"
-        onClick={this.addItemToShoppingCart}
+        onClick={() => this.addItemToShoppingCart()}
       >
         Buy Now
       </button>)

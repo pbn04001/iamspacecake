@@ -6,6 +6,8 @@ import './styles/index.scss'
 import store from 'store'
 import App from './components/app/app'
 
+import './polyfills'
+
 ReactDOM.render(
   <BrowserRouter>
     <Provider store={store}>

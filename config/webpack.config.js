@@ -7,7 +7,7 @@ const webpack = require('webpack')
 const project = require('./project.config')
 
 module.exports = {
-  entry: ['babel-polyfill', './src/index.jsx'],
+  entry: './src/index.jsx',
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js',
@@ -17,17 +17,24 @@ module.exports = {
   module: {
     rules: [{
       test: /\.(js|jsx)$/,
-      exclude: /(node_modules)/,
+      include: [
+        project.paths.client(),
+        /whatwg-fetch/, // needed to transform-runtime polyfill's use of Promise
+      ],
       use: {
         loader: 'babel-loader',
       },
     }, {
       test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      loader: 'eslint-loader',
-      options: {
-        // eslint options (if necessary)
-      },
+      enforce: 'pre',
+      exclude: /src\/static/,
+      use: [{
+        loader: 'eslint-loader',
+        options: {
+          configFile: project.paths.base('.eslintrc'),
+          emitWarning: true,
+        },
+      }],
     }, {
       test: /\.scss$/,
       use: [{
@@ -56,7 +63,6 @@ module.exports = {
       favicon: project.paths.public('favicon.ico'),
       filename: 'index.html',
       inject: 'body',
-      excludeChunks: ['tests'],
       minify: {
         collapseWhitespace: true,
       },
