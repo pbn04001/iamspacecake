@@ -3,9 +3,11 @@ import { Switch, Route } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import Home from 'views/home/home'
+import Cart from 'views/cart/cart'
 import Header from '../header/header'
 import Nav from '../nav/nav'
-import Home from '../../views/home/home'
+
 import * as actionCreators from './actions'
 
 let isStopMenuDeactivate = false
@@ -30,7 +32,8 @@ class App extends React.Component {
         <Header />
         <Nav menuClicked={() => this.menuClicked()} />
         <Switch>
-          <Route path="/" component={Home} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       </div>
     )

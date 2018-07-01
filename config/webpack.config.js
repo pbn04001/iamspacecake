@@ -77,11 +77,13 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         REST_ENDPOINT: JSON.stringify(project.rest_context_path),
+        NODE_ENV: JSON.stringify(project.env),
       },
     }),
   ],
   devServer: {
     contentBase: ['./public', './assets'],
+    historyApiFallback: true,
   },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],

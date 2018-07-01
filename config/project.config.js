@@ -21,6 +21,7 @@ const restEndpoint = () => {
 
 const config = {
   env: NODE_ENV,
+  devtool: __PROD__ ? null : 'source-map',
 
   // ----------------------------------
   // Project Structure

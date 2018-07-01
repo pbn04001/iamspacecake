@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { getShoppingCartCount } from './state/selectors'
 
 export class ShoppingCartIcon extends Component {
@@ -8,13 +9,13 @@ export class ShoppingCartIcon extends Component {
 
   render() {
     return (
-      <button
-        type="button"
+      <Link
+        to="/cart"
         className="sp-shopping-cart"
         title="View shopping cart"
       >
         Cart ({ this.getShoppingCartCount() })
-      </button>)
+      </Link>)
   }
 }
 
