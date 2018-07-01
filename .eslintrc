@@ -21,15 +21,20 @@
       "ignoreComments": false,
       "ignorePattern": "\\s*<"
     }],
-    "semi": 0,
+    "semi": ["error", "never"],
     "generator-star-spacing": 0,
     "brace-style": "off",
     "import/no-extraneous-dependencies": "off",
     "import/no-named-as-default": "off",
     "import/no-named-as-default-member": "off",
     "import/no-unresolved": "off",
+    "import/prefer-default-export": "off",
+    "jsx-a11y/anchor-has-content": "off",
     "no-prototype-builtins": "off",
     "no-underscore-dangle": "off",
-    "no-undef": "off"
+    "no-undef": "off",
+    "react/destructuring-assignment": "false",
+    "react/jsx-one-expression-per-line": "false",
+    "react/forbid-prop-types": "false"
   }
 }

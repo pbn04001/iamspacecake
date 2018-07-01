@@ -6,16 +6,17 @@ debug('Creating default configuration.')
 // ========================================================
 // Default Configuration
 // ========================================================
-const NODE_ENV = process.env.NODE_ENV || 'development';
+const NODE_ENV = process.env.NODE_ENV || 'development'
 
-const __DEV__  = NODE_ENV === 'development',
-    __TEST__ = NODE_ENV === 'test',
-    __PROD__ = NODE_ENV === 'production';
+const __DEV__ = NODE_ENV === 'development'
+const __TEST__ = NODE_ENV === 'test'
+const __PROD__ = NODE_ENV === 'production'
 
 const restEndpoint = () => {
-  if (__DEV__) return '/rest';
-  if (__TEST__) return '/mytestendpoint';
-  if (__PROD__) return '/someprodendpoint';
+  if (__DEV__) return '/rest/api'
+  if (__TEST__) return '/mytestendpoint'
+  if (__PROD__) return '/someprodendpoint'
+  return null
 }
 
 const config = {
@@ -40,14 +41,14 @@ const config = {
 // Utilities
 // ------------------------------------
 function base(...paths) {
-  return path.join(config.path_base, ...paths);
+  return path.join(config.path_base, ...paths)
 }
 
 config.paths = {
-  base   : base,
-  client : base.bind(null, config.dir_client),
-  public : base.bind(null, config.dir_public),
-  dist   : base.bind(null, config.dir_dist),
+  base: base,
+  client: base.bind(null, config.dir_client),
+  public: base.bind(null, config.dir_public),
+  dist: base.bind(null, config.dir_dist),
 }
 
 module.exports = config

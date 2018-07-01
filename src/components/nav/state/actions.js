@@ -2,7 +2,10 @@ import * as types from 'store/actionTypes'
 
 export function setMenuActive(isMenuActive) {
   return dispatch => dispatch(
-    { type: types.MENU_ACTIVE, isMenuActive },
+    {
+      type: types.MENU_ACTIVE,
+      isMenuActive,
+    },
   )
 }
 

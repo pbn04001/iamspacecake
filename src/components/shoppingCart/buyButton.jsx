@@ -5,15 +5,12 @@ import { bindActionCreators } from 'redux'
 import { addItemToShoppingCart } from './state/actions'
 
 class BuyButton extends Component {
-
-  addItemToShoppingCart = () => {
-    debugger;
-    this.props.addItemToShoppingCart();
-  }
+  addItemToShoppingCart = () => this.props.addItemToShoppingCart
 
   render() {
     return (
       <button
+        type="button"
         className="sp-buy-button"
         onClick={this.addItemToShoppingCart}
       >
@@ -24,7 +21,7 @@ class BuyButton extends Component {
 
 
 BuyButton.propTypes = {
-  addItemToShoppingCart: PropTypes.func,
+  addItemToShoppingCart: PropTypes.func.isRequired,
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(

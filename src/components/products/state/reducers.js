@@ -1,7 +1,7 @@
 import * as types from 'store/actionTypes'
 
 const initialState = {
-  newProducts: []
+  newProducts: [],
 }
 
 function news(state = initialState, action) {
@@ -9,7 +9,7 @@ function news(state = initialState, action) {
     case types.NEWEST_PRODUCTS:
       return {
         ...state,
-        newProducts: action.newProducts
+        newProducts: action.newProducts,
       }
     default:
       return state

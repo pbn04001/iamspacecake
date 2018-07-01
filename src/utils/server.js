@@ -1,1 +1,0 @@
-export const rest = process.env.REST_ENDPOINT

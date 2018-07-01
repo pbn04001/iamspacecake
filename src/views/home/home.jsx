@@ -1,20 +1,12 @@
 import React from 'react'
-import News from 'components/news/news.jsx'
-import NewProducts from 'components/products/newProducts'
+import News from '../../components/news/news'
+import NewProducts from '../../components/products/newProducts'
 
-export default class Home extends React.Component {
+const Home = () => (
+  <div className="sp-page-home">
+    <News />
+    <NewProducts />
+  </div>
+)
 
-  constructor() {
-    super()
-    this.state = { items: [] }
-  }
-
-  render() {
-    return (
-      <div className='sp-page-home'>
-        <News/>
-        <NewProducts/>
-      </div>
-    )
-  }
-}
+export default Home

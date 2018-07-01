@@ -1,18 +1,12 @@
-import fetch from 'isomorphic-fetch'
-import { rest } from 'utils/server'
+import api from 'utils/api'
 
 const ProductsService = {
-  fetchProducts: (limit, page) => fetch(`${rest}/api/products`,
-      {
-        urlParams: { limit, page }
-      })
-      .then(response => response.json())
-      .catch(error => {
-        const response = {
-          error: error.message
-        };
-        return response;
-      })
-};
+  fetchProducts: (limit, page) => api.doFetch('/products',
+    {
+      urlParams: { limit, page },
+    })
+    .then(response => response)
+    .catch(error => ({ error: error.message })),
+}
 
-export default ProductsService;
+export default ProductsService

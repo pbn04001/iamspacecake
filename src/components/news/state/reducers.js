@@ -1,15 +1,15 @@
-import * as types from 'store/actionTypes'
+import types from './actionTypes'
 
 const initialState = {
-  recentNews: []
+  recentNews: [],
 }
 
 function news(state = initialState, action) {
   switch (action.type) {
-    case types.NEWS_MOST_RECENT:
+    case types.updateRecentNews:
       return {
         ...state,
-        recentNews: action.recentNews
+        recentNews: action.payload.recentNews,
       }
     default:
       return state

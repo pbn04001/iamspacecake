@@ -1,15 +1,9 @@
-import fetch from 'isomorphic-fetch'
-import { rest } from 'utils/server'
+import api from 'utils/api'
 
 const NewsService = {
-  fetchRecentNews: () => fetch(`${rest}/api/news`)
-    .then(response => response.json())
-    .catch(error => {
-      const response = {
-        error: error.message
-      };
-      return response;
-    })
-};
+  fetchRecentNews: () => api.doFetch('/news')
+    .then(response => response)
+    .catch(error => ({ error: error.message })),
+}
 
-export default NewsService;
+export default NewsService

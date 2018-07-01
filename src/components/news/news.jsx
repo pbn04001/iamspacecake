@@ -1,64 +1,67 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actionCreators from './state/actions'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
-import { getPicture } from '../../utils/images';
+import { getRecentNews } from './state/actions'
+import { getPicture } from '../../utils/images'
 
 class News extends React.Component {
-
   componentWillMount() {
-    this.props.getRecentNews();
+    this.props.getRecentNews()
   }
 
-  renderNews() {
+  renderNews = () => {
     if (!_.isEmpty(this.props.recentNews)) {
-      let mainNews = this.props.recentNews[0]
+      const mainNews = this.props.recentNews[0]
       const title = _.first(mainNews.title).value
-      const rightContent = (!isEmpty(mainNews.field_image)) ?
-          (<div className='sp-right-content'>
-            {getPicture(mainNews.field_image[0].url,
-                title,
-                { large: true, medium: true, small: true },
-                'news_images')}
-          </div>) : null;
-      return (<article>
-        <div className='sp-left-content'>
-          <h2>{title}</h2>
-          {rightContent}
-          <div
-              className='sp-article-body'
-              dangerouslySetInnerHTML={{ __html: _.first(mainNews.body).value }}>
+      const rightContent = (!isEmpty(mainNews.fieldImage))
+        ? (
+          <div className="sp-right-content">
+            {getPicture(mainNews.fieldImage[0].url,
+              title,
+              { large: true, medium: true, small: true },
+              'news_images')}
+          </div>) : null
+      return (
+        <article>
+          <div className="sp-left-content">
+            <h2>{title}</h2>
+            {rightContent}
+            <div
+              className="sp-article-body"
+              dangerouslySetInnerHTML={{ __html: _.first(mainNews.body).value }} // eslint-disable-line react/no-danger
+            />
           </div>
-        </div>
-        {rightContent}
-      </article>)
+          {rightContent}
+        </article>)
     }
+    return <article />
   }
 
   render() {
     return (
-        <section className='sp-news'>
-          {this.renderNews()}
-        </section>
+      <section className="sp-news">
+        {this.renderNews()}
+      </section>
     )
   }
 }
 
 News.propTypes = {
-  recentNews: PropTypes.array,
-  getRecentNews: PropTypes.func,
+  recentNews: PropTypes.array.isRequired,
+  getRecentNews: PropTypes.func.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
-    recentNews: state.news.recentNews
+    recentNews: state.news.recentNews,
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
+export const mapDispatchToProps = dispatch => bindActionCreators(
+  { getRecentNews },
+  dispatch,
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(News)

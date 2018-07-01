@@ -1,42 +1,21 @@
 import React from 'react'
-import Header from '../header/header.jsx'
-import Nav from '../nav/nav.jsx'
-import Home from '../../views/home/home.jsx'
 import { Switch, Route } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as actionCreators from './actions'
 import PropTypes from 'prop-types'
+import Header from '../header/header'
+import Nav from '../nav/nav'
+import Home from '../../views/home/home'
+import * as actionCreators from './actions'
 
 let isStopMenuDeactivate = false
 
 class App extends React.Component {
-  constructor() {
-    super()
-    this.state = {
-      isStopMenuDeactivate: false
-    }
-  }
-
-  menuClicked () {
+  menuClicked = () => {
     isStopMenuDeactivate = true
   }
 
-  // componentDidMount() {
-  //   fetch(`/rest/node/1?_format=hal_json`)
-  //     .then((response) => {
-  //       console.log(1)
-  //       return response.json()
-  //     })
-  //     .then((responseJson) => {
-  //       console.log(responseJson)
-  //     })
-  //     .catch((error) => {
-  //       console.error(error)
-  //     })
-  // }
-
-  screenClicked() {
+  screenClicked = () => {
     if (!isStopMenuDeactivate) {
       this.props.setMenuActive(false)
     }
@@ -45,11 +24,13 @@ class App extends React.Component {
 
   render() {
     return (
-      <div onClick={() => this.screenClicked(event)}>
-        <Header></Header>
-        <Nav menuClicked={() => this.menuClicked()}></Nav>
+      <div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        onClick={event => this.screenClicked(event)}
+      >
+        <Header />
+        <Nav menuClicked={() => this.menuClicked()} />
         <Switch>
-          <Route path='/' component={Home}></Route>
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     )
@@ -57,10 +38,10 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  menuClicked: PropTypes.func
+  setMenuActive: PropTypes.func.isRequired,
 }
 
-function mapStateToProps () {
+function mapStateToProps() {
   return {}
 }
 

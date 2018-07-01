@@ -1,7 +1,7 @@
 import * as types from 'store/actionTypes'
 
 const initialState = {
-  items: []
+  items: [],
 }
 
 function news(state = initialState, action) {

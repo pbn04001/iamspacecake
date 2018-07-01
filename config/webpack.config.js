@@ -1,87 +1,83 @@
-const path = require('path');
-const globImporter = require('node-sass-glob-importer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const project = require('./project.config')
+require('babel-polyfill')
+const path = require('path')
+const globImporter = require('node-sass-glob-importer')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
+const project = require('./project.config')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: ['babel-polyfill', './src/index.jsx'],
   output: {
     path: path.resolve('dist'),
     filename: 'index_bundle.js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devtool: project.devtool,
   module: {
-    loaders: [
-      { test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        options: {
-          babelrc        : false,
-          cacheDirectory : true,
-          plugins        : ['transform-runtime'],
-          presets        : [['es2015', {'modules': false}], 'react', 'stage-0']
-        },
-        exclude: /node_modules/
-      }
-    ],
     rules: [{
       test: /\.(js|jsx)$/,
       exclude: /(node_modules)/,
       use: {
-        loader: 'babel-loader'
-      }
-    },{
+        loader: 'babel-loader',
+      },
+    }, {
+      test: /\.(js|jsx)$/,
+      exclude: /node_modules/,
+      loader: 'eslint-loader',
+      options: {
+        // eslint options (if necessary)
+      },
+    }, {
       test: /\.scss$/,
       use: [{
-        loader: "style-loader"
+        loader: 'style-loader',
       }, {
-        loader: "css-loader",
+        loader: 'css-loader',
         options: {
           sourceMap: true,
           minimize: true,
           discardComments: {
-            removeAll: true
-          }
-        }
+            removeAll: true,
+          },
+        },
       }, {
-        loader: "sass-loader",
+        loader: 'sass-loader',
         options: {
-          importer: globImporter()
-        }
-      }]
-    }]
+          importer: globImporter(),
+        },
+      }],
+    }],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: project.paths.client('index.html'),
       hash: false,
-      favicon  : project.paths.public('favicon.ico'),
+      favicon: project.paths.public('favicon.ico'),
       filename: 'index.html',
       inject: 'body',
-      excludeChunks : ['tests'],
-      minify   : {
-        collapseWhitespace : true
-      }
+      excludeChunks: ['tests'],
+      minify: {
+        collapseWhitespace: true,
+      },
     }),
     new ExtractTextPlugin({
-      filename: 'style-min.css'
+      filename: 'style-min.css',
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        REST_ENDPOINT: JSON.stringify(project.rest_context_path)
-      }
-    })
+        REST_ENDPOINT: JSON.stringify(project.rest_context_path),
+      },
+    }),
   ],
   devServer: {
-    contentBase: ['./public','./assets']
+    contentBase: ['./public', './assets'],
   },
-  resolve : {
-    extensions : ['.js', '.jsx', '.json'],
-    modules : [
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+    modules: [
       project.paths.client(),
-      'node_modules'
-    ]
-  }
+      'node_modules',
+    ],
+  },
 }
