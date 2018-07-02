@@ -12,6 +12,7 @@ class Nav extends Component {
   }
 
   render() {
+    const { location } = this.props
     return (
       <div className="sp-nav-bar">
         <NavLink
@@ -20,7 +21,7 @@ class Nav extends Component {
           title="SpaceCake Productions"
         />
         <div className="sp-menu-back-left" />
-        <nav>
+        <nav className={`sp-location-${location}`}>
           <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
             <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
             <li><NavLink to="/shop">Shop</NavLink></li>
@@ -38,6 +39,7 @@ Nav.propTypes = {
   isMenuActive: PropTypes.bool.isRequired,
   menuClicked: PropTypes.func.isRequired,
   setMenuActive: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state) {

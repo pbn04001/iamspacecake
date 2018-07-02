@@ -1,10 +1,7 @@
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Home from 'views/home/home'
-import Cart from 'views/cart/cart'
 import Header from '../header/header'
 import Nav from '../nav/nav'
 
@@ -25,23 +22,23 @@ class App extends React.Component {
   }
 
   render() {
+    const { children, location } = this.props
     return (
       <div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         onClick={event => this.screenClicked(event)}
       >
         <Header />
-        <Nav menuClicked={() => this.menuClicked()} />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/cart" component={Cart} />
-        </Switch>
+        <Nav location={location} menuClicked={() => this.menuClicked()} />
+        { children }
       </div>
     )
   }
 }
 
 App.propTypes = {
+  children: PropTypes.node.isRequired,
   setMenuActive: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 function mapStateToProps() {
