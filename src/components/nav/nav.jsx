@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -14,24 +14,29 @@ class Nav extends Component {
   render() {
     const { location } = this.props
     return (
-      <div className="sp-nav-bar">
-        <NavLink
-          to="/"
-          className="sp-logo"
-          title="SpaceCake Productions"
-        />
-        <div className="sp-menu-back-left" />
-        <nav className={`sp-location-${location}`}>
-          <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
-            <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
-            <li><NavLink to="/shop">Shop</NavLink></li>
-            <li><NavLink to="/gallery">Gallery</NavLink></li>
-            <li><NavLink to="/news">News</NavLink></li>
-            <li><NavLink to="/about">About</NavLink></li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
-          </ul>
-        </nav>
-      </div>)
+      <Fragment>
+        <div className="sp-nav-bar">
+          <NavLink
+            to="/"
+            className="sp-logo"
+            title="SpaceCake Productions"
+          />
+          <div className="sp-menu-back-left" />
+          <nav className={`sp-location-${location}`}>
+            <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
+              <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
+              <li><NavLink to="/shop">Shop</NavLink></li>
+              <li><NavLink to="/gallery">Gallery</NavLink></li>
+              <li><NavLink to="/news">News</NavLink></li>
+              <li><NavLink to="/about">About</NavLink></li>
+              <li><NavLink to="/contact">Contact</NavLink></li>
+            </ul>
+          </nav>
+        </div>
+        <div className="sp-menu-white-backing">
+          <div className="sp-menu-backing-inside" />
+        </div>
+      </Fragment>)
   }
 }
 

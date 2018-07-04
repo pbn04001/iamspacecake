@@ -4,19 +4,6 @@
   margin: 0 $--spacing-unit-x8 $--spacing-unit-x8 $--spacing-unit-x8;
   padding: $--spacing-unit-x10;
 
-  &.type-main {
-    padding-top: 0;
-  }
-
-  .sp-container-cover {
-    position: absolute;
-    background: $white-transparent;
-    top: -$--spacing-unit-x14;
-    height: $--spacing-unit-x14;
-    width: 100%;
-    left: 0;
-  }
-
   @include breakpoint(medium){
     background: $light-gray;
   }

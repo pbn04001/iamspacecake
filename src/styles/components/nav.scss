@@ -134,3 +134,17 @@
     }
   }
 }
+
+.sp-menu-white-backing {
+  position: relative;
+  height: 0px;
+  overflow: visible;
+
+  .sp-menu-backing-inside {
+    position: relative;
+    top: -5.5rem;
+    height: 5.5rem;
+    margin: 0 $--spacing-unit-x8;
+    background: $white-transparent;
+  }
+}

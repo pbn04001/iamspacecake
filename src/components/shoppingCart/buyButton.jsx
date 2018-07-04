@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
+import { Button } from 'components/button'
 import { addItemToShoppingCart } from './state/actions'
 
 class BuyButton extends Component {
@@ -10,13 +11,12 @@ class BuyButton extends Component {
   render() {
     const { item } = this.props
     return (
-      <button
-        type="button"
+      <Button
         className="sp-buy-button"
         onClick={() => this.addItemToShoppingCart(item)}
       >
         Buy Now
-      </button>)
+      </Button>)
   }
 }
 
