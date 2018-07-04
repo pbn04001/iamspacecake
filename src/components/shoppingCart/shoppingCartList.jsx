@@ -11,7 +11,7 @@ const ShoppingCartList = ({ shoppingCartItems }) => {
 
   return shoppingCartItems.map((item) => {
     return (
-      <Container>
+      <Container key={`sp-shopping-cart-list-${item.uuid[0].value}`}>
         {getShoppingCartItem(item)}
       </Container>)
   })

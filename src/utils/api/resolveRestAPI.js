@@ -1,10 +1,9 @@
-const restUrl = process.env.REST_ENDPOINT
 const paramRegex = /^(.*)(\{.*\})(.*)$/
 
 const getMatches = route => route.match(paramRegex)
 
 export default function (routeName, params = {}) {
-  let route = restUrl + routeName
+  let route = process.env.REST_ENDPOINT + routeName
   let pieces = getMatches(route)
   while (pieces) {
     const [fullString, prePiece, paramPiece, postPiece] = pieces // eslint-disable-line

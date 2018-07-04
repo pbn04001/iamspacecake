@@ -77,7 +77,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env': {
         REST_ENDPOINT: JSON.stringify(project.rest_context_path),
-        NODE_ENV: JSON.stringify(project.env.NODE_ENV),
+        NODE_ENV: JSON.stringify(project.env),
       },
     }),
   ],

@@ -24,7 +24,7 @@ class NewProducts extends Component {
             'news_images')}
         </div>) : null
     return (
-      <article>
+      <article key={`sp-new-products-${product.uuid[0].value}`}>
         <div className="sp-left-content">
           <h2>{title}</h2>
           {rightContent}
