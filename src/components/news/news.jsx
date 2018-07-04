@@ -3,7 +3,8 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
-import { Container } from 'components/container'
+import { Container, TYPE } from 'components/container'
+import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
 import { getPicture } from '../../utils/images'
 
@@ -27,7 +28,7 @@ class News extends React.Component {
       return (
         <article>
           <div className="sp-left-content">
-            <h2>{title}</h2>
+            <PageHeader>{title}</PageHeader>
             {rightContent}
             <div
               className="sp-article-body"
@@ -42,7 +43,7 @@ class News extends React.Component {
 
   render() {
     return (
-      <Container className="sp-news">
+      <Container className="sp-news" type={TYPE.MAIN}>
         {this.renderNews()}
       </Container>
     )
