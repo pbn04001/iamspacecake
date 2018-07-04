@@ -1,0 +1,11 @@
+.sp-container {
+  position: relative;
+  top: -$--spacing-unit-x14;
+  background: $white-transparent;
+  margin: 0 $--spacing-unit-x8 $--spacing-unit-x8 $--spacing-unit-x8;
+  padding: $--spacing-unit-x20 $--spacing-unit-x10 $--spacing-unit-x10 $--spacing-unit-x10;
+
+  @include breakpoint(medium){
+    background: $light-gray;
+  }
+}

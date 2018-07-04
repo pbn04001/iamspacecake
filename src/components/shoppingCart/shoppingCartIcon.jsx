@@ -2,30 +2,33 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import { getShoppingCartCount } from './state/selectors'
+import { getShoppingCartItems } from './state/selectors'
 
 export class ShoppingCartIcon extends Component {
-  getShoppingCartCount = () => this.props.shoppingCartCount
+  getShoppingCartCount = (items) => {
+    return items.length > 0 ? `(${items.length})` : null
+  }
 
   render() {
+    const { shoppingCartItems } = this.props
     return (
       <NavLink
         to="/cart"
         className="sp-shopping-cart"
         title="View shopping cart"
       >
-        Cart ({ this.getShoppingCartCount() })
+        Cart {this.getShoppingCartCount(shoppingCartItems)}
       </NavLink>)
   }
 }
 
 ShoppingCartIcon.propTypes = {
-  shoppingCartCount: PropTypes.number.isRequired,
+  shoppingCartItems: PropTypes.array.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
-    shoppingCartCount: getShoppingCartCount(state),
+    shoppingCartItems: getShoppingCartItems(state),
   }
 }
 

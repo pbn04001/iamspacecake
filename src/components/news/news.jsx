@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
+import { Container } from 'components/container'
 import { getRecentNews } from './state/actions'
 import { getPicture } from '../../utils/images'
 
@@ -41,9 +42,9 @@ class News extends React.Component {
 
   render() {
     return (
-      <section className="sp-news">
+      <Container className="sp-news">
         {this.renderNews()}
-      </section>
+      </Container>
     )
   }
 }

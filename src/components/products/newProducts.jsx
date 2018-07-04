@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 import PropTypes from 'prop-types'
 import BuyButton from 'components/shoppingCart/buyButton'
+import { Container } from 'components/container'
 import * as actionCreators from './state/actions'
 import { getPicture } from '../../utils/images'
 
@@ -12,40 +13,45 @@ class NewProducts extends Component {
     this.props.getNewestProducts()
   }
 
-  renderNewProducts = () => {
-    if (!_.isEmpty(this.props.newProducts)) {
-      const newProducts = this.props.newProducts[0]
-      const title = _.first(newProducts.title).value
-      const rightContent = (!isEmpty(newProducts.fieldImage))
-        ? (
-          <div className="sp-right-content">
-            {getPicture(newProducts.fieldImage[0].url,
-              title,
-              { large: true, medium: true, small: true },
-              'news_images')}
-          </div>) : null
-      return (
-        <article>
-          <div className="sp-left-content">
-            <h2>{title}</h2>
-            {rightContent}
-            <div
-              className="sp-article-body"
-              dangerouslySetInnerHTML={{ __html: _.first(newProducts.body).value }} // eslint-disable-line react/no-danger
-            />
-          </div>
+  renderNewProduct = (product) => {
+    const title = _.first(product.title).value
+    const rightContent = (!isEmpty(product.fieldImage))
+      ? (
+        <div className="sp-right-content">
+          {getPicture(product.fieldImage[0].url,
+            title,
+            { large: true, medium: true, small: true },
+            'news_images')}
+        </div>) : null
+    return (
+      <article>
+        <div className="sp-left-content">
+          <h2>{title}</h2>
           {rightContent}
-          <BuyButton />
-        </article>)
+          <div
+            className="sp-article-body"
+            dangerouslySetInnerHTML={{ __html: _.first(product.body).value }} // eslint-disable-line react/no-danger
+          />
+        </div>
+        {rightContent}
+        <BuyButton item={product} />
+      </article>)
+  }
+
+  renderNewProducts = () => {
+    const { newProducts } = this.props
+    const products = []
+    if (!_.isEmpty(newProducts)) {
+      newProducts.map(product => products.push(this.renderNewProduct(product)))
     }
-    return null
+    return products
   }
 
   render() {
     return (
-      <section className="sp-news">
+      <Container className="sp-news">
         {this.renderNewProducts()}
-      </section>
+      </Container>
     )
   }
 }

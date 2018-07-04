@@ -33,8 +33,10 @@
     "no-prototype-builtins": "off",
     "no-underscore-dangle": "off",
     "no-undef": "off",
+    "arrow-body-style": "off",
     "react/destructuring-assignment": "false",
     "react/jsx-one-expression-per-line": "false",
-    "react/forbid-prop-types": "false"
+    "react/forbid-prop-types": "false",
+    "react/require-default-props": "false"
   }
 }
