@@ -1,14 +1,14 @@
 import api from 'utils/api'
 
 const LoginService = {
-  login: (username, password) => api.doFetch('/user/login', {
+  login: (username, password) => api.doFetch('/user/login?_format=json', {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/hal+json',
+      'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      username,
-      password,
+      name: username,
+      pass: password,
     }),
   })
     .then(response => response)

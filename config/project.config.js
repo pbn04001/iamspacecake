@@ -13,7 +13,7 @@ const __TEST__ = NODE_ENV === 'test'
 const __PROD__ = NODE_ENV === 'production'
 
 const restEndpoint = () => {
-  if (__DEV__) return '/rest/api'
+  if (__DEV__) return '/rest'
   if (__TEST__) return '/mytestendpoint'
   if (__PROD__) return '/someprodendpoint'
   return null

@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import { Container } from 'components/container'
 import { connect } from 'react-redux'
 import { startLogin } from './state/actions'
+import { getCurrentUser } from './state/selectors'
 
 const FORM_NAME = 'loginForm'
 
@@ -14,6 +15,15 @@ class Login extends Component {
     pristine: PropTypes.bool,
     submitting: PropTypes.bool,
     startLogin: PropTypes.func.isRequired,
+    currentUser: PropTypes.object,
+    history: PropTypes.object,
+  }
+
+  componentDidUpdate() {
+    const { currentUser } = this.props
+    if (!!currentUser && !currentUser.error) {
+      this.props.history.push('/login/success')
+    }
   }
 
   onSubmit = (values) => {
@@ -59,7 +69,9 @@ class Login extends Component {
 }
 
 function mapStateToProps(state) {
-  return {}
+  return {
+    currentUser: getCurrentUser(state)
+  }
 }
 
 export const mapDispatchToProps = dispatch => bindActionCreators(

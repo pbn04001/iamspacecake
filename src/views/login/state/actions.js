@@ -2,7 +2,6 @@ import { call, put, takeLatest } from 'redux-saga/effects'
 import runSagas from 'store/sagas'
 import types from './actionTypes'
 import loginService from './service'
-import newsService from '../../../components/news/state/service'
 
 export const startLogin = (username, password) => ({
   type: types.startLogin,
@@ -14,8 +13,13 @@ export const startLogin = (username, password) => ({
 
 function* startLoginSaga(action) {
   const { username, password } = action.payload
-  const login = yield call(loginService.login, username, password)
-  debugger
+  const currentUser = yield call(loginService.login, username, password)
+  yield put({
+    type: types.loginUpdate,
+    payload: {
+      currentUser,
+    },
+  })
 }
 
 export function* getWatchers() {
