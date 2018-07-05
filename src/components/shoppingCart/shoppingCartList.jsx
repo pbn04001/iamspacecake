@@ -5,7 +5,7 @@ import { getShoppingCartItems } from './state/selectors'
 
 const ShoppingCartList = ({ shoppingCartItems }) => {
   return shoppingCartItems.map(item => (
-    <div className="sp-shopping-cart-item" key={`sp-shopping-cart-list-item-${item.uuid[0].value}`}>
+    <div className="sp-shopping-cart-item" key={`sp-shopping-cart-list-item-${item.uuid}`}>
       {item.title[0].value} count({item.count})
     </div>))
 }

@@ -14,23 +14,23 @@ class NewProducts extends Component {
   }
 
   renderNewProduct = (product) => {
-    const title = _.first(product.title).value
+    const title = product.title
     const rightContent = (!isEmpty(product.fieldImage))
       ? (
         <div className="sp-right-content">
-          {getPicture(product.fieldImage[0].url,
+          {getPicture(product.fieldImage,
             title,
             { large: true, medium: true, small: true },
             'news_images')}
         </div>) : null
     return (
-      <article key={`sp-new-products-${product.uuid[0].value}`}>
+      <article key={`sp-new-products-${product.uuid}`}>
         <div className="sp-left-content">
           <h2>{title}</h2>
           {rightContent}
           <div
             className="sp-article-body"
-            dangerouslySetInnerHTML={{ __html: _.first(product.body).value }} // eslint-disable-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: product.body }} // eslint-disable-line react/no-danger
           />
         </div>
         {rightContent}

@@ -1,7 +1,7 @@
 import api from 'utils/api'
 
 const ProductsService = {
-  fetchProducts: (limit, page) => api.doFetch('/products',
+  fetchProducts: (limit, page) => api.doFetch('/products?_format=json',
     {
       urlParams: { limit, page },
     })
