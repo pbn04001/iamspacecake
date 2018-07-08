@@ -13,7 +13,6 @@ const Container = ({ children, className = '' }) => {
 Container.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  type: PropTypes.string,
 }
 
 export default Container

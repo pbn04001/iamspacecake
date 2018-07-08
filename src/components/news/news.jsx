@@ -16,11 +16,13 @@ class News extends React.Component {
   renderNews = () => {
     if (!_.isEmpty(this.props.recentNews)) {
       const mainNews = this.props.recentNews[0]
-      const title = mainNews.title
-      const rightContent = (!isEmpty(mainNews.fieldImage))
+      const {
+        title, fieldImage, body,
+      } = mainNews
+      const rightContent = (!isEmpty(fieldImage))
         ? (
           <div className="sp-right-content">
-            {getPicture(mainNews.fieldImage,
+            {getPicture(fieldImage,
               title,
               { large: true, medium: true, small: true },
               'news_images')}
@@ -32,7 +34,7 @@ class News extends React.Component {
             {rightContent}
             <div
               className="sp-article-body"
-              dangerouslySetInnerHTML={{ __html: mainNews.body }} // eslint-disable-line react/no-danger
+              dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
           </div>
           {rightContent}

@@ -30,6 +30,7 @@
     "import/no-unresolved": "off",
     "import/prefer-default-export": "off",
     "jsx-a11y/anchor-has-content": "off",
+    "jsx-a11y/label-has-for": "off",
     "no-prototype-builtins": "off",
     "no-underscore-dangle": "off",
     "no-undef": "off",

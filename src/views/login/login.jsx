@@ -70,7 +70,7 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentUser: getCurrentUser(state)
+    currentUser: getCurrentUser(state),
   }
 }
 

@@ -9,7 +9,7 @@ export const Button = ({
   children,
 }) => {
   return (
-    <button
+    <button // eslint-disable-line react/button-has-type
       type={buttonType}
       className={classnames('sp-button', className)}
       onClick={onClick}

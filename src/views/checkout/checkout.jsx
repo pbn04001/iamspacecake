@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Container, Card } from 'components/container'
 import { PageHeader } from 'components/typography'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 
 class Checkout extends Component {
-
   componentDidMount() {
     window.paypal.Button.render({
       // Configure environment
@@ -35,7 +34,7 @@ class Checkout extends Component {
         return actions.payment.execute()
           .then(() => {
             // Show a confirmation message to the buyer
-            window.alert('Thank you for your purchase!')
+            window.alert('Thank you for your purchase!') // eslint-disable-line no-alert
           })
       },
     }, '#paypal-button-checkout')
