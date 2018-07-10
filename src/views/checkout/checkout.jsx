@@ -1,20 +1,53 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { isEmpty } from 'lodash'
 import { bindActionCreators } from 'redux'
 import { Container, Card } from 'components/container'
 import { PageHeader } from 'components/typography'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
+import { getShoppingCartItems } from 'components/shoppingCart/state/selectors'
 import { completePurchase } from './state/actions'
 
 
 class Checkout extends Component {
   static propTypes = {
     completePurchase: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
+    shoppingCartItems: PropTypes.array.isRequired,
   }
 
-
   componentDidMount() {
+    const { shoppingCartItems, history } = this.props
+    if (isEmpty(shoppingCartItems)) {
+      history.goBack()
+    } else {
+      this.renderPayButton(shoppingCartItems)
+    }
+  }
+
+  mapShoppingCartItems = (shoppingCartItems) => {
+    let total = 0
+    const items = shoppingCartItems.map((item) => {
+      const price = parseFloat(item.fieldPrice.replace('$', '').replace(',', ' '))
+      total += price
+      return {
+        sku: item.productId, // Product Id
+        name: item.title,
+        price: `${price}`,
+        currency: 'USD',
+        quantity: item.count,
+      }
+    })
+    return {
+      items,
+      total,
+    }
+  }
+
+  renderPayButton = (shoppingCartItems) => {
+    const items = this.mapShoppingCartItems(shoppingCartItems)
     window.paypal.Button.render({
       // Configure environment
       env: 'sandbox',
@@ -33,19 +66,11 @@ class Checkout extends Component {
         return actions.payment.create({
           transactions: [{
             amount: {
-              total: '0.01',
+              total: `${items.total}`,
               currency: 'USD',
             },
             item_list: {
-              items: [
-                {
-                  sku: '34543', // Product Id
-                  name: 'hat',
-                  price: '0.01',
-                  currency: 'USD',
-                  quantity: '1',
-                },
-              ],
+              items: items.items,
             },
           }],
         })
@@ -77,6 +102,7 @@ class Checkout extends Component {
 function mapStateToProps(state) {
   return {
     results: state.results,
+    shoppingCartItems: getShoppingCartItems(state),
   }
 }
 
@@ -85,4 +111,4 @@ export const mapDispatchToProps = dispatch => bindActionCreators(
   dispatch,
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Checkout)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Checkout))

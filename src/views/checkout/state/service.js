@@ -1,4 +1,5 @@
-import api, { ENDPOINTS } from 'utils/api'
+import api from 'utils/api'
+import { ENDPOINTS } from 'utils/api/constants'
 
 const CheckoutService = {
   completePurchase: paymentId => api.doFetch('/product/complete-purchase', {

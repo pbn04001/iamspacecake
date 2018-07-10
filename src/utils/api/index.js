@@ -1,7 +1,8 @@
 import store from 'store'
 import humps from 'humps'
 import actions from './state/actions'
-import resolveRestAPI, { ENDPOINTS } from './resolveRestAPI'
+import { ENDPOINTS } from './constants'
+import resolveRestAPI from './resolveRestAPI'
 
 const validateStatus = (response) => {
   if (response.status < 200 || response.status >= 300) {

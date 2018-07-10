@@ -1,10 +1,7 @@
+import { ENDPOINTS } from './constants'
+
 const paramRegex = /^(.*)(\{.*\})(.*)$/
 const getMatches = route => route.match(paramRegex)
-
-export const ENDPOINTS = {
-  CONTENT: 'content',
-  NODE: 'node',
-}
 
 const getRoute = (endpoint, routeName) => {
   switch (endpoint) {

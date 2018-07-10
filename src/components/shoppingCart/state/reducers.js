@@ -16,7 +16,7 @@ const addItemToShoppingCart = (state, item) => {
   } else {
     shoppingCart.items[item.uuid[0].value] = {
       ...item,
-      count: 0,
+      count: 1,
     }
   }
   return shoppingCart
