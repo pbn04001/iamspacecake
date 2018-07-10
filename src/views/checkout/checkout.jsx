@@ -1,9 +1,19 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { Container, Card } from 'components/container'
 import { PageHeader } from 'components/typography'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
+import { completePurchase } from './state/actions'
+
 
 class Checkout extends Component {
+  static propTypes = {
+    completePurchase: PropTypes.func.isRequired,
+  }
+
+
   componentDidMount() {
     window.paypal.Button.render({
       // Configure environment
@@ -14,9 +24,9 @@ class Checkout extends Component {
       // Customize button (optional)
       locale: 'en_US',
       style: {
-        size: 'small',
-        color: 'gold',
-        shape: 'pill',
+        size: 'responsive',
+        color: 'blue',
+        shape: 'rect',
       },
       // Set up a payment
       payment: (data, actions) => {
@@ -26,6 +36,17 @@ class Checkout extends Component {
               total: '0.01',
               currency: 'USD',
             },
+            item_list: {
+              items: [
+                {
+                  sku: '34543', // Product Id
+                  name: 'hat',
+                  price: '0.01',
+                  currency: 'USD',
+                  quantity: '1',
+                },
+              ],
+            },
           }],
         })
       },
@@ -33,8 +54,7 @@ class Checkout extends Component {
       onAuthorize: (data, actions) => {
         return actions.payment.execute()
           .then(() => {
-            // Show a confirmation message to the buyer
-            window.alert('Thank you for your purchase!') // eslint-disable-line no-alert
+            this.props.completePurchase(data.paymentID)
           })
       },
     }, '#paypal-button-checkout')
@@ -54,4 +74,15 @@ class Checkout extends Component {
   }
 }
 
-export default Checkout
+function mapStateToProps(state) {
+  return {
+    results: state.results,
+  }
+}
+
+export const mapDispatchToProps = dispatch => bindActionCreators(
+  { completePurchase },
+  dispatch,
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout)

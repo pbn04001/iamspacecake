@@ -13,9 +13,9 @@ const __TEST__ = NODE_ENV === 'test'
 const __PROD__ = NODE_ENV === 'production'
 
 const restEndpoint = () => {
-  if (__DEV__) return '/rest'
-  if (__TEST__) return '/mytestendpoint'
-  if (__PROD__) return '/someprodendpoint'
+  if (__DEV__) return '/content'
+  if (__TEST__) return '/content'
+  if (__PROD__) return '/content'
   return null
 }
 
@@ -34,7 +34,8 @@ const config = {
   // ----------------------------------
   // Server Configuration
   // ----------------------------------
-  rest_context_path: restEndpoint(),
+  rest_context_path: '/content',
+  node_context_path: '/api',
 }
 
 // ------------------------------------

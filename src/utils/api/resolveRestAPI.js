@@ -1,9 +1,24 @@
 const paramRegex = /^(.*)(\{.*\})(.*)$/
-
 const getMatches = route => route.match(paramRegex)
 
-export default function (routeName, params = {}) {
-  let route = process.env.REST_ENDPOINT + routeName
+export const ENDPOINTS = {
+  CONTENT: 'content',
+  NODE: 'node',
+}
+
+const getRoute = (endpoint, routeName) => {
+  switch (endpoint) {
+    case ENDPOINTS.CONTENT:
+      return process.env.REST_ENDPOINT + routeName
+    case ENDPOINTS.NODE:
+      return process.env.NODE_ENDPOINT + routeName
+    default:
+      return null
+  }
+}
+
+export default function (routeName, params = {}, endpoint) {
+  let route = getRoute(endpoint, routeName)
   let pieces = getMatches(route)
   while (pieces) {
     const [fullString, prePiece, paramPiece, postPiece] = pieces // eslint-disable-line

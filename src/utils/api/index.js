@@ -1,7 +1,7 @@
 import store from 'store'
 import humps from 'humps'
 import actions from './state/actions'
-import resolveRestAPI from './resolveRestAPI'
+import resolveRestAPI, { ENDPOINTS } from './resolveRestAPI'
 
 const validateStatus = (response) => {
   if (response.status < 200 || response.status >= 300) {
@@ -24,6 +24,7 @@ const DEFAULT_OPTIONS = {
   camelizeKeys: true, // For json output, camelize response keys with humps library
   shouldValidateStatus: true, // Ensure a 200 status response
   isMonitored: true, // Store request state in store when true
+  endpoint: ENDPOINTS.CONTENT,
 }
 
 function doFetch(routeName, options = {}) {
@@ -37,6 +38,7 @@ function doFetch(routeName, options = {}) {
     shouldValidateStatus,
     urlParams,
     isMonitored,
+    endpoint,
     ...fetchOptions
   } = { ...DEFAULT_OPTIONS, ...options }
 
@@ -51,7 +53,7 @@ function doFetch(routeName, options = {}) {
     fetchOptions.headers.set('Content-Type', 'application/x-www-form-urlencoded charset=UTF-8')
   }
 
-  const routeUrl = resolveRestAPI(routeName, urlParams)
+  const routeUrl = resolveRestAPI(routeName, urlParams, endpoint)
 
   return Promise.resolve()
     .then(() => isMonitored && store.dispatch(actions.requestLoading(routeName)))
