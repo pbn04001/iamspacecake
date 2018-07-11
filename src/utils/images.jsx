@@ -1,4 +1,5 @@
 import React from 'react'
+import { ENDPOINTS } from './api/constants'
 
 function parseImageSize(imageUrl, folder, size) {
   return imageUrl.replace(folder, `styles/${size}/public/${folder}`)
@@ -6,7 +7,7 @@ function parseImageSize(imageUrl, folder, size) {
 
 export const getImages = (image, folder) => {
   const images = {}
-  const imageUrl = `/rest/${image.split('/drupal/')[1]}`
+  const imageUrl = `${ENDPOINTS.CONTENT}/${image.split('/drupal/')[1]}`
   images.thumbnail = parseImageSize(imageUrl, folder, 'thumbnail')
   images.mobile = parseImageSize(imageUrl, folder, 'mobile')
   images.small = parseImageSize(imageUrl, folder, 'small')

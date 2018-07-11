@@ -30,12 +30,11 @@ class Checkout extends Component {
   mapShoppingCartItems = (shoppingCartItems) => {
     let total = 0
     const items = shoppingCartItems.map((item) => {
-      const price = parseFloat(item.fieldPrice.replace('$', '').replace(',', ' '))
-      total += price
+      total += (item.price * item.count)
       return {
-        sku: item.productId, // Product Id
+        sku: item.nid, // Product Id
         name: item.title,
-        price: `${price}`,
+        price: `${item.price}`,
         currency: 'USD',
         quantity: item.count,
       }
