@@ -3,6 +3,7 @@ import { reducer as formReducer } from 'redux-form'
 import { routerReducer } from 'react-router-redux'
 import api from 'utils/api/state/reducer'
 import login from 'views/login/state/reducer'
+import checkout from 'views/checkout/state/reducer'
 import nav from 'components/nav/state/reducers'
 import news from 'components/news/state/reducers'
 import products from 'components/products/state/reducers'
@@ -12,6 +13,7 @@ const appReducer = combineReducers({
   routing: routerReducer,
   api,
   login,
+  checkout,
   nav,
   news,
   products,

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -16,6 +16,8 @@ class Checkout extends Component {
     completePurchase: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     shoppingCartItems: PropTypes.array.isRequired,
+    orderProcessing: PropTypes.bool.isRequired,
+    orderResults: PropTypes.object,
   }
 
   componentDidMount() {
@@ -25,6 +27,33 @@ class Checkout extends Component {
     } else {
       this.renderPayButton(shoppingCartItems)
     }
+  }
+
+  getShoppingCartBody = () => {
+    if (this.props.orderResults) {
+      if (this.props.orderResults.success) {
+        return (
+          <div>
+            Order Complete
+          </div>)
+      }
+      return (
+        <div>
+          Error occurred placing order
+        </div>
+      )
+    }
+    if (this.props.orderProcessing) {
+      return (
+        <div className="sp-checkout-processing-order">
+          ...Processing Order
+        </div>)
+    }
+    return (
+      <Fragment>
+        <ShoppingCartList />
+        <div id="paypal-button-checkout" />
+      </Fragment>)
   }
 
   mapShoppingCartItems = (shoppingCartItems) => {
@@ -90,9 +119,8 @@ class Checkout extends Component {
         <Container>
           <PageHeader>Checkout</PageHeader>
           <Card>
-            <ShoppingCartList />
+            {this.getShoppingCartBody()}
           </Card>
-          <div id="paypal-button-checkout" />
         </Container>
       </div>)
   }
@@ -100,7 +128,8 @@ class Checkout extends Component {
 
 function mapStateToProps(state) {
   return {
-    results: state.results,
+    orderResults: state.checkout.orderResults,
+    orderProcessing: state.checkout.orderProcessing,
     shoppingCartItems: getShoppingCartItems(state),
   }
 }

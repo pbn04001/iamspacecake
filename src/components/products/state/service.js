@@ -2,7 +2,7 @@ import api from 'utils/api'
 import Logger from 'utils/logger'
 
 const parseProducts = (products) => {
-  return products.map(product => {
+  return products.map((product) => {
     try {
       return {
         ...product,
