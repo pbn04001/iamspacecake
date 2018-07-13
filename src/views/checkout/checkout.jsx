@@ -8,11 +8,12 @@ import { Container, Card } from 'components/container'
 import { PageHeader } from 'components/typography'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 import { getShoppingCartItems } from 'components/shoppingCart/state/selectors'
-import { completePurchase } from './state/actions'
+import { startPurchase, purchaseComplete } from './state/actions'
 
 class Checkout extends Component {
   static propTypes = {
-    completePurchase: PropTypes.func.isRequired,
+    startPurchase: PropTypes.func.isRequired,
+    purchaseComplete: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     shoppingCartItems: PropTypes.array.isRequired,
     orderProcessing: PropTypes.bool.isRequired,
@@ -77,10 +78,7 @@ class Checkout extends Component {
     const itemsList = this.mapShoppingCartItemsList(shoppingCartItems)
     window.paypal.Button.render({
       // Configure environment
-      env: 'sandbox',
-      client: {
-        sandbox: 'AfXGU6Y3NfRIMgzA3aH8eqC-lG8bOlRS1FJ8d_xuKwIwhsfHvUJRYNqLMeutskatOOyS333d-Ouokgjp',
-      },
+      env: process.env.PAY_PAL_ENVIRONMENT,
       // Customize button (optional)
       locale: 'en_US',
       style: {
@@ -90,6 +88,7 @@ class Checkout extends Component {
       },
       // Set up a payment
       payment: (data, actions) => {
+        this.props.startPurchase()
         return actions.request({
           method: 'post',
           url: `${process.env.NODE_ENDPOINT}/product/create-payment`,
@@ -98,21 +97,20 @@ class Checkout extends Component {
             total: itemsList.total,
           },
         })
-          .then((res) => res.id)
+          .then(res => res.id)
       },
       // Execute the payment
       onAuthorize: (data, actions) => {
-        return actions.payment.execute()
-          .then(() => {
-            return actions.request.post(`${process.env.NODE_ENDPOINT}/product/execute-payment/`, {
-              paymentID: data.paymentID,
-              payerID: data.payerID,
-              items: itemsList.items,
-              total: itemsList.total,
-            })
-              .then((res) => {
-                debugger
-              });
+        return actions.request({
+          method: 'post',
+          url: `${process.env.NODE_ENDPOINT}/product/execute-payment`,
+          json: {
+            paymentId: data.paymentID,
+            payerId: data.payerID,
+          },
+        })
+          .then((results) => {
+            this.props.purchaseComplete(results)
           })
       },
     }, '#paypal-button-checkout')
@@ -140,7 +138,7 @@ function mapStateToProps(state) {
 }
 
 export const mapDispatchToProps = dispatch => bindActionCreators(
-  { completePurchase },
+  { startPurchase, purchaseComplete },
   dispatch,
 )
 

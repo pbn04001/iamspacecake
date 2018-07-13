@@ -12,13 +12,6 @@ const __DEV__ = NODE_ENV === 'development'
 const __TEST__ = NODE_ENV === 'test'
 const __PROD__ = NODE_ENV === 'production'
 
-const restEndpoint = () => {
-  if (__DEV__) return '/content'
-  if (__TEST__) return '/content'
-  if (__PROD__) return '/content'
-  return null
-}
-
 const config = {
   env: NODE_ENV,
   devtool: __PROD__ ? null : 'source-map',
@@ -36,6 +29,7 @@ const config = {
   // ----------------------------------
   rest_context_path: '/content',
   node_context_path: '/api',
+  pay_pal_environment: __PROD__ ? 'production' : 'sandbox',
 }
 
 // ------------------------------------

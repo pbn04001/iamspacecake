@@ -1,6 +1,6 @@
 import { namespace } from './constants'
 
 export default {
-  completePurchase: `${namespace}/completePurchase`,
-  purchaseCompleted: `${namespace}/purchaseCompleted`,
+  startPurchase: `${namespace}/startPurchase`,
+  purchaseComplete: `${namespace}/purchaseComplete`,
 }

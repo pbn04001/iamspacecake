@@ -7,13 +7,12 @@ const initialState = {
 
 function news(state = initialState, action) {
   switch (action.type) {
-    case types.completePurchase:
+    case types.startPurchase:
       return {
         ...state,
         orderProcessing: true,
-        orderResults: null,
       }
-    case types.purchaseCompleted:
+    case types.purchaseComplete:
       return {
         ...state,
         orderProcessing: false,

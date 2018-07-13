@@ -49,22 +49,15 @@ BuyButton.propTypes = {
   history: PropTypes.object,
 }
 
-function
-
-mapStateToProps(state) {
+function mapStateToProps(state) {
   return {
     shoppingCartItems: getShoppingCartItems(state),
   }
 }
 
-const
-  mapDispatchToProps = dispatch => bindActionCreators(
-    { addItemToShoppingCart },
-    dispatch,
-  )
-
-export default connect(mapStateToProps, mapDispatchToProps)
-
-(
-  withRouter(BuyButton),
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { addItemToShoppingCart },
+  dispatch,
 )
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(BuyButton))
