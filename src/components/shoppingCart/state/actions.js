@@ -1,10 +1,8 @@
-import * as types from 'store/actionTypes'
+import types from './actionTypes'
 
 export const addItemToShoppingCart = item => ({
-  type: types.ADD_ITEM_TO_SHOPPING_CART,
+  type: types.addItemToShoppingCart,
   payload: {
     item,
   },
 })
-
-export default addItemToShoppingCart

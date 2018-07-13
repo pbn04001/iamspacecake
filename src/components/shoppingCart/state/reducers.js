@@ -1,37 +1,42 @@
-import * as types from 'store/actionTypes'
+import types from './actionTypes'
 
 const initialState = {
   items: {},
 }
 
 const addItemToShoppingCart = (state, item) => {
-  const shoppingCart = {
+  const shoppingCartItems = {
     items: state.items,
   }
-  const existingItem = shoppingCart.items[item.uuid]
+  const existingItem = shoppingCartItems.items[item.uuid]
   if (existingItem) {
     if (item.stock > existingItem.quantity) {
       existingItem.quantity += 1
     }
   } else {
-    shoppingCart.items[item.uuid] = {
+    shoppingCartItems.items[item.uuid] = {
       ...item,
       quantity: 1,
     }
   }
-  return shoppingCart
+  return shoppingCartItems.items
 }
 
-function news(state = initialState, action) {
+function shoppingCart(state = initialState, action) {
   switch (action.type) {
-    case types.ADD_ITEM_TO_SHOPPING_CART:
+    case types.addItemToShoppingCart:
       return {
         ...state,
-        shoppingCart: addItemToShoppingCart(state, action.payload.item),
+        items: addItemToShoppingCart(state, action.payload.item),
+      }
+    case types.emptyShoppingCart:
+      return {
+        ...state,
+        items: {},
       }
     default:
       return state
   }
 }
 
-export default news
+export default shoppingCart

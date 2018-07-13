@@ -8,15 +8,13 @@ import { Container, Card } from 'components/container'
 import { PageHeader } from 'components/typography'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 import { getShoppingCartItems } from 'components/shoppingCart/state/selectors'
-import { startPurchase, purchaseComplete } from './state/actions'
+import { purchaseComplete } from './state/actions'
 
 class Checkout extends Component {
   static propTypes = {
-    startPurchase: PropTypes.func.isRequired,
     purchaseComplete: PropTypes.func.isRequired,
     history: PropTypes.object.isRequired,
     shoppingCartItems: PropTypes.array.isRequired,
-    orderProcessing: PropTypes.bool.isRequired,
     orderResults: PropTypes.object,
   }
 
@@ -42,12 +40,6 @@ class Checkout extends Component {
           Error occurred placing order
         </div>
       )
-    }
-    if (this.props.orderProcessing) {
-      return (
-        <div className="sp-checkout-processing-order">
-          ...Processing Order
-        </div>)
     }
     return (
       <Fragment>
@@ -88,7 +80,6 @@ class Checkout extends Component {
       },
       // Set up a payment
       payment: (data, actions) => {
-        this.props.startPurchase()
         return actions.request({
           method: 'post',
           url: `${process.env.NODE_ENDPOINT}/product/create-payment`,
@@ -132,13 +123,12 @@ class Checkout extends Component {
 function mapStateToProps(state) {
   return {
     orderResults: state.checkout.orderResults,
-    orderProcessing: state.checkout.orderProcessing,
     shoppingCartItems: getShoppingCartItems(state),
   }
 }
 
 export const mapDispatchToProps = dispatch => bindActionCreators(
-  { startPurchase, purchaseComplete },
+  { purchaseComplete },
   dispatch,
 )
 

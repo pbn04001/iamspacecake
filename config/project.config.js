@@ -29,7 +29,7 @@ const config = {
   // ----------------------------------
   rest_context_path: '/content',
   node_context_path: '/api',
-  pay_pal_environment: __PROD__ ? 'production' : 'sandbox',
+  pay_pal_environment: (__PROD__ ? 'production' : 'sandbox'),
 }
 
 // ------------------------------------

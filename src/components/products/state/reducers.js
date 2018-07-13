@@ -4,7 +4,7 @@ const initialState = {
   newProducts: [],
 }
 
-function news(state = initialState, action) {
+function products(state = initialState, action) {
   switch (action.type) {
     case types.NEWEST_PRODUCTS:
       return {
@@ -16,4 +16,4 @@ function news(state = initialState, action) {
   }
 }
 
-export default news
+export default products
