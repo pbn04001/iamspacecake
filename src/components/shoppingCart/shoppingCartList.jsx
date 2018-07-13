@@ -8,7 +8,7 @@ const ShoppingCartList = ({ shoppingCartItems }) => {
   const renderShoppingCartItems = () => shoppingCartItems.map(item => (
     <div className="sp-shopping-cart-item" key={`sp-shopping-cart-list-item-${item.uuid}`}>
       {item.title}
-      <span className="sp-shopping-cart-item-qty">({item.count})</span>
+      <span className="sp-shopping-cart-item-qty">({item.quantity})</span>
     </div>))
 
   const checkShoppingCartItems = () => {

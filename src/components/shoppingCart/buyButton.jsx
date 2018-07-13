@@ -8,39 +8,39 @@ import { addItemToShoppingCart } from './state/actions'
 import { getShoppingCartItems } from './state/selectors'
 
 class BuyButton extends Component {
-  executeCartAction = (item, isItemAvailable) => {
-    if (isItemAvailable) {
-      this.props.addItemToShoppingCart(item)
-    } else {
+  executeCartAction = (item, isItemAlreadyInCart) => {
+    if (isItemAlreadyInCart) {
       this.props.history.push('/cart')
+    } else {
+      this.props.addItemToShoppingCart(item)
     }
   }
 
-  isItemAvailable = (item) => {
+  isItemAlreadyInCart = (item) => {
     const { shoppingCartItems } = this.props
-    let isItemAvailable = true
-    Object.keys(shoppingCartItems).forEach((key) => {
-      const shoppingCartItem = shoppingCartItems[key]
-      if (shoppingCartItem.uuid === item.uuid) {
-        isItemAvailable = shoppingCartItem.count < shoppingCartItem.stock
-      }
-    })
-    return isItemAvailable
+    let isItemAlreadyInCart = false
+    Object.keys(shoppingCartItems)
+      .forEach((key) => {
+        const shoppingCartItem = shoppingCartItems[key]
+        if (shoppingCartItem.uuid === item.uuid) {
+          isItemAlreadyInCart = shoppingCartItem.quantity > 0
+        }
+      })
+    return isItemAlreadyInCart
   }
 
   render() {
     const { item } = this.props
-    const isItemAvailable = this.isItemAvailable(item)
+    const isItemAlreadyInCart = this.isItemAlreadyInCart(item)
     return (
       <Button
         className="sp-buy-button"
-        onClick={() => this.executeCartAction(item, isItemAvailable)}
+        onClick={() => this.executeCartAction(item, isItemAlreadyInCart)}
       >
-        {isItemAvailable ? 'Buy Now' : 'View Cart'}
+        {isItemAlreadyInCart ? 'View Cart' : 'Buy Now'}
       </Button>)
   }
 }
-
 
 BuyButton.propTypes = {
   addItemToShoppingCart: PropTypes.func.isRequired,
@@ -49,15 +49,22 @@ BuyButton.propTypes = {
   history: PropTypes.object,
 }
 
-function mapStateToProps(state) {
+function
+
+mapStateToProps(state) {
   return {
     shoppingCartItems: getShoppingCartItems(state),
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  { addItemToShoppingCart },
-  dispatch,
-)
+const
+  mapDispatchToProps = dispatch => bindActionCreators(
+    { addItemToShoppingCart },
+    dispatch,
+  )
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(BuyButton))
+export default connect(mapStateToProps, mapDispatchToProps)
+
+(
+  withRouter(BuyButton),
+)

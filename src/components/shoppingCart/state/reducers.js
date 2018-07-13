@@ -10,13 +10,13 @@ const addItemToShoppingCart = (state, item) => {
   }
   const existingItem = shoppingCart.items[item.uuid]
   if (existingItem) {
-    if (item.quantity > existingItem.count) {
-      existingItem.count += 1
+    if (item.stock > existingItem.quantity) {
+      existingItem.quantity += 1
     }
   } else {
     shoppingCart.items[item.uuid] = {
       ...item,
-      count: 1,
+      quantity: 1,
     }
   }
   return shoppingCart

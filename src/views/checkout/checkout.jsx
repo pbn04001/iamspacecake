@@ -10,7 +10,6 @@ import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 import { getShoppingCartItems } from 'components/shoppingCart/state/selectors'
 import { completePurchase } from './state/actions'
 
-
 class Checkout extends Component {
   static propTypes = {
     completePurchase: PropTypes.func.isRequired,
@@ -56,16 +55,16 @@ class Checkout extends Component {
       </Fragment>)
   }
 
-  mapShoppingCartItems = (shoppingCartItems) => {
+  mapShoppingCartItemsList = (shoppingCartItems) => {
     let total = 0
     const items = shoppingCartItems.map((item) => {
-      total += (item.price * item.count)
+      total += (item.price * item.quantity)
       return {
         sku: item.nid, // Product Id
         name: item.title,
         price: `${item.price}`,
         currency: 'USD',
-        quantity: item.count,
+        quantity: item.quantity,
       }
     })
     return {
@@ -75,7 +74,7 @@ class Checkout extends Component {
   }
 
   renderPayButton = (shoppingCartItems) => {
-    const items = this.mapShoppingCartItems(shoppingCartItems)
+    const itemsList = this.mapShoppingCartItemsList(shoppingCartItems)
     window.paypal.Button.render({
       // Configure environment
       env: 'sandbox',
@@ -91,23 +90,29 @@ class Checkout extends Component {
       },
       // Set up a payment
       payment: (data, actions) => {
-        return actions.payment.create({
-          transactions: [{
-            amount: {
-              total: `${items.total}`,
-              currency: 'USD',
-            },
-            item_list: {
-              items: items.items,
-            },
-          }],
+        return actions.request({
+          method: 'post',
+          url: `${process.env.NODE_ENDPOINT}/product/create-payment`,
+          json: {
+            items: itemsList.items,
+            total: itemsList.total,
+          },
         })
+          .then((res) => res.id)
       },
       // Execute the payment
       onAuthorize: (data, actions) => {
         return actions.payment.execute()
           .then(() => {
-            this.props.completePurchase(data.paymentID)
+            return actions.request.post(`${process.env.NODE_ENDPOINT}/product/execute-payment/`, {
+              paymentID: data.paymentID,
+              payerID: data.payerID,
+              items: itemsList.items,
+              total: itemsList.total,
+            })
+              .then((res) => {
+                debugger
+              });
           })
       },
     }, '#paypal-button-checkout')

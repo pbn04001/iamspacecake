@@ -7,12 +7,12 @@ const parseProducts = (products) => {
       return {
         ...product,
         price: parseFloat(product.fieldPrice),
-        quantity: parseInt(product.fieldQuantity, 10),
+        stock: parseInt(product.fieldStock, 10),
       }
     } catch (error) {
       Logger.logError({
         ...error,
-        message: `Unable to parse price or quantity for product ${product.nid}`,
+        message: `Unable to parse price or stock for product ${product.nid}`,
       })
       return null
     }

@@ -12,8 +12,7 @@ const CheckoutService = {
       paymentId,
     }),
   })
-    .then(response => response)
-    .catch(error => ({ error: error.message })),
+    .catch(error => ({ error })),
 }
 
 export default CheckoutService
