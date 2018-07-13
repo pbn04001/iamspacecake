@@ -83,10 +83,6 @@ module.exports = {
       },
     }),
   ],
-  devServer: {
-    contentBase: ['./public', './assets'],
-    historyApiFallback: true,
-  },
   resolve: {
     extensions: ['.js', '.jsx', '.json'],
     modules: [
