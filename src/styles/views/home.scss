@@ -1,0 +1,22 @@
+.sp-home {
+
+  &__top {
+    display: flex;
+  }
+
+  &__news {
+    order: 1;
+    flex-basis: 60%;
+
+    &.sp-container {
+      padding-top: 5rem;
+    }
+  }
+
+  &__products {
+    order: 2;
+    flex-basis: 40%;
+
+    padding-top: 2rem;
+  }
+}

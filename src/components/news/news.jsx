@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
+import classnames from 'classnames'
 import { Container } from 'components/container'
 import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
@@ -24,7 +25,7 @@ class News extends React.Component {
           <div className="sp-right-content">
             {getPicture(fieldImage,
               title,
-              { large: true, medium: true, small: true },
+              { small: true, mobile: true },
               'news_images')}
           </div>) : null
       return (
@@ -45,7 +46,7 @@ class News extends React.Component {
 
   render() {
     return (
-      <Container className="sp-news">
+      <Container className={classnames('sp-news', this.props.className)}>
         {this.renderNews()}
       </Container>
     )
@@ -53,6 +54,7 @@ class News extends React.Component {
 }
 
 News.propTypes = {
+  className: PropTypes.string,
   recentNews: PropTypes.array.isRequired,
   getRecentNews: PropTypes.func.isRequired,
 }

@@ -9,7 +9,7 @@
 
     .sp-left-content {
       order: 1;
-      flex-grow: 1;
+      flex-basis: 60%;
       margin: 0 $--spacing-unit-x7 0 0;
 
       .sp-right-content {
@@ -25,21 +25,7 @@
     .sp-right-content {
       background-color: white;
       order: 2;
-      width: 30rem;
-      flex-shrink: 0;
       padding: $--spacing-unit-x3;
-
-      @include breakpoint(xlarge){
-        width: 24rem;
-      }
-
-      @include breakpoint(large){
-        width: 18rem;
-      }
-
-      @include breakpoint(medium){
-        display: none;
-      }
 
       img {
         display: block;

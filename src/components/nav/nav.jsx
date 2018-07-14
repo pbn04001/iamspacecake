@@ -11,18 +11,28 @@ class Nav extends Component {
     this.props.setMenuActive(!this.props.isMenuActive)
   }
 
+  locationString = (location) => {
+    switch(location.pathname) {
+      case '/':
+        return '-home'
+      default:
+        return ''
+    }
+  }
+
   render() {
     const { location } = this.props
     return (
       <Fragment>
         <div className="sp-nav-bar">
+          <div className="sp-nav-bar__logo-back" />
           <NavLink
             to="/"
             className="sp-logo"
             title="SpaceCake Productions"
           />
           <div className="sp-menu-back-left" />
-          <nav className={`sp-location-${location}`}>
+          <nav className={`sp-location-${this.locationString(location)}`}>
             <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
               <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
               <li><NavLink to="/shop">Shop</NavLink></li>
@@ -32,9 +42,6 @@ class Nav extends Component {
               <li><NavLink to="/contact">Contact</NavLink></li>
             </ul>
           </nav>
-        </div>
-        <div className="sp-menu-white-backing">
-          <div className="sp-menu-backing-inside" />
         </div>
       </Fragment>)
   }

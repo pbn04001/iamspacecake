@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { isEmpty } from 'lodash'
 import PropTypes from 'prop-types'
-import BuyButton from 'components/shoppingCart/buyButton'
+import classnames from 'classnames'
 import { Container } from 'components/container'
 import * as actionCreators from './state/actions'
 import { getPicture } from '../../utils/images'
@@ -15,29 +15,15 @@ class NewProducts extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage, uuid, body,
+      title, fieldImage, uuid,
     } = product
-    const rightContent = (!isEmpty(fieldImage))
-      ? (
-        <div className="sp-right-content">
-          {getPicture(fieldImage,
-            title,
-            { large: true, medium: true, small: true },
-            'news_images')}
-        </div>) : null
     return (
-      <article key={`sp-new-products-${uuid}`}>
-        <div className="sp-left-content">
-          <h2>{title}</h2>
-          {rightContent}
-          <div
-            className="sp-article-body"
-            dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
-          />
-        </div>
-        {rightContent}
-        <BuyButton item={product} />
-      </article>)
+      <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
+        {getPicture(fieldImage,
+          title,
+          { mobile: true },
+          'product_images')}
+      </div>)
   }
 
   renderNewProducts = () => {
@@ -46,12 +32,13 @@ class NewProducts extends Component {
     if (!_.isEmpty(newProducts)) {
       newProducts.map(product => products.push(this.renderNewProduct(product)))
     }
-    return products
+    return (<div className="sp-new-products__holder">{products}</div>)
   }
 
   render() {
     return (
-      <Container className="sp-news">
+      <Container className={classnames('sp-new-products', this.props.className)}>
+        <h3>New Products</h3>
         {this.renderNewProducts()}
       </Container>
     )
@@ -59,6 +46,7 @@ class NewProducts extends Component {
 }
 
 NewProducts.propTypes = {
+  className: PropTypes.string,
   newProducts: PropTypes.array.isRequired,
   getNewestProducts: PropTypes.func.isRequired,
 }

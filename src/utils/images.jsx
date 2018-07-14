@@ -23,26 +23,27 @@ export const getPicture = (image, altText, sizes, folder) => {
       {sizes.large ? (
         <source
           srcSet={images.large}
-          media="(min-width: 1340px)"
+          media="(min-width: 2400px)"
           type="image/png"
         />) : null}
       {sizes.medium ? (
         <source
           srcSet={images.medium}
-          media="(min-width: 1024px)"
+          media="(min-width: 1800px)"
           type="image/png"
         />) : null}
       {sizes.small ? (
         <source
           srcSet={images.small}
-          media="(min-width: 768px)"
+          media="(min-width: 1200px)"
           type="image/png"
         />) : null}
       {sizes.mobile ? (
         <source
           srcSet={images.mobile}
+          media="(min-width: 700px)"
           type="image/png"
         />) : null}
-      <img src={images.medium} alt={altText} />
+      <img src={images.thumbnail} alt={altText} />
     </picture>)
 }

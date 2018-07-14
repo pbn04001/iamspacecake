@@ -1,0 +1,23 @@
+.sp-new-products{
+  width: 100%;
+
+  .sp-container {
+    padding: $--spacing-unit-x6;
+  }
+
+  &__holder {
+    width: 100%;
+  }
+
+  &__image {
+    display: inline-block;
+    margin: 0 $--spacing-unit-x2 $--spacing-unit-x2 0;
+    width: 48%;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

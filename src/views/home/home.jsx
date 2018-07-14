@@ -3,9 +3,11 @@ import News from '../../components/news/news'
 import NewProducts from '../../components/products/newProducts'
 
 const Home = () => (
-  <div className="sp-page-home">
-    <News />
-    <NewProducts />
+  <div className="sp-home sp-page">
+    <div className="sp-home__top">
+      <News className="sp-home__news" />
+      <NewProducts className="sp-home__products" />
+    </div>
   </div>
 )
 
