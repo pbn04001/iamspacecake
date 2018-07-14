@@ -21,7 +21,7 @@ class NewProducts extends Component {
       <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
         {getPicture(fieldImage,
           title,
-          { mobile: true },
+          { small: true, mobile: true },
           'product_images')}
       </div>)
   }

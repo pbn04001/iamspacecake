@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import classnames from 'classnames'
 import { Container } from 'components/container'
+import { Button } from 'components/button'
 import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
 import { getPicture } from '../../utils/images'
+
 
 class News extends React.Component {
   componentWillMount() {
@@ -29,17 +31,20 @@ class News extends React.Component {
               'news_images')}
           </div>) : null
       return (
-        <article>
-          <div className="sp-left-content">
-            <PageHeader>{title}</PageHeader>
+        <Fragment>
+          <PageHeader>{title}</PageHeader>
+          <article>
+            <div className="sp-left-content">
+              {rightContent}
+              <div
+                className="sp-article-body"
+                dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
+              />
+              <Button>Shop Now</Button>
+            </div>
             {rightContent}
-            <div
-              className="sp-article-body"
-              dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
-            />
-          </div>
-          {rightContent}
-        </article>)
+          </article>
+        </Fragment>)
     }
     return <article />
   }

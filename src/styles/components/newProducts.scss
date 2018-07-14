@@ -1,8 +1,8 @@
 .sp-new-products{
   width: 100%;
 
-  .sp-container {
-    padding: $--spacing-unit-x6;
+  &.sp-container {
+    padding: $--spacing-unit-x6 $--spacing-unit-x2 $--spacing-unit-x6 $--spacing-unit-x6;
   }
 
   &__holder {
@@ -12,7 +12,11 @@
   &__image {
     display: inline-block;
     margin: 0 $--spacing-unit-x2 $--spacing-unit-x2 0;
-    width: 48%;
+    width: 47.5%;
+
+    @include breakpoint(large) {
+      width: 99%;
+    }
 
     img {
       display: block;
