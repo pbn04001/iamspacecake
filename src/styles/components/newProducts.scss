@@ -11,8 +11,8 @@
 
   &__image {
     display: inline-block;
-    margin: 0 $--spacing-unit-x2 $--spacing-unit-x2 0;
-    width: 47.5%;
+    margin: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;
+    width: calc(50% - #{$--spacing-unit-x4});
 
     @include breakpoint(large) {
       width: 99%;
