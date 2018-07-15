@@ -9,7 +9,7 @@
   }
 
   @include breakpoint(medium){
-    background: $light-gray;
+    margin: 0 0 $--spacing-unit-x4 0;
   }
 }
 

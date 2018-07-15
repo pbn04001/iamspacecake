@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { NavLink } from 'react-router-dom'
 import { Container } from 'components/container'
 import * as actionCreators from './state/actions'
 import { getPicture } from '../../utils/images'
@@ -14,15 +15,17 @@ class NewProducts extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage, uuid,
+      title, fieldImage, uuid, nid,
     } = product
     return (
       <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
-        {getPicture(fieldImage,
-          title,
-          { small: true, mobile: true },
-          'product_images')}
-        <span className="sp-new-products__title">{title}</span>
+        <NavLink to={`/product/${nid}`}>
+          {getPicture(fieldImage,
+            title,
+            { small: true, mobile: true },
+            'product_images')}
+          <span className="sp-new-products__title">{title}</span>
+        </NavLink>
       </div>)
   }
 

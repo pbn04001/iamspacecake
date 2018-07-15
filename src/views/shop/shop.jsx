@@ -1,6 +1,4 @@
 import React from 'react'
-import Container from '../../components/container/container'
-import Card from '../../components/container/card'
 import Products from '../../components/products/products'
 
 const Shop = () => (

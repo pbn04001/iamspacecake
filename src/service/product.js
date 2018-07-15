@@ -1,6 +1,10 @@
 import api from 'utils/api'
 import Logger from 'utils/logger'
 
+export const ERROR_TYPE = {
+  PRODUCT_NOT_FOUND: 'PRODUCT_NOT_FOUND',
+}
+
 const parseProducts = (products) => {
   return products.map((product) => {
     try {
@@ -25,6 +29,14 @@ const ProductsService = {
       urlParams: { limit, page },
     })
     .then(response => parseProducts(response))
+    .catch(error => ({ error: error.message })),
+  fetchProduct: productId => api.doFetch(`/api/products/${productId}?_format=json`)
+    .then((response) => {
+      if (response.length > 0) {
+        return parseProducts(response)[0]
+      }
+      return { error: 'Product not found', type: ERROR_TYPE.PRODUCT_NOT_FOUND }
+    })
     .catch(error => ({ error: error.message })),
 }
 

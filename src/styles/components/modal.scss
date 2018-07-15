@@ -1,0 +1,28 @@
+.ReactModal__Overlay {
+  z-index: 1000;
+}
+
+.sp-modal {
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+
+  &__header{
+    display: table;
+    clear: both;
+    width: 100%;
+  }
+  &__close {
+    display: block;
+    float: right;
+    cursor: pointer;
+    padding-bottom: $--spacing-unit-x2;
+  }
+
+  &__contents {
+    overflow: auto;
+    height: 100%;
+    width: auto;
+  }
+
+}

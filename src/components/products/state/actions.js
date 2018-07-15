@@ -1,5 +1,5 @@
 import * as types from 'store/actionTypes'
-import productsService from './service'
+import productsService from 'service/product'
 
 function updateNewestProducts(newProducts) {
   return {
