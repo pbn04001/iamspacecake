@@ -26,6 +26,9 @@ header {
       background-size: 1.5625rem 1.5625rem;
       padding: 0 0 0 $--spacing-unit-x7;
       height: 1.5625rem;
+      text-decoration: none;
+      color: $black;
+      vertical-align: top;
 
       @include breakpoint(medium){
         background-size: 1.25rem 1.25rem;

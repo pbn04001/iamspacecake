@@ -30,10 +30,22 @@ body {
     }
   }
 
+  p {
+    margin-top: 0;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
   h2 {
+    display: inline-block;
     font-size: $font-size-xxlarge;
     font-weight: 300;
     margin-top: 0;
+    margin-bottom: $--spacing-unit-x2;
   }
 
   h3 {
@@ -45,6 +57,6 @@ body {
   }
 
   .sp-page {
-    margin-right: $--spacing-unit-x4;
+    padding-right: $--spacing-unit-x4;
   }
 }

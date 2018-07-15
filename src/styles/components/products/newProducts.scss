@@ -9,6 +9,15 @@
     width: 100%;
   }
 
+  &__title {
+    font-size: $font-size-medium;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &__image {
     display: inline-block;
     margin: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;
@@ -23,5 +32,12 @@
       width: 100%;
       height: auto;
     }
+
+    &:nth-last-child(-n+2){
+      @include breakpoint(large) {
+        display: none;
+      }
+    }
   }
+
 }

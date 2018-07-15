@@ -3,11 +3,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Container } from 'components/container'
+import { Container, CONTAINER_TYPE } from 'components/container'
 import * as actionCreators from './state/actions'
 import { getPicture } from '../../utils/images'
 
-class NewProducts extends Component {
+class Products extends Component {
   componentWillMount() {
     this.props.getNewestProducts()
   }
@@ -17,12 +17,12 @@ class NewProducts extends Component {
       title, fieldImage, uuid,
     } = product
     return (
-      <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
+      <div className="sp-products__image" key={`sp-products-${uuid}`}>
         {getPicture(fieldImage,
           title,
           { small: true, mobile: true },
           'product_images')}
-        <span className="sp-new-products__title">{title}</span>
+        <span className="sp-products__title">{title}</span>
       </div>)
   }
 
@@ -32,20 +32,20 @@ class NewProducts extends Component {
     if (!_.isEmpty(newProducts)) {
       newProducts.map(product => products.push(this.renderNewProduct(product)))
     }
-    return (<div className="sp-new-products__holder">{products}</div>)
+    return (<div className="sp-products__holder">{products}</div>)
   }
 
   render() {
     return (
-      <Container className={classnames('sp-new-products', this.props.className)}>
-        <h3>New arrivals</h3>
+      <Container type={CONTAINER_TYPE.TOP_LEFT} className={classnames('sp-products', this.props.className)}>
+        <h3>For sale</h3>
         {this.renderNewProducts()}
       </Container>
     )
   }
 }
 
-NewProducts.propTypes = {
+Products.propTypes = {
   className: PropTypes.string,
   newProducts: PropTypes.array.isRequired,
   getNewestProducts: PropTypes.func.isRequired,
@@ -61,4 +61,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(actionCreators, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewProducts)
+export default connect(mapStateToProps, mapDispatchToProps)(Products)

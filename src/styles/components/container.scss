@@ -2,7 +2,11 @@
   position: relative;
   background: $white-transparent;
   margin: 0 0 $--spacing-unit-x4 $--spacing-unit-x4;
-  padding: $--spacing-unit-x10;
+  padding: $--spacing-unit-x6 $--spacing-unit-x8;
+
+  &--top-left {
+    padding-top: 5rem;
+  }
 
   @include breakpoint(medium){
     background: $light-gray;

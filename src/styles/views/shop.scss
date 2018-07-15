@@ -11,6 +11,10 @@
     @include breakpoint(large) {
       flex-basis: 75%;
     }
+
+    &.sp-container {
+      padding-top: 5rem;
+    }
   }
 
   &__products {

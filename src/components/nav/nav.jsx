@@ -12,7 +12,7 @@ class Nav extends Component {
   }
 
   locationString = (location) => {
-    switch(location.pathname) {
+    switch (location.pathname) {
       case '/':
         return '-home'
       default:

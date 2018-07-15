@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import classnames from 'classnames'
-import { Container } from 'components/container'
+import { NavLink } from 'react-router-dom'
+import { Container, CONTAINER_TYPE } from 'components/container'
 import { Button } from 'components/button'
 import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
 import { getPicture } from '../../utils/images'
-
 
 class News extends React.Component {
   componentWillMount() {
@@ -24,7 +24,7 @@ class News extends React.Component {
       } = mainNews
       const rightContent = (!isEmpty(fieldImage))
         ? (
-          <div className="sp-right-content">
+          <div className="sp-news__image">
             {getPicture(fieldImage,
               title,
               { small: true, mobile: true },
@@ -32,17 +32,18 @@ class News extends React.Component {
           </div>) : null
       return (
         <Fragment>
-          <PageHeader>{title}</PageHeader>
           <article>
-            <div className="sp-left-content">
-              {rightContent}
-              <div
-                className="sp-article-body"
-                dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
-              />
-              <Button>Shop Now</Button>
-            </div>
+            <span className="sp-news__spacer" />
+            <span className="sp-news__spacer_2" />
             {rightContent}
+            <PageHeader>{title}</PageHeader>
+            <div
+              className="sp-article-body"
+              dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
+            />
+            <NavLink to="/shop">
+              <Button>Shop Now</Button>
+            </NavLink>
           </article>
         </Fragment>)
     }
@@ -51,7 +52,7 @@ class News extends React.Component {
 
   render() {
     return (
-      <Container className={classnames('sp-news', this.props.className)}>
+      <Container type={CONTAINER_TYPE.TOP_LEFT} className={classnames('sp-news', this.props.className)}>
         {this.renderNews()}
       </Container>
     )
