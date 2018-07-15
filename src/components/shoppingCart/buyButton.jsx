@@ -13,6 +13,7 @@ class BuyButton extends Component {
       this.props.history.push('/cart')
     } else {
       this.props.addItemToShoppingCart(item)
+      this.props.history.push('/cart')
     }
   }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Card } from 'components/container'
+import { Container, Card, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
 import { Button } from 'components/button'
 import { isEmpty } from 'lodash'
@@ -24,7 +24,7 @@ const Cart = ({ shoppingCartItems }) => {
 
   return (
     <div className="sp-page-cart">
-      <Container>
+      <Container type={CONTAINER_TYPE.TOP_LEFT}>
         <PageHeader>Shopping Cart</PageHeader>
         <Card>
           <ShoppingCartList />

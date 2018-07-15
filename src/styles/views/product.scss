@@ -1,0 +1,13 @@
+.sp-product {
+  display: flex;
+  &__image {
+    order: 1;
+    flex-basis: 40%;
+  }
+
+  &__content {
+    order: 2;
+    flex-basis: calc(60% - #{$--spacing-unit-x5});
+    padding-left: $--spacing-unit-x5;
+  }
+}

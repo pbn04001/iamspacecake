@@ -5,6 +5,7 @@ import { Container, CONTAINER_TYPE } from 'components/container'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from 'react-modal'
+import BuyButton from 'components/shoppingCart/buyButton'
 import { getPicture, getFullPicture } from 'utils/images'
 import { loadProduct, toggleModal } from './state/actions'
 
@@ -26,25 +27,6 @@ class Product extends Component {
 
   closeModal = () => this.props.toggleModal(false)
 
-  renderProduct = () => {
-    const { product } = this.props
-    if (!product) {
-      return <div>Loading...</div>
-    }
-    const { title, fieldImage } = product
-    return (
-      <Fragment>
-        {this.renderModal()}
-        <PageHeader>{title}</PageHeader>
-        {getPicture(fieldImage,
-          title,
-          { medium: true, small: true, mobile: true },
-          'product_images',
-          this.openModal)}
-      </Fragment>
-    )
-  }
-
   renderModal = () => {
     const { title, fieldImage } = this.props.product
     return (
@@ -63,6 +45,36 @@ class Product extends Component {
           </div>
         </div>
       </Modal>
+    )
+  }
+
+  renderProduct = () => {
+    const { product } = this.props
+    if (!product) {
+      return <div>Loading...</div>
+    }
+    const { title, body, fieldImage } = product
+    return (
+      <Fragment>
+        {this.renderModal()}
+        <div className="sp-product">
+          <div className="sp-product__image">
+            {getPicture(fieldImage,
+              title,
+              { medium: true, small: true, mobile: true },
+              'product_images',
+              this.openModal)}
+          </div>
+          <div className="sp-product__content">
+            <PageHeader>{title}</PageHeader>
+            <div
+              className="sp-product__body"
+              dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
+            />
+            <BuyButton item={product} />
+          </div>
+        </div>
+      </Fragment>
     )
   }
 

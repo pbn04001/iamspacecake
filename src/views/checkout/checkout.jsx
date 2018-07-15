@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { isEmpty } from 'lodash'
 import { bindActionCreators } from 'redux'
-import { Container, Card } from 'components/container'
+import { Container, Card, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 import { getShoppingCartItems } from 'components/shoppingCart/state/selectors'
@@ -110,7 +110,7 @@ class Checkout extends Component {
   render() {
     return (
       <div className="sp-page-checkout">
-        <Container>
+        <Container type={CONTAINER_TYPE.TOP_LEFT}>
           <PageHeader>Checkout</PageHeader>
           <Card>
             {this.getShoppingCartBody()}
