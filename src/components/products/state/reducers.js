@@ -10,6 +10,7 @@ function products(state = initialState, action) {
       return {
         ...state,
         products: action.payload.products,
+        category: action.payload.category,
       }
     default:
       return state

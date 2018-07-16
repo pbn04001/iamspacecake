@@ -11,7 +11,7 @@ import { getPicture } from '../../utils/images'
 
 class NewProducts extends Component {
   componentWillMount() {
-    this.props.loadNewProducts()
+    this.props.loadNewProducts(4)
   }
 
   addToShoppingCart = (product) => {

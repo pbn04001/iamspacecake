@@ -1,30 +1,17 @@
-.sp-home {
+.sp-shop {
 
-  &__top {
-    display: flex;
-  }
+  &__header {
+    display: inline-block;
 
-  &__news {
-    order: 1;
-    flex-basis: 60%;
-
-    @include breakpoint(large) {
-      flex-basis: 75%;
+    .sp-page-header {
+       display: inline-block;
+       margin-right: $--spacing-unit-x10;
     }
 
-    &.sp-container {
-      padding-top: 5rem;
+    .sp-select {
+      vertical-align: top;
+       display: inline-block;
+       margin: $--spacing-unit-x2;
     }
-  }
-
-  &__products {
-    order: 2;
-    flex-basis: 40%;
-
-    @include breakpoint(large) {
-      flex-basis: 35%;
-    }
-
-    padding-top: 2rem;
   }
 }

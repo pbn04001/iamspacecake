@@ -5,6 +5,11 @@ export const ERROR_TYPE = {
   PRODUCT_NOT_FOUND: 'PRODUCT_NOT_FOUND',
 }
 
+export const CATEGORY = {
+  PAINTING: 'Painting',
+  JEWELRY: 'Jewelry',
+}
+
 const parseProducts = (products) => {
   return products.map((product) => {
     try {
@@ -24,10 +29,15 @@ const parseProducts = (products) => {
 }
 
 const ProductsService = {
-  fetchProducts: (limit, page) => api.doFetch('/api/products?_format=json',
-    { urlParams: { limit, page } })
-    .then(response => parseProducts(response))
-    .catch(error => ({ error: error.message })),
+  fetchProducts: (limit, category) => {
+    const url = category
+      ? `/api/products/category/${category}?_format=json`
+      : '/api/products?_format=json'
+    return api.doFetch(url,
+      { urlParams: { limit } })
+      .then(response => parseProducts(response))
+      .catch(error => ({ error: error.message }))
+  },
   fetchProduct: productId => api.doFetch(`/api/products/${productId}?_format=json`)
     .then((response) => {
       if (response.length > 0) {
