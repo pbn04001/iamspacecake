@@ -1,10 +1,14 @@
 require('babel-polyfill')
 const path = require('path')
-const globImporter = require('node-sass-glob-importer')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack')
 const project = require('./project.config')
+
+const extractPlugin = new ExtractTextPlugin({
+  filename: './styles.min.css',
+});
 
 module.exports = {
   entry: './src/index.jsx',
@@ -18,7 +22,6 @@ module.exports = {
       test: /\.(js|jsx)$/,
       include: [
         project.paths.client(),
-        /whatwg-fetch/, // needed to transform-runtime polyfill's use of Promise
       ],
       use: {
         loader: 'babel-loader',
@@ -35,29 +38,28 @@ module.exports = {
         },
       }],
     }, {
-      test: /\.scss$/,
-      use: [{
-        loader: 'style-loader',
-      }, {
-        loader: 'css-loader',
-        options: {
-          sourceMap: true,
-          minimize: true,
-          discardComments: {
-            removeAll: true,
-          },
-        },
-      }, {
-        loader: 'sass-loader',
-        options: {
-          importer: globImporter(),
-        },
-      }],
-    },
-    // Modernizr
-    {
       test: /\.modernizrrc$/,
       use: 'webpack-modernizr-loader?useConfigFile',
+    }, {
+      test: /\.scss$/,
+      use: extractPlugin.extract({
+        use: [
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              minimize: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+        fallback: 'style-loader',
+      }),
     }],
   },
   plugins: [
@@ -71,9 +73,7 @@ module.exports = {
         collapseWhitespace: true,
       },
     }),
-    new ExtractTextPlugin({
-      filename: 'style-min.css',
-    }),
+    extractPlugin,
     new webpack.DefinePlugin({
       'process.env': {
         REST_ENDPOINT: JSON.stringify(project.rest_context_path),
@@ -82,6 +82,7 @@ module.exports = {
         PAY_PAL_ENVIRONMENT: JSON.stringify(project.pay_pal_environment),
       },
     }),
+    new CleanWebpackPlugin(['dist']),
   ],
   resolve: {
     extensions: ['.js', '.jsx', '.json'],

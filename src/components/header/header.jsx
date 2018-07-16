@@ -1,6 +1,8 @@
 import React from 'react'
 import ShoppingCartIcon from 'components/shoppingCart/shoppingCartIcon'
 
+import 'styles/components/header.scss'
+
 const Header = () => (
   <header>
     <button

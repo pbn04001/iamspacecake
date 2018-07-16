@@ -8,6 +8,8 @@ import { Container, CONTAINER_TYPE } from 'components/container'
 import PageHeader from 'components/typography/pageHeader'
 import { loadProducts } from './state/actions'
 
+import 'styles/views/shop.scss'
+
 class Shop extends Component {
   static propTypes = {
     loadProducts: PropTypes.func.isRequired,

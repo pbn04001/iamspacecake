@@ -5,6 +5,8 @@ import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 import { setMenuActive } from 'components/app/state/actions'
 
+import 'styles/components/nav.scss'
+
 class Nav extends Component {
   toggleMenuActive = () => {
     this.props.menuClicked()

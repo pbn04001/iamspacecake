@@ -11,6 +11,8 @@ import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
 import { getPicture } from '../../utils/images'
 
+import 'styles/components/news.scss'
+
 class News extends React.Component {
   componentWillMount() {
     this.props.getRecentNews()

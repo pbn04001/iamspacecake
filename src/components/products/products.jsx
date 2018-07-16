@@ -6,6 +6,9 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
 import { getPicture } from '../../utils/images'
 
+import 'styles/components/products/products.scss'
+import 'styles/components/modal.scss'
+
 class Products extends Component {
   addToShoppingCart = (product) => {
     this.props.addItemToShoppingCart(product)

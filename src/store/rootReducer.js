@@ -1,5 +1,4 @@
 import { combineReducers } from 'redux'
-import { reducer as formReducer } from 'redux-form'
 import { routerReducer } from 'react-router-redux'
 import api from 'utils/api/state/reducers'
 import checkout from 'views/checkout/state/reducer'
@@ -20,7 +19,6 @@ const appReducer = combineReducers({
   shoppingCart,
   product,
   shop,
-  form: formReducer,
 })
 
 const rootReducer = (state, action) => appReducer(state, action)

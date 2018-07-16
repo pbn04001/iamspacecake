@@ -8,6 +8,8 @@ import { Card } from 'components/container'
 import { getShoppingCartItems } from './state/selectors'
 import { formatPrice } from '../../utils/price'
 
+import 'styles/components/shoppingCart.scss'
+
 const ShoppingCartList = ({ shoppingCartItems }) => {
   const renderShoppingCartItems = () => shoppingCartItems.map((items) => {
     const { title, body, price, fieldImage, nid, uuid } = items

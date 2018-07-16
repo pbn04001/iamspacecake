@@ -9,6 +9,8 @@ import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
 import { loadNewProducts } from './state/actions'
 import { getPicture } from '../../utils/images'
 
+import 'styles/components/products/newProducts.scss'
+
 class NewProducts extends Component {
   componentWillMount() {
     this.props.loadNewProducts(4)

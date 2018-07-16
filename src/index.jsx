@@ -7,7 +7,7 @@ import store, { history } from 'store'
 
 import { PublicRoutes } from './routes'
 
-import './styles/index.scss'
+import './styles/main.scss'
 
 ReactDOM.render(
   <Provider store={store}>

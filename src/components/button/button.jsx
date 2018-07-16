@@ -2,6 +2,8 @@ import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 
+import 'styles/components/button.scss'
+
 export const Button = ({
   buttonType,
   className,

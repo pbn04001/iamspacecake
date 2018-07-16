@@ -10,6 +10,8 @@ import BuyButton from 'components/shoppingCart/buyButton'
 import { getPicture, getFullPicture } from 'utils/images'
 import { loadProduct, toggleModal } from './state/actions'
 
+import 'styles/views/product.scss'
+
 class Product extends Component {
   static propTypes = {
     match: PropTypes.object.isRequired,
