@@ -1,0 +1,57 @@
+.sp-shopping-cart {
+
+  .sp-card {
+    margin: $--spacing-unit-x2;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__image {
+    order: 1;
+    flex: 0 1 100px;
+    margin-right: $--spacing-unit-x4;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+
+  &__content {
+    order: 2;
+    flex: 1 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding-right: $--spacing-unit-x4;
+  }
+
+  &__title {
+    display: block;
+    font-size: $font-size-xlarge;
+  }
+
+  &__body {
+    width: 100%;
+    overflow: hidden;
+    white-space: normal;
+    line-height: 1.2rem;
+    height: 3.4rem;
+    color: $dark-gray;
+  }
+
+  &__price {
+    order: 3;
+    flex: 0 1 100px;
+    width: 100%;
+    padding-top: 3.3rem;
+
+    p {
+      width: 100%;
+    }
+  }
+
+
+}

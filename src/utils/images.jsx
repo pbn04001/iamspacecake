@@ -64,3 +64,10 @@ export const getFullPicture = (image, altText, folder) => {
       <img src={images.medium} alt={altText} />
     </picture>)
 }
+
+export const getThumbnail = (image, altText, folder) => {
+  const images = getImages(image, folder)
+  return (
+    <img src={images.medium} alt={altText} />
+  )
+}
