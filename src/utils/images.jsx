@@ -56,11 +56,11 @@ export const getFullPicture = (image, altText, folder) => {
   const images = getImages(image, folder)
   return (
     <picture>
-        <source
-          srcSet={images.large}
-          media="(min-width: 768px)"
-          type="image/png"
-        />
+      <source
+        srcSet={images.large}
+        media="(min-width: 768px)"
+        type="image/png"
+      />
       <img src={images.medium} alt={altText} />
     </picture>)
 }

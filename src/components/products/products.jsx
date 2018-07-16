@@ -3,42 +3,58 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Container, CONTAINER_TYPE } from 'components/container'
-import * as actionCreators from './state/actions'
+import { NavLink, withRouter } from 'react-router-dom'
+import { Container } from 'components/container'
+import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
+import { loadNewProducts } from './state/actions'
 import { getPicture } from '../../utils/images'
 
 class Products extends Component {
   componentWillMount() {
-    this.props.getNewestProducts()
+    this.props.loadNewProducts()
+  }
+
+  addToShoppingCart = (product) => {
+    this.props.addItemToShoppingCart(product)
+    this.props.history.push('/cart')
   }
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage, uuid,
+      title, fieldImage, uuid, nid, price,
     } = product
     return (
       <div className="sp-products__image" key={`sp-products-${uuid}`}>
-        {getPicture(fieldImage,
-          title,
-          { small: true, mobile: true },
-          'product_images')}
+        <NavLink to={`/product/${nid}`}>
+          {getPicture(fieldImage,
+            title,
+            { small: true, mobile: true },
+            'product_images')}
+        </NavLink>
         <span className="sp-products__title">{title}</span>
+        <button
+          type="button"
+          onClick={() => this.addToShoppingCart(product)}
+          className="sp-products__buy-now"
+        >
+          ${price} Buy Now
+        </button>
       </div>)
   }
 
   renderNewProducts = () => {
-    const { newProducts } = this.props
-    const products = []
-    if (!_.isEmpty(newProducts)) {
-      newProducts.map(product => products.push(this.renderNewProduct(product)))
+    const { products } = this.props
+    const productsArray = []
+    if (!_.isEmpty(products)) {
+      products.map(product => productsArray.push(this.renderNewProduct(product)))
     }
-    return (<div className="sp-products__holder">{products}</div>)
+    return (<div className="sp-products__holder">{productsArray}</div>)
   }
 
   render() {
     return (
-      <Container type={CONTAINER_TYPE.TOP_LEFT} className={classnames('sp-products', this.props.className)}>
-        <h3>For sale</h3>
+      <Container className={classnames('sp-products', this.props.className)}>
+        <h3>New arrivals</h3>
         {this.renderNewProducts()}
       </Container>
     )
@@ -47,18 +63,21 @@ class Products extends Component {
 
 Products.propTypes = {
   className: PropTypes.string,
-  newProducts: PropTypes.array.isRequired,
-  getNewestProducts: PropTypes.func.isRequired,
+  products: PropTypes.array,
+  loadNewProducts: PropTypes.func.isRequired,
+  addItemToShoppingCart: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 }
 
 function mapStateToProps(state) {
   return {
-    newProducts: state.products.newProducts,
+    products: state.products.products,
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { loadNewProducts, addItemToShoppingCart },
+  dispatch,
+)
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Products))

@@ -25,9 +25,7 @@ const parseProducts = (products) => {
 
 const ProductsService = {
   fetchProducts: (limit, page) => api.doFetch('/api/products?_format=json',
-    {
-      urlParams: { limit, page },
-    })
+    { urlParams: { limit, page } })
     .then(response => parseProducts(response))
     .catch(error => ({ error: error.message })),
   fetchProduct: productId => api.doFetch(`/api/products/${productId}?_format=json`)

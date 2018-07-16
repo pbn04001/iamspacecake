@@ -1,26 +1,24 @@
-import * as types from 'store/actionTypes'
+import { call, put, takeLatest } from 'redux-saga/effects'
 import productsService from 'service/product'
+import runSagas from 'store/sagas'
+import types from './actionTypes'
 
-function updateNewestProducts(newProducts) {
-  return {
-    type: types.NEWEST_PRODUCTS,
-    newProducts,
-  }
+export const loadNewProducts = () => ({
+  type: types.loadNewProducts,
+})
+
+function* loadNewProductsSaga() {
+  const products = yield call(productsService.fetchProducts, 4)
+  yield put({
+    type: types.newProductsLoaded,
+    payload: {
+      products,
+    },
+  })
 }
 
-export function getNewestProducts() {
-  return (dispatch) => {
-    productsService.fetchProducts(5)
-      .then((response) => {
-        dispatch(updateNewestProducts(response))
-      })
-      .catch((error) => {
-        const results = {
-          error,
-        }
-        dispatch(updateNewestProducts(results))
-      })
-  }
+export function* getWatchers() {
+  yield takeLatest(types.loadNewProducts, loadNewProductsSaga)
 }
 
-export default getNewestProducts
+runSagas(getWatchers)

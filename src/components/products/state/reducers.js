@@ -1,15 +1,15 @@
-import * as types from 'store/actionTypes'
+import types from './actionTypes'
 
 const initialState = {
-  newProducts: [],
+  products: [],
 }
 
 function products(state = initialState, action) {
   switch (action.type) {
-    case types.NEWEST_PRODUCTS:
+    case types.newProductsLoaded:
       return {
         ...state,
-        newProducts: action.newProducts,
+        products: action.payload.products,
       }
     default:
       return state
