@@ -10,4 +10,14 @@
     flex-basis: calc(60% - #{$--spacing-unit-x5});
     padding-left: $--spacing-unit-x5;
   }
+
+  &__buy-line {
+    position: relative;
+  }
+
+  &__price {
+    display: inline-block;
+    padding: $--spacing-unit-x4;
+    margin-right: $--spacing-unit-x5;
+  }
 }

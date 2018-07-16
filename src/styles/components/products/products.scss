@@ -8,6 +8,15 @@
     text-overflow: ellipsis;
   }
 
+  &__buy-now {
+    display: block;
+    font-size: $font-size-medium;
+    width: 100%;
+    background: transparent;
+    text-align: center;
+    text-decoration: underline;
+  }
+
   &__image {
     display: inline-block;
     margin: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;

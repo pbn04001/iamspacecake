@@ -64,4 +64,16 @@ body {
       padding-right: 0;
     }
   }
+
+  .sp-price {
+    display: inline-block;
+    font-size: $font-size-xxlarge;
+    font-weight: 700;
+    color: $dark-green;
+
+    &__coin {
+      font-size: $font-size-large;
+      font-weight: 400;
+    }
+  }
 }

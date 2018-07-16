@@ -5,6 +5,7 @@ import { Container, CONTAINER_TYPE } from 'components/container'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from 'react-modal'
+import { formatPrice } from 'utils/price'
 import BuyButton from 'components/shoppingCart/buyButton'
 import { getPicture, getFullPicture } from 'utils/images'
 import { loadProduct, toggleModal } from './state/actions'
@@ -53,7 +54,7 @@ class Product extends Component {
     if (!product) {
       return <div>Loading...</div>
     }
-    const { title, body, fieldImage } = product
+    const { title, body, price, fieldImage } = product
     return (
       <Fragment>
         {this.renderModal()}
@@ -71,7 +72,10 @@ class Product extends Component {
               className="sp-product__body"
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
-            <BuyButton item={product} />
+            <span className="sp-product__buy-line">
+              <span className="sp-product__price">{formatPrice(price)}</span>
+              <BuyButton item={product} />
+            </span>
           </div>
         </div>
       </Fragment>

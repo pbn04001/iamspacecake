@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { NavLink, withRouter } from 'react-router-dom'
-import { Container } from 'components/container'
+import { Container, CONTAINER_TYPE } from 'components/container'
 import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
 import { loadNewProducts } from './state/actions'
 import { getPicture } from '../../utils/images'
@@ -53,7 +53,10 @@ class Products extends Component {
 
   render() {
     return (
-      <Container className={classnames('sp-products', this.props.className)}>
+      <Container
+        type={CONTAINER_TYPE.TOP_LEFT}
+        className={classnames('sp-products', this.props.className)}
+      >
         <h3>New arrivals</h3>
         {this.renderNewProducts()}
       </Container>
