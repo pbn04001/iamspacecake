@@ -1,6 +1,5 @@
 import 'redux-devtools-extension'
 import { applyMiddleware, createStore, compose } from 'redux'
-import thunk from 'redux-thunk'
 import createHistory from 'history/createBrowserHistory'
 import { routerMiddleware } from 'react-router-redux'
 import { reduxSagaMiddleware } from './sagas'
@@ -12,7 +11,7 @@ const enhancers = []
 
 const sagaMiddleware = reduxSagaMiddleware()
 const historyMiddleware = routerMiddleware(history)
-const middleware = [thunk, historyMiddleware, sagaMiddleware]
+const middleware = [historyMiddleware, sagaMiddleware]
 
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.__REDUX_DEVTOOLS_EXTENSION__

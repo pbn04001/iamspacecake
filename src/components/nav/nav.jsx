@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
-import * as actionCreators from './state/actions'
+import { setMenuActive } from 'components/app/state/actions'
 
 class Nav extends Component {
   toggleMenuActive = () => {
@@ -56,12 +56,13 @@ Nav.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    isMenuActive: state.nav.isMenuActive,
+    isMenuActive: state.app.isMenuActive,
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
+export const mapDispatchToProps = dispatch => bindActionCreators(
+  { setMenuActive },
+  dispatch,
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(Nav)

@@ -31,12 +31,5 @@
       width: 100%;
       height: auto;
     }
-
-    &:nth-last-child(-n+2){
-      @include breakpoint(large) {
-        display: none;
-      }
-    }
   }
-
 }

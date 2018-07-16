@@ -7,10 +7,8 @@
     "classnames": "^2.2.6",
     "custom-event-polyfill": "^0.3.0",
     "history": "^4.7.2",
-    "html-webpack-plugin": "^2.30.1",
     "humps": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.10",
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.1.0",
@@ -20,14 +18,10 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "~3.6.0",
-    "redux-devtools-extension": "^2.13.5",
-    "redux-form": "^7.4.2",
     "redux-saga": "^0.16.0",
     "redux-saga-middleware": "^1.0.3",
-    "redux-thunk": "~2.2.0",
     "reselect": "^3.0.1",
-    "url-search-params-polyfill": "^4.0.0",
-    "whatwg-fetch": "^2.0.4"
+    "url-search-params-polyfill": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -48,9 +42,11 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.10.0",
     "extract-text-webpack-plugin": "^3.0.2",
+    "html-webpack-plugin": "^2.30.1",
     "node-cmd": "^3.0.0",
     "node-sass": "^4.7.2",
     "node-sass-glob-importer": "^5.1.0",
+    "redux-devtools-extension": "^2.13.5",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
@@ -62,8 +58,8 @@
     "start": "NODE_ENV=development webpack-dev-server -d --config ./config/webpack.dev.js --port 8080",
     "build": "NODE_ENV=development webpack --config ./config/webpack.dev.js",
     "build:prod": "NODE_ENV=production webpack --config ./config/webpack.prod.js",
-    "deploy:test": "scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake-test/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake-test/",
-    "deploy:prod": "scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake/",
+    "deploy:test": "NODE_ENV=production webpack --config ./config/webpack.prod.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake-test/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake-test/",
+    "deploy:prod": "NODE_ENV=production webpack --config ./config/webpack.prod.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake/",
     "deploy:nginx": "scp -r ./nginx/* root@206.189.208.217:/etc/nginx/sites-enabled/"
   }
 }

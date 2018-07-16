@@ -4,8 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Header from '../header/header'
 import Nav from '../nav/nav'
-
-import * as actionCreators from './actions'
+import { setMenuActive } from './state/actions'
 
 let isStopMenuDeactivate = false
 
@@ -45,8 +44,9 @@ function mapStateToProps() {
   return {}
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(actionCreators, dispatch)
-}
+export const mapDispatchToProps = dispatch => bindActionCreators(
+  { setMenuActive },
+  dispatch,
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)

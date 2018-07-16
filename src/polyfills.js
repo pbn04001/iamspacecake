@@ -1,4 +1,3 @@
-import 'whatwg-fetch'
 import 'core-js/modules/es6.promise' // IE11
 import 'core-js/modules/es6.object.assign' // IE11
 import 'core-js/modules/es7.object.entries' // IE11
