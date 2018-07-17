@@ -22,17 +22,6 @@ module.exports = {
         loader: 'babel-loader',
       },
     }, {
-      test: /\.(js|jsx)$/,
-      enforce: 'pre',
-      exclude: /src\/static/,
-      use: [{
-        loader: 'eslint-loader',
-        options: {
-          configFile: project.paths.base('.eslintrc'),
-          emitWarning: true,
-        },
-      }],
-    }, {
       test: /\.modernizrrc$/,
       use: 'webpack-modernizr-loader?useConfigFile',
     }],
