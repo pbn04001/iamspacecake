@@ -5,4 +5,11 @@
   background-color: black;
   padding: 1rem;
   margin: $--spacing-unit-x2 $--spacing-unit-x2 $--spacing-unit-x2 0;
+
+  &__tertiary {
+    text-decoration: underline;
+    color: $dark-blue;
+    font-size: $font-size-medium;
+
+  }
 }

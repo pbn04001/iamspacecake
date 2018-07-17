@@ -12,12 +12,12 @@
 
   &__image {
     order: 1;
-    flex: 0 1 13.75rem;
+    flex: 0 1 9rem;
     margin-right: $--spacing-unit-x4;
 
     img {
-      width: 13.75rem;
-      height: 13.75rem;
+      width: 9rem;
+      height: 9rem;
     }
 
     @include breakpoint(medium) {
@@ -36,7 +36,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding: $--spacing-unit-x3;
+    padding: $--spacing-unit-x6;
   }
 
   &__title {
@@ -44,17 +44,19 @@
     font-size: $font-size-xxlarge;
   }
 
-  &__body {
-    width: 100%;
-    overflow: hidden;
-    white-space: normal;
-    line-height: 1.2rem;
-    height: 3.4rem;
-    color: $dark-gray;
+  &__quantity {
+    display: inline-block;
+    margin: $--spacing-unit-x7 $--spacing-unit-x20 0 0;
+    font-size: $font-size-medium;
+
+    &--value {
+      font-weight: 700;
+      padding-left: $--spacing-unit-x2;
+    }
   }
 
-  &__quantity {
-    padding: $--spacing-unit-x3 $--spacing-unit-x6 0 0;
+  &__remove {
+    margin: $--spacing-unit-x7 0 0 0;
   }
 
   &__price {
@@ -62,7 +64,7 @@
     flex: 0 1 7.5rem;
     width: 100%;
     text-align: right;
-    padding: $--spacing-unit-x3;
+    padding: $--spacing-unit-x7;
 
     p {
       width: 100%;

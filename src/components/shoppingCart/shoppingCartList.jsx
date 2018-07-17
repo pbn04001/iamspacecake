@@ -41,12 +41,17 @@ class ShoppingCartList extends Component {
         </div>
         <div className="sp-shopping-cart__content">
           <span className="sp-shopping-cart__title">{title}</span>
-          <div
-            className="sp-shopping-cart__body"
-            dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
-          />
-          <span className="sp-shopping-cart__quantity">Qauntity: {quantity}</span>
-          <button type="button" onClick={() => this.props.removeItemFromShoppingCart(item)}>Remove</button>
+          <span className="sp-shopping-cart__quantity">
+            Qauntity:
+            <span className="sp-shopping-cart__quantity--value">{quantity}</span>
+            </span>
+          <button
+            type="button"
+            className="sp-shopping-cart__remove sp-button__tertiary"
+            onClick={() => this.props.removeItemFromShoppingCart(item)}
+          >
+            Remove
+          </button>
         </div>
         <span className="sp-shopping-cart__price">{formatPrice(price)}</span>
       </Card>)

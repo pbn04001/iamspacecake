@@ -70,12 +70,10 @@ body {
   .sp-price {
     display: inline-block;
     font-size: $font-size-xxlarge;
-    font-weight: 700;
-    color: $dark-green;
+    color: $dark-gray;
 
     &__coin {
       font-size: $font-size-large;
-      font-weight: 400;
     }
   }
 
