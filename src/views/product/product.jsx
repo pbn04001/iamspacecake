@@ -56,7 +56,9 @@ class Product extends Component {
     if (!product) {
       return <div>Loading...</div>
     }
-    const { title, body, price, fieldImage } = product
+    const {
+      title, body, price, fieldImage,
+    } = product
     return (
       <Fragment>
         {this.renderModal()}

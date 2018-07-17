@@ -26,8 +26,8 @@ const Cart = ({ shoppingCartItems }) => {
     <div className="sp-page-cart">
       <Container type={CONTAINER_TYPE.TOP_LEFT}>
         <PageHeader>Shopping Cart</PageHeader>
-          <ShoppingCartList />
-          {renderCheckoutButton()}
+        <ShoppingCartList />
+        {renderCheckoutButton()}
       </Container>
     </div>
   )

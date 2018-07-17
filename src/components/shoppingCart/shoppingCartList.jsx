@@ -12,7 +12,9 @@ import 'styles/components/shoppingCart.scss'
 
 const ShoppingCartList = ({ shoppingCartItems }) => {
   const renderShoppingCartItems = () => shoppingCartItems.map((items) => {
-    const { title, body, price, fieldImage, nid, uuid } = items
+    const {
+      title, body, price, fieldImage, nid, uuid,
+    } = items
     return (
       <Card className="sp-shopping-cart__item" key={`sp-shopping-cart-list-item-${uuid}`}>
         <div className="sp-shopping-cart__image">

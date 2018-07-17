@@ -60,7 +60,6 @@ Products.propTypes = {
   products: PropTypes.array,
   addItemToShoppingCart: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
-  category: PropTypes.string,
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(
