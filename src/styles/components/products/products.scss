@@ -24,7 +24,7 @@
     margin: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;
     width: 10rem;
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       width: 8rem;
     }
 

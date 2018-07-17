@@ -65,9 +65,16 @@ export const getFullPicture = (image, altText, folder) => {
     </picture>)
 }
 
-export const getThumbnail = (image, altText, folder) => {
+export const getSmallPicture = (image, altText, folder) => {
   const images = getImages(image, folder)
   return (
-    <img src={images.medium} alt={altText} />
+    <picture>
+      <source
+        srcSet={images.small}
+        media="(min-width: 768px)"
+        type="image/png"
+      />
+      <img src={images.medium} alt={altText} />
+    </picture>
   )
 }

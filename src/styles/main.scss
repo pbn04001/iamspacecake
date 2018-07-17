@@ -12,10 +12,10 @@ body {
   background-position: center center;
   background-image: url(/img/background-image-xlarge.jpg);
 
-  @include breakpoint(large) {
+  @include breakpoint(medium) {
     background-image: url(/img/background-image-large.jpg);
   }
-  @include breakpoint(medium) {
+  @include breakpoint(small) {
     background-image: url(/img/background-image-medium.jpg);
   }
 
@@ -28,7 +28,7 @@ body {
     margin: 0;
     padding: 0;
 
-    @include breakpoint(medium) {
+    @include breakpoint(small) {
       font-size: $font-size-medium;
     }
   }
@@ -62,7 +62,7 @@ body {
   .sp-page {
     padding-right: $--spacing-unit-x4;
 
-    @include breakpoint(medium) {
+    @include breakpoint(small) {
       padding-right: 0;
     }
   }

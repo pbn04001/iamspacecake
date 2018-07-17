@@ -1,25 +1,40 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { NavLink } from 'react-router-dom'
-import { getThumbnail } from 'utils/images'
+import { bindActionCreators } from 'redux'
+import { getSmallPicture } from 'utils/images'
 import { Card } from 'components/container'
+import { removeItemFromShoppingCart } from './state/actions'
 import { getShoppingCartItems } from './state/selectors'
 import { formatPrice } from '../../utils/price'
 
-import 'styles/components/shoppingCart.scss'
+import './styles.scss'
 
-const ShoppingCartList = ({ shoppingCartItems }) => {
-  const renderShoppingCartItems = () => shoppingCartItems.map((items) => {
+class ShoppingCartList extends Component {
+  static propTypes = {
+    shoppingCartItems: PropTypes.array.isRequired,
+    removeItemFromShoppingCart: PropTypes.func.isRequired,
+  }
+
+  checkShoppingCartItems = () => {
+    const { shoppingCartItems } = this.props
+    if (isEmpty(shoppingCartItems)) {
+      return 'Shopping cart is empty'
+    }
+    return this.renderShoppingCartItems(shoppingCartItems)
+  }
+
+  renderShoppingCartItems = shoppingCartItems => shoppingCartItems.map((item) => {
     const {
-      title, body, price, fieldImage, nid, uuid,
-    } = items
+      title, body, price, fieldImage, nid, uuid, quantity,
+    } = item
     return (
       <Card className="sp-shopping-cart__item" key={`sp-shopping-cart-list-item-${uuid}`}>
         <div className="sp-shopping-cart__image">
           <NavLink to={`/product/${nid}`}>
-            {getThumbnail(fieldImage,
+            {getSmallPicture(fieldImage,
               title,
               'product_images')}
           </NavLink>
@@ -30,27 +45,20 @@ const ShoppingCartList = ({ shoppingCartItems }) => {
             className="sp-shopping-cart__body"
             dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
           />
+          <span className="sp-shopping-cart__quantity">Qauntity: {quantity}</span>
+          <button type="button" onClick={() => this.props.removeItemFromShoppingCart(item)}>Remove</button>
         </div>
         <span className="sp-shopping-cart__price">{formatPrice(price)}</span>
       </Card>)
   })
 
-  const checkShoppingCartItems = () => {
-    if (isEmpty(shoppingCartItems)) {
-      return 'Shopping cart is empty'
-    }
-    return renderShoppingCartItems()
+  render() {
+    return (
+      <div className="sp-shopping-cart">
+        {this.checkShoppingCartItems()}
+      </div>
+    )
   }
-
-  return (
-    <div className="sp-shopping-cart">
-      {checkShoppingCartItems()}
-    </div>
-  )
-}
-
-ShoppingCartList.propTypes = {
-  shoppingCartItems: PropTypes.array.isRequired,
 }
 
 function mapStateToProps(state) {
@@ -59,4 +67,9 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, null)(ShoppingCartList)
+const mapDispatchToProps = dispatch => bindActionCreators(
+  { removeItemFromShoppingCart },
+  dispatch,
+)
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartList)

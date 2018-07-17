@@ -1,0 +1,16 @@
+@import 'src/styles/common.scss';
+
+.sp-cart {
+
+  &__body {
+    display: flex;
+  }
+
+  &__left {
+    flex: 1 0;
+  }
+
+  &__right {
+    flex: 0 0 24rem;
+  }
+}

@@ -22,12 +22,28 @@ const addItemToShoppingCart = (state, item) => {
   return shoppingCartItems.items
 }
 
+const removeItemFromShoppingCart = (state, item) => {
+  const shoppingCartItems = {}
+  Object.keys(state.items).forEach((key) => {
+    const existingItem = state.items[key]
+    if (key !== item.uuid) {
+      shoppingCartItems[key] = existingItem
+    }
+  })
+  return shoppingCartItems
+}
+
 function shoppingCart(state = initialState, action) {
   switch (action.type) {
     case types.addItemToShoppingCart:
       return {
         ...state,
         items: addItemToShoppingCart(state, action.payload.item),
+      }
+    case types.removeItemFromShoppingCart:
+      return {
+        ...state,
+        items: removeItemFromShoppingCart(state, action.payload.item),
       }
     case types.emptyShoppingCart:
       return {

@@ -9,6 +9,8 @@ import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 import { getShoppingCartItems } from 'components/shoppingCart/state/selectors'
 import { connect } from 'react-redux'
 
+import './styles.scss'
+
 const Cart = ({ shoppingCartItems }) => {
   const renderCheckoutButton = () => {
     if (!isEmpty(shoppingCartItems)) {
@@ -23,11 +25,17 @@ const Cart = ({ shoppingCartItems }) => {
   }
 
   return (
-    <div className="sp-page-cart">
+    <div className="sp-cart sp-page">
       <Container type={CONTAINER_TYPE.TOP_LEFT}>
         <PageHeader>Shopping Cart</PageHeader>
-        <ShoppingCartList />
-        {renderCheckoutButton()}
+        <div className="sp-cart__body">
+          <div className="sp-cart__left">
+            <ShoppingCartList />
+          </div>
+          <div className="sp-cart__right">
+            {renderCheckoutButton()}
+          </div>
+        </div>
       </Container>
     </div>
   )

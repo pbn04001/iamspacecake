@@ -6,3 +6,10 @@ export const addItemToShoppingCart = item => ({
     item,
   },
 })
+
+export const removeItemFromShoppingCart = item => ({
+  type: types.removeItemFromShoppingCart,
+  payload: {
+    item,
+  },
+})

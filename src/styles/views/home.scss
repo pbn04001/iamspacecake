@@ -10,7 +10,7 @@
     order: 1;
     flex-basis: 60%;
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       flex-basis: 75%;
     }
   }
@@ -19,7 +19,7 @@
     order: 2;
     flex-basis: 40%;
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       flex-basis: 35%;
     }
 

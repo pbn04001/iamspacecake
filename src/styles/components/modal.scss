@@ -4,7 +4,7 @@
   z-index: 1000;
 }
 
-@include breakpoint(medium) {
+@include breakpoint(small) {
   .ReactModal__Content {
     top: 0 !important;
     left: 0 !important;

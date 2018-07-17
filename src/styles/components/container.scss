@@ -10,7 +10,7 @@
     padding-top: 5rem;
   }
 
-  @include breakpoint(medium){
+  @include breakpoint(small){
     margin: 0 0 $--spacing-unit-x4 0;
   }
 }

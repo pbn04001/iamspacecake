@@ -1,4 +1,4 @@
-@import '../common.scss';
+@import 'src/styles/common.scss';
 
 .sp-shopping-cart {
 
@@ -12,12 +12,21 @@
 
   &__image {
     order: 1;
-    flex: 0 1 100px;
+    flex: 0 1 13.75rem;
     margin-right: $--spacing-unit-x4;
 
     img {
-      width: 100px;
-      height: 100px;
+      width: 13.75rem;
+      height: 13.75rem;
+    }
+
+    @include breakpoint(medium) {
+      flex: 0 1 6.25rem;
+
+      img {
+        width: 6.25rem;
+        height: 6.25rem;
+      }
     }
   }
 
@@ -27,12 +36,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    padding-right: $--spacing-unit-x4;
+    padding: $--spacing-unit-x3;
   }
 
   &__title {
     display: block;
-    font-size: $font-size-xlarge;
+    font-size: $font-size-xxlarge;
   }
 
   &__body {
@@ -44,11 +53,16 @@
     color: $dark-gray;
   }
 
+  &__quantity {
+    padding: $--spacing-unit-x3 $--spacing-unit-x6 0 0;
+  }
+
   &__price {
     order: 3;
-    flex: 0 1 100px;
+    flex: 0 1 7.5rem;
     width: 100%;
-    padding-top: 3.3rem;
+    text-align: right;
+    padding: $--spacing-unit-x3;
 
     p {
       width: 100%;
