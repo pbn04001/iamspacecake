@@ -1,14 +1,9 @@
 require('babel-polyfill')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const webpack = require('webpack')
 const project = require('./project.config')
-
-const extractPlugin = new ExtractTextPlugin({
-  filename: './styles.min.css',
-});
 
 module.exports = {
   entry: './src/index.jsx',
@@ -40,26 +35,6 @@ module.exports = {
     }, {
       test: /\.modernizrrc$/,
       use: 'webpack-modernizr-loader?useConfigFile',
-    }, {
-      test: /\.scss$/,
-      use: extractPlugin.extract({
-        use: [
-          {
-            loader: 'css-loader',
-            options: {
-              sourceMap: true,
-              minimize: true,
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
-          },
-        ],
-        fallback: 'style-loader',
-      }),
     }],
   },
   plugins: [
@@ -73,7 +48,6 @@ module.exports = {
         collapseWhitespace: true,
       },
     }),
-    extractPlugin,
     new webpack.DefinePlugin({
       'process.env': {
         REST_ENDPOINT: JSON.stringify(project.rest_context_path),
