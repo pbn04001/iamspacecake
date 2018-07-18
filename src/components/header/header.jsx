@@ -5,13 +5,13 @@ import 'styles/components/header.scss'
 
 const Header = () => (
   <header>
-    <button
+    { /* <button
       type="button"
       className="sp-search"
       title="Search items for sale"
     >
       Search
-    </button>
+    </button> */ }
     <div className="sp-right">
       <ShoppingCartIcon />
       <a

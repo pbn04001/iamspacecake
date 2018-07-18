@@ -17,7 +17,7 @@ export class ShoppingCartIcon extends Component {
         className="sp-shopping-cart"
         title="View shopping cart"
       >
-        Cart {this.getShoppingCartCount(shoppingCartItems)}
+        CART {this.getShoppingCartCount(shoppingCartItems)}
       </NavLink>)
   }
 }

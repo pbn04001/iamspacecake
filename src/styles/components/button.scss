@@ -1,15 +1,17 @@
 @import '../common.scss';
 
 .sp-button {
-  color: white;
-  background-color: black;
-  padding: 1rem;
+  color: $black;
+  background-color: $white;
+  font-size: $font-size-large;
+  padding: .75rem 1.5rem;
   margin: $--spacing-unit-x2 $--spacing-unit-x2 $--spacing-unit-x2 0;
 
   &__tertiary {
     text-decoration: underline;
     color: $dark-blue;
     font-size: $font-size-medium;
-
+    background-color: transparent;
+    color: $link;
   }
 }

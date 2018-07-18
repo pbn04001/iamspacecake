@@ -3,10 +3,14 @@
 body {
   padding: 0;
   margin: 0;
-  color: $black;
+  color: $white;
   font-family: $font;
   font-size: $font-size-medium;
-  background-color: #E2E2E2;
+  font-weight: $font-weight-standard;
+  background-color: $background;
+  letter-spacing: 1.5px;
+  -webkit-font-variant-ligatures: no-common-ligatures;
+  font-variant-ligatures: no-common-ligatures;
 
   button {
     cursor: pointer;
@@ -16,6 +20,7 @@ body {
     border: none;
     margin: 0;
     padding: 0;
+    color: $white;
 
     @include breakpoint(small) {
       font-size: $font-size-medium;
@@ -34,18 +39,18 @@ body {
 
   h2 {
     display: inline-block;
-    font-size: $font-size-xxlarge;
-    font-weight: 300;
+    font-size: $font-size-xlarge;
+    font-weight: $font-weight-standard;
     margin-top: 0;
-    margin-bottom: $--spacing-unit-x2;
+    margin-bottom: $--spacing-unit-x6;
   }
 
   h3 {
     display: block;
     font-size: $font-size-xlarge;
-    font-weight: 300;
+    font-weight: $font-weight-standard;
     margin-top: 0;
-    margin-bottom: $--spacing-unit-x2;
+    margin-bottom: $--spacing-unit-x6;
   }
 
   .sp-page {

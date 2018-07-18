@@ -4,6 +4,7 @@ header {
   position: relative;
   margin: $--spacing-unit-x3 $--spacing-unit-x11 $--spacing-unit-x3 $--spacing-unit-x11;
   font-size: $font-size-large;
+  height: 1.5625rem;
 
   .sp-search {
     background: url(/icons/search.svg) no-repeat;
@@ -20,7 +21,7 @@ header {
 
   .sp-right {
     position: absolute;
-    right: 0;
+    right: 1.5rem;
     top: 0;
 
     .sp-shopping-cart {
@@ -29,7 +30,7 @@ header {
       padding: 0 0 0 $--spacing-unit-x7;
       height: 1.5625rem;
       text-decoration: none;
-      color: $black;
+      color: $white;
       vertical-align: top;
 
       @include breakpoint(small){

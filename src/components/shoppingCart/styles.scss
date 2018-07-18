@@ -50,7 +50,7 @@
     font-size: $font-size-medium;
 
     &--value {
-      font-weight: 700;
+      font-weight: $font-weight-strong;
       padding-left: $--spacing-unit-x2;
     }
   }

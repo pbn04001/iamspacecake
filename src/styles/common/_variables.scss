@@ -5,7 +5,10 @@ $breakpoint-large:    83.75rem; // 1340px
 //----------------------------
 // Font & Text Variables
 //----------------------------
-$font: Arial, sans-serif;
+$font: 'Nunito', sans-serif;
+
+$font-weight-standard: 300;
+$font-weight-strong: 400;
 
 //Font Sizes
 $font-size-small: .75rem;

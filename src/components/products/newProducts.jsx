@@ -39,7 +39,7 @@ class NewProducts extends Component {
           onClick={() => this.addToShoppingCart(product)}
           className="sp-new-products__buy-now"
         >
-          ${price} Buy Now
+          ${price} BUY NOW
         </button>
       </div>)
   }
@@ -56,7 +56,7 @@ class NewProducts extends Component {
   render() {
     return (
       <Container className={classnames('sp-new-products', this.props.className)}>
-        <h3>New arrivals</h3>
+        <h3>NEW ARRIVALS</h3>
         {this.renderNewProducts()}
       </Container>
     )

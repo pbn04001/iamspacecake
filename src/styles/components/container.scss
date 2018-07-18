@@ -2,13 +2,9 @@
 
 .sp-container {
   position: relative;
-  background: $white-smoke;
-  margin: 0 0 $--spacing-unit-x4 $--spacing-unit-x4;
+  color: $white;
+  margin: $--spacing-unit-x6 0 $--spacing-unit-x6 $--spacing-unit-x6;
   padding: $--spacing-unit-x6 $--spacing-unit-x8;
-
-  &--top-left {
-    padding-top: 5rem;
-  }
 
   @include breakpoint(small){
     margin: 0 0 $--spacing-unit-x4 0;
@@ -17,5 +13,5 @@
 
 .sp-card {
   padding: $--spacing-unit-x2;
-  background-color: $white;
+  background-color: $black;
 }

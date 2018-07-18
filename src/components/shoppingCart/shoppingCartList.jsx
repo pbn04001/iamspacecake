@@ -20,7 +20,7 @@ class ShoppingCartList extends Component {
   checkShoppingCartItems = () => {
     const { shoppingCartItems } = this.props
     if (isEmpty(shoppingCartItems)) {
-      return 'Shopping cart is empty'
+      return 'SHOPPING CART IS EMPTY'
     }
     return this.renderShoppingCartItems(shoppingCartItems)
   }
@@ -41,7 +41,7 @@ class ShoppingCartList extends Component {
         <div className="sp-shopping-cart__content">
           <span className="sp-shopping-cart__title">{title}</span>
           <span className="sp-shopping-cart__quantity">
-            Qauntity:
+            QUANTITY:
             <span className="sp-shopping-cart__quantity--value">{quantity}</span>
           </span>
           <button
@@ -49,7 +49,7 @@ class ShoppingCartList extends Component {
             className="sp-shopping-cart__remove sp-button__tertiary"
             onClick={() => this.props.removeItemFromShoppingCart(item)}
           >
-            Remove
+            REMOVE
           </button>
         </div>
         <span className="sp-shopping-cart__price">{regularPrice(price)}</span>

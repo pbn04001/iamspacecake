@@ -1,6 +1,8 @@
 @import '../common.scss';
 
 .sp-news {
+  text-align: justify;
+
   &__spacer {
     float: left;
     height: 8rem;
@@ -15,7 +17,7 @@
   &__image {
     float: left;
     width: 18rem;
-    padding: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;
+    padding: $--spacing-unit-x6 $--spacing-unit-x8 $--spacing-unit-x8 0;
 
     @include breakpoint(medium) {
       width: 14rem;

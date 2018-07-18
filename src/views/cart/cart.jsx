@@ -37,10 +37,10 @@ class Cart extends Component {
       <div className="sp-cart-total">
         <div className="sp-cart-total__title">Summary</div>
         <div className="sp-cart-total__shipping">
-          Shipping is free on all purchases
+          SHIPPING ON ALL ITEMS IS FREE
         </div>
         <div className="sp-cart-total__total">
-          Total {regularPrice(shoppingCartTotal)}
+          TOTAL {regularPrice(shoppingCartTotal)}
         </div>
         <div
           id="paypal-button"
@@ -54,7 +54,7 @@ class Cart extends Component {
     return (
       <div className="sp-cart sp-page">
         <Container type={CONTAINER_TYPE.TOP_LEFT}>
-          <PageHeader>Shopping Cart {this.cartCount()}</PageHeader>
+          <PageHeader>SHOPPING CART {this.cartCount()}</PageHeader>
           <div className="sp-cart__body">
             <div className="sp-cart__left">
               <ShoppingCartList shoppingCartItems={shoppingCartItems} />

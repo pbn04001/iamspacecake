@@ -3,54 +3,20 @@
 .sp-nav-bar {
   z-index: 100;
   position: relative;
-  height: 2.5rem;
+  height: 7rem;
   overflow: visible;
-
-  &__logo-back {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    background: url(/img/menu-curve.svg) no-repeat 18.75rem 1.625rem;
-    background-size: 8.25rem 4.4375rem;
-    height: 6.0625rem;
-    width: 26.5rem;
-
-    @include breakpoint(medium) {
-      background-size: 13.75rem 3.75rem;
-      background-position: 12.8125rem 1.75rem;
-    }
-
-    @include breakpoint(small) {
-      background-size: 8.75rem 2.8125rem;
-      background-position: 13.125rem 1.9375rem;
-    }
-  }
-
-  .sp-menu-back-left {
-    background-color: $black;
-    height: 6.0625rem;
-    width: 18.75rem;
-
-    @include breakpoint(medium) {
-      height: 5.5rem;
-      width: 16.25rem;
-    }
-
-    @include breakpoint(small) {
-      height: 4.75rem;
-      width: 15rem;
-    }
-  }
+  border-top: 1px solid $white;
+  border-bottom: 1px solid $white;
+  background-color: $black;
 
   .sp-logo {
-    position: absolute;
-    z-index: 10;
-    left: 3.125rem;
-    top: 0.6875rem;
+    display: block;
     background: url(/img/spacecake-logo.svg) no-repeat;
     background-size: 18.375rem 4.6875rem;
     width: 18.375rem;
     height: 4.6875rem;
+    margin: 1.25rem;
+    margin-left: 3.5rem;
 
     @include breakpoint(medium) {
       background-size: 15.4375rem 3.9375rem;
@@ -69,8 +35,6 @@
     position: absolute;
     top: 0;
     display: inline-block;
-    background-color: $black;
-    height: 2.5rem;
     width: 100%;
 
     ul {
@@ -79,6 +43,7 @@
       right: 3.125rem;
       list-style: none;
       overflow: visible;
+      padding: 2rem 1.5rem;
 
       .sp-mobile-menu {
         display: none;
@@ -100,7 +65,6 @@
          right: 0.9375rem;
          top: 0;
          padding: 2.1875rem 0.625rem 0.3125rem 0;
-         background-color: $black;
       }
 
       li {
