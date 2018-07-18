@@ -4,10 +4,20 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.tmp" />
       <excludeFolder url="file://$MODULE_DIR$/dist" />
+      <excludeFolder url="file://$MODULE_DIR$/node_modules" />
       <excludeFolder url="file://$MODULE_DIR$/temp" />
       <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
     <content url="file://$MODULE_DIR$/node_modules" />
+    <content url="file://$MODULE_DIR$/node_modules/prop-types" />
+    <content url="file://$MODULE_DIR$/node_modules/react" />
+    <content url="file://$MODULE_DIR$/node_modules/react-dom" />
+    <content url="file://$MODULE_DIR$/node_modules/react-lifecycles-compat" />
+    <content url="file://$MODULE_DIR$/node_modules/react-modal" />
+    <content url="file://$MODULE_DIR$/node_modules/react-redux" />
+    <content url="file://$MODULE_DIR$/node_modules/react-router" />
+    <content url="file://$MODULE_DIR$/node_modules/react-router-dom" />
+    <content url="file://$MODULE_DIR$/node_modules/react-router-redux" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

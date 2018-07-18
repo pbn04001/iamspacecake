@@ -8,7 +8,7 @@ import { getSmallPicture } from 'utils/images'
 import { Card } from 'components/container'
 import { removeItemFromShoppingCart } from './state/actions'
 import { getShoppingCartItems } from './state/selectors'
-import { formatPrice } from '../../utils/price'
+import { regularPrice } from '../../utils/price'
 
 import './styles.scss'
 
@@ -53,7 +53,7 @@ class ShoppingCartList extends Component {
             Remove
           </button>
         </div>
-        <span className="sp-shopping-cart__price">{formatPrice(price)}</span>
+        <span className="sp-shopping-cart__price">{regularPrice(price)}</span>
       </Card>)
   })
 
@@ -66,15 +66,9 @@ class ShoppingCartList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    shoppingCartItems: getShoppingCartItems(state),
-  }
-}
-
 const mapDispatchToProps = dispatch => bindActionCreators(
   { removeItemFromShoppingCart },
   dispatch,
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCartList)
+export default connect(null, mapDispatchToProps)(ShoppingCartList)

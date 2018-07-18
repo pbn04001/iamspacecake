@@ -75,6 +75,10 @@ body {
     &__coin {
       font-size: $font-size-large;
     }
+
+    &--normal {
+      font-size: $font-size-medium;
+    }
   }
 
   .sp-select {

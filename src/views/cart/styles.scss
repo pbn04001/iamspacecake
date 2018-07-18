@@ -10,7 +10,29 @@
     flex: 1 0;
   }
 
-  &__right {
+  &-total {
     flex: 0 0 24rem;
+    background-color: $black;
+    color: $white;
+    margin: $--spacing-unit-x2;
+
+    &__title, &__shipping, &__total {
+      padding: $--spacing-unit-x5;
+      border-bottom: $border-width solid $dark-gray;
+    }
+
+    &__title {
+      font-size: $font-size-large;
+    }
+
+    &__shipping {
+
+    }
+
+    &__total {
+      .sp-price--normal {
+        float: right;
+      }
+    }
   }
 }
