@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux'
 import { getSmallPicture } from 'utils/images'
 import { Card } from 'components/container'
 import { removeItemFromShoppingCart } from './state/actions'
-import { getShoppingCartItems } from './state/selectors'
 import { regularPrice } from '../../utils/price'
 
 import './styles.scss'
@@ -28,7 +27,7 @@ class ShoppingCartList extends Component {
 
   renderShoppingCartItems = shoppingCartItems => shoppingCartItems.map((item) => {
     const {
-      title, body, price, fieldImage, nid, uuid, quantity,
+      title, price, fieldImage, nid, uuid, quantity,
     } = item
     return (
       <Card className="sp-shopping-cart__item" key={`sp-shopping-cart-list-item-${uuid}`}>
@@ -44,7 +43,7 @@ class ShoppingCartList extends Component {
           <span className="sp-shopping-cart__quantity">
             Qauntity:
             <span className="sp-shopping-cart__quantity--value">{quantity}</span>
-            </span>
+          </span>
           <button
             type="button"
             className="sp-shopping-cart__remove sp-button__tertiary"

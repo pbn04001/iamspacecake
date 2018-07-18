@@ -21,7 +21,7 @@ const Container = ({ children, className = '', type = '' }) => {
   }
 
   return (
-    <div className={classnames(blockClass, typeClass(), className)}>
+    <div className={classnames(blockClass, 'sp-shadow', typeClass(), className)}>
       {children}
     </div>
   )

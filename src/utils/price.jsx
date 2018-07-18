@@ -12,6 +12,6 @@ export const formatPrice = (price) => {
   )
 }
 
-export const regularPrice = (price) => (
+export const regularPrice = price => (
   <div className="sp-price--normal">{price.toFixed(2)}</div>
 )

@@ -16,13 +16,13 @@
     color: $white;
     margin: $--spacing-unit-x2;
 
-    &__title, &__shipping, &__total {
+    &__title, &__shipping, &__total, &__paypal-button {
       padding: $--spacing-unit-x5;
       border-bottom: $border-width solid $dark-gray;
     }
 
     &__title {
-      font-size: $font-size-large;
+      font-size: $font-size-xlarge;
     }
 
     &__shipping {
@@ -30,7 +30,9 @@
     }
 
     &__total {
+      font-size: $font-size-large;
       .sp-price--normal {
+        font-size: $font-size-large;
         float: right;
       }
     }

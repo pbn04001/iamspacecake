@@ -6,18 +6,7 @@ body {
   color: $black;
   font-family: $font;
   font-size: $font-size-medium;
-  background-size: cover;
-  background-color: #FFFFFF;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-image: url(/img/background-image-xlarge.jpg);
-
-  @include breakpoint(medium) {
-    background-image: url(/img/background-image-large.jpg);
-  }
-  @include breakpoint(small) {
-    background-image: url(/img/background-image-medium.jpg);
-  }
+  background-color: #E2E2E2;
 
   button {
     cursor: pointer;
@@ -85,5 +74,11 @@ body {
     height: 1.5rem;
     width: 8rem;
     font-size: $font-size-medium;
+  }
+
+  .sp-shadow {
+    -webkit-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.07);
+    -moz-box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.07);
+    box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.07);
   }
 }
