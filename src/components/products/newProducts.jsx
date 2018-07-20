@@ -23,14 +23,13 @@ class NewProducts extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage, uuid, nid, price,
+      title, fieldImage1, uuid, nid, price,
     } = product
     return (
       <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
         <NavLink to={`/product/${nid}`}>
-          {getPicture(fieldImage,
+          {getPicture(fieldImage1,
             title,
-            { small: true, mobile: true },
             'product_images')}
         </NavLink>
         <span className="sp-new-products__title">{title}</span>

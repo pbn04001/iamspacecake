@@ -10,7 +10,7 @@ import BuyButton from 'components/shoppingCart/buyButton'
 import { getPicture, getFullPicture } from 'utils/images'
 import { loadProduct, toggleModal } from './state/actions'
 
-import 'styles/views/product.scss'
+import './styles.scss'
 
 class Product extends Component {
   static propTypes = {
@@ -66,7 +66,6 @@ class Product extends Component {
           <div className="sp-product__image">
             {getPicture(fieldImage,
               title,
-              { medium: true, small: true, mobile: true },
               'product_images',
               this.openModal)}
           </div>

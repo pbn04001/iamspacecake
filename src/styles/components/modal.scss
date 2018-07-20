@@ -2,6 +2,12 @@
 
 .ReactModal__Overlay {
   z-index: 1000;
+  background-color: $black-transparent !important;
+}
+
+.ReactModal__Content {
+  background: $black !important;
+  border: 1px solid $dark-gray !important;
 }
 
 @include breakpoint(small) {
@@ -28,6 +34,10 @@
     float: right;
     cursor: pointer;
     padding-bottom: $--spacing-unit-x2;
+    background: transparent;
+    color: $link;
+    text-decoration: underline;
+    font-size: $font-size-medium;
   }
 
   &__contents {

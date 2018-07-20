@@ -17,14 +17,13 @@ class Products extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage, uuid, nid, price,
+      title, fieldImage1, uuid, nid, price,
     } = product
     return (
       <div className="sp-products__image" key={`sp-products-${uuid}`}>
         <NavLink to={`/product/${nid}`}>
-          {getPicture(fieldImage,
+          {getPicture(fieldImage1,
             title,
-            { small: true, mobile: true },
             'product_images')}
         </NavLink>
         <span className="sp-products__title">{title}</span>
@@ -33,7 +32,7 @@ class Products extends Component {
           onClick={() => this.addToShoppingCart(product)}
           className="sp-products__buy-now"
         >
-          ${price} Buy Now
+          ${price} BUY NOW
         </button>
       </div>)
   }

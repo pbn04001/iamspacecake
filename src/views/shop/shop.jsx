@@ -52,7 +52,7 @@ class Shop extends Component {
           className="sp-products"
         >
           <div className="sp-shop__header">
-            <PageHeader>New arrivals</PageHeader>
+            <PageHeader>NEW ARRIVALS</PageHeader>
             {this.categorySelect()}
           </div>
           <Products category={category} products={products} />

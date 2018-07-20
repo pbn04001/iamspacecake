@@ -1,4 +1,4 @@
-@import '../../common.scss';
+@import 'src/styles/common.scss';
 
 .sp-products{
   &__title {
@@ -21,12 +21,8 @@
 
   &__image {
     display: inline-block;
-    margin: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;
-    width: 10rem;
-
-    @include breakpoint(medium) {
-      width: 8rem;
-    }
+    margin: 0 $--spacing-unit-x10 $--spacing-unit-x10 0;
+    width: 14rem;
 
     img {
       display: block;

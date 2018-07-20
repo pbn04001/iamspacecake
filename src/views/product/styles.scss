@@ -1,10 +1,11 @@
-@import '../common.scss';
+@import 'src/styles/common.scss';
 
 .sp-product {
   display: flex;
   &__image {
     order: 1;
     flex-basis: 40%;
+    cursor: pointer;
   }
 
   &__content {
