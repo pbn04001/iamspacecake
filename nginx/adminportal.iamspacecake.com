@@ -29,7 +29,7 @@ server {
     ssl_certificate_key /etc/ssl/iamspacecake_com.key;
 
     server_name adminportal.iamspacecake.com;
-    root /var/www/html;
+    root /var/www/html/drupal;
 
     index index.php index.html index.htm;
 
