@@ -14,11 +14,14 @@ common.module.rules.push({
       {
         loader: 'css-loader',
         options: {
-          minimize: true,
+          sourceMap: true,
         },
       },
       {
         loader: 'sass-loader',
+        options: {
+          sourceMap: true,
+        },
       },
     ],
     fallback: 'style-loader',

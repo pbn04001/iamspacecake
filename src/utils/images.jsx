@@ -6,7 +6,7 @@ function parseImageSize(imageUrl, folder, size) {
 }
 
 const adjustImagePath = (imageUrl) => {
-  return `/${ENDPOINTS.CONTENT}/${imageUrl.split('/drupal/')[1]}`
+  return imageUrl ? `/${ENDPOINTS.CONTENT}/${imageUrl.split('/drupal/')[1]}` : ''
 }
 
 export const getImages = (product) => {
