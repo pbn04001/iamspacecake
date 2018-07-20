@@ -9,7 +9,7 @@ import { Container, CONTAINER_TYPE } from 'components/container'
 import { Button } from 'components/button'
 import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
-import { getPicture } from '../../utils/images'
+import { getSmallPicture } from '../../utils/images'
 
 import 'styles/components/news.scss'
 
@@ -22,14 +22,12 @@ class News extends React.Component {
     if (!_.isEmpty(this.props.recentNews)) {
       const mainNews = this.props.recentNews[0]
       const {
-        title, fieldImage1, body,
+        title, fieldImage, body,
       } = mainNews
-      const rightContent = (!isEmpty(fieldImage1))
+      const rightContent = (!isEmpty(fieldImage))
         ? (
           <div className="sp-news__image">
-            {getPicture(fieldImage1,
-              title,
-              'news_images')}
+            {getSmallPicture(mainNews, title)}
           </div>) : null
       return (
         <Fragment>

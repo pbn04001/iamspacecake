@@ -1,6 +1,8 @@
 @import 'src/styles/common.scss';
 
 .sp-products{
+  padding: $--spacing-unit-x4;
+
   &__title {
     font-size: $font-size-medium;
     display: block;
@@ -21,8 +23,8 @@
 
   &__image {
     display: inline-block;
-    margin: 0 $--spacing-unit-x10 $--spacing-unit-x10 0;
-    width: 14rem;
+    padding: 0 $--spacing-unit-x5 $--spacing-unit-x5 $--spacing-unit-x5;
+    width: 16rem;
 
     img {
       display: block;

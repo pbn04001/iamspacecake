@@ -54,7 +54,7 @@ body {
   }
 
   .sp-page {
-    padding-right: $--spacing-unit-x4;
+    padding-right: $--spacing-unit-x2;
 
     @include breakpoint(small) {
       padding-right: 0;

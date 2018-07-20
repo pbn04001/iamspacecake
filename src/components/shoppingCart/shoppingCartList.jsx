@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
 import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
-import { getSmallPicture } from 'utils/images'
+import { getThumbnail } from 'utils/images'
 import { Card } from 'components/container'
 import { removeItemFromShoppingCart } from './state/actions'
 import { regularPrice } from '../../utils/price'
@@ -27,15 +27,13 @@ class ShoppingCartList extends Component {
 
   renderShoppingCartItems = shoppingCartItems => shoppingCartItems.map((item) => {
     const {
-      title, price, fieldImage, nid, uuid, quantity,
+      title, price, nid, uuid, quantity,
     } = item
     return (
       <Card className="sp-shopping-cart__item" key={`sp-shopping-cart-list-item-${uuid}`}>
         <div className="sp-shopping-cart__image">
           <NavLink to={`/product/${nid}`}>
-            {getSmallPicture(fieldImage,
-              title,
-              'product_images')}
+            {getThumbnail(item, title)}
           </NavLink>
         </div>
         <div className="sp-shopping-cart__content">

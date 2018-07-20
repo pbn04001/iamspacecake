@@ -7,7 +7,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { Container } from 'components/container'
 import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
 import { loadNewProducts } from './state/actions'
-import { getPicture } from '../../utils/images'
+import { getSmallPicture } from '../../utils/images'
 
 import 'styles/components/products/newProducts.scss'
 
@@ -23,14 +23,12 @@ class NewProducts extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage1, uuid, nid, price,
+      title, uuid, nid, price,
     } = product
     return (
       <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
         <NavLink to={`/product/${nid}`}>
-          {getPicture(fieldImage1,
-            title,
-            'product_images')}
+          {getSmallPicture(product, title)}
         </NavLink>
         <span className="sp-new-products__title">{title}</span>
         <button

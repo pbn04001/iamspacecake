@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { NavLink, withRouter } from 'react-router-dom'
 import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
-import { getPicture } from '../../utils/images'
+import { getSmallPicture } from '../../utils/images'
 
 import 'styles/components/products/products.scss'
 import 'styles/components/modal.scss'
@@ -17,14 +17,12 @@ class Products extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, fieldImage1, uuid, nid, price,
+      title, uuid, nid, price,
     } = product
     return (
       <div className="sp-products__image" key={`sp-products-${uuid}`}>
         <NavLink to={`/product/${nid}`}>
-          {getPicture(fieldImage1,
-            title,
-            'product_images')}
+          {getSmallPicture(product, title)}
         </NavLink>
         <span className="sp-products__title">{title}</span>
         <button

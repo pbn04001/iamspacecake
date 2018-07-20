@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Products from 'components/products/products'
-import { Container, CONTAINER_TYPE } from 'components/container'
 import PageHeader from 'components/typography/pageHeader'
 import { loadProducts } from './state/actions'
 
@@ -47,16 +46,11 @@ class Shop extends Component {
     const { category, products } = this.props
     return (
       <div className="sp-shop sp-page">
-        <Container
-          type={CONTAINER_TYPE.TOP_LEFT}
-          className="sp-products"
-        >
-          <div className="sp-shop__header">
-            <PageHeader>NEW ARRIVALS</PageHeader>
-            {this.categorySelect()}
-          </div>
-          <Products category={category} products={products} />
-        </Container>
+        <div className="sp-shop__header">
+          <PageHeader>NEW ARRIVALS</PageHeader>
+          {this.categorySelect()}
+        </div>
+        <Products category={category} products={products} />
       </div>)
   }
 }

@@ -3,8 +3,7 @@
 .sp-container {
   position: relative;
   color: $white;
-  margin: $--spacing-unit-x6 0 $--spacing-unit-x6 $--spacing-unit-x6;
-  padding: $--spacing-unit-x6 $--spacing-unit-x8;
+  padding: $--spacing-unit-x8;
 
   @include breakpoint(small){
     margin: 0 0 $--spacing-unit-x4 0;

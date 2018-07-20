@@ -31,7 +31,7 @@ class Product extends Component {
   closeModal = () => this.props.toggleModal(false)
 
   renderModal = () => {
-    const { title, fieldImage } = this.props.product
+    const { title } = this.props.product
     return (
       <Modal
         isOpen={this.props.modalOpen}
@@ -42,9 +42,7 @@ class Product extends Component {
             <button type="button" className="sp-modal__close" onClick={this.closeModal}>Close</button>
           </div>
           <div className="sp-modal__contents">
-            {getFullPicture(fieldImage,
-              title,
-              'product_images')}
+            {getFullPicture(this.props.product, title)}
           </div>
         </div>
       </Modal>
@@ -57,17 +55,14 @@ class Product extends Component {
       return <div>Loading...</div>
     }
     const {
-      title, body, price, fieldImage,
+      title, body, price,
     } = product
     return (
       <Fragment>
         {this.renderModal()}
         <div className="sp-product">
           <div className="sp-product__image">
-            {getPicture(fieldImage,
-              title,
-              'product_images',
-              this.openModal)}
+            {getPicture(product, title, this.openModal)}
           </div>
           <div className="sp-product__content">
             <PageHeader>{title}</PageHeader>

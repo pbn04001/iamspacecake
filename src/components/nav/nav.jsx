@@ -36,10 +36,7 @@ class Nav extends Component {
             <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
               <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
               <li><NavLink to="/shop">SHOP</NavLink></li>
-              <li><NavLink to="/gallery">GALLERY</NavLink></li>
-              <li><NavLink to="/news">NEWS</NavLink></li>
-              <li><NavLink to="/about">ABOUT</NavLink></li>
-              <li><NavLink to="/contact">CONTACT</NavLink></li>
+              <li><a href="mailto:allykatartist@gmail.com">CONTACT</a></li>
             </ul>
           </nav>
         </div>
