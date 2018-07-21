@@ -42,6 +42,10 @@ server {
 
     server_name www.iamspacecake.com;
 
+    location / {
+      try_files $uri /index.html;
+    }
+
     location /content/ {
         proxy_pass  http://127.0.0.1:8082/drupal/;
     }

@@ -14,13 +14,28 @@
 # Default server configuration
 #
 server {
-	listen 80;
-    listen [::]:80;
+    listen 80;
+
+    server_name testing123.iamspacecake.com;
+    return 301 https://testing123.iamspacecake.com$request_uri;
+}
+
+server {
+	listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    ssl on;
+    ssl_certificate /etc/ssl/cert_chain.crt;
+    ssl_certificate_key /etc/ssl/iamspacecake_com.key;
 
     root /var/www/html/iamspacecake-test;
     index index.html;
 
     server_name testing123.iamspacecake.com;
+
+    location / {
+      try_files $uri /index.html;
+    }
 
     location /content/ {
         proxy_pass  http://127.0.0.1:8082/drupal/;
