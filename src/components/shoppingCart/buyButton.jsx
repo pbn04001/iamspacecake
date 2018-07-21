@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { Button } from 'components/button'
-import { addItemToShoppingCart } from './state/actions'
-import { getShoppingCartItems } from './state/selectors'
+import { addItemToShoppingCart } from 'views/cart/state/actions'
+import { getShoppingCartItems } from 'views/cart/state/selectors'
 
 class BuyButton extends Component {
   executeCartAction = (item, isItemAlreadyInCart) => {

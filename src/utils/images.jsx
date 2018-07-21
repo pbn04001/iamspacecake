@@ -1,10 +1,6 @@
 import React from 'react'
 import { ENDPOINTS } from './api/constants'
 
-function parseImageSize(imageUrl, folder, size) {
-  return imageUrl.replace(folder, `styles/${size}/public/${folder}`)
-}
-
 const adjustImagePath = (imageUrl) => {
   return imageUrl ? `/${ENDPOINTS.CONTENT}/${imageUrl.split('/drupal/')[1]}` : ''
 }
@@ -19,20 +15,20 @@ export const getImages = (product) => {
 
 export const getFullPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.original} alt={altText} style={{ width: 'auto', height: 'auto' }} onClick={onClick} />)
+  return (<img src={images.original} alt={altText} style={{ width: 'auto', height: 'auto' }} onClick={onClick} />)  // eslint-disable-line
 }
 
 export const getPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.original} alt={altText} onClick={onClick} />)
+  return (<img src={images.original} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getSmallPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.small} alt={altText} onClick={onClick} />)
+  return (<img src={images.small} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getThumbnail = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.thumbnail} alt={altText} onClick={onClick} />)
+  return (<img src={images.thumbnail} alt={altText} onClick={onClick} />) // eslint-disable-line
 }

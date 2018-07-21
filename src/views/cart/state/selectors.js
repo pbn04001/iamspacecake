@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 
-export const getShoppingCart = state => state && state.shoppingCart
+export const getShoppingCart = state => state && state.cart
 
 const shoppingCartItems = (shoppingCart) => {
   const shoppingCartArray = []
@@ -21,10 +21,15 @@ const shoppingCartTotal = (shoppingCart) => {
 
 export const getShoppingCartItems = createSelector(
   getShoppingCart,
-  shoppingCart => shoppingCartItems(shoppingCart),
+  cart => shoppingCartItems(cart),
 )
 
 export const getShoppingCartTotal = createSelector(
   getShoppingCart,
-  shoppingCart => shoppingCartTotal(shoppingCart),
+  cart => shoppingCartTotal(cart),
+)
+
+export const getErrorModal = createSelector(
+  getShoppingCart,
+  cart => cart.errorModal,
 )

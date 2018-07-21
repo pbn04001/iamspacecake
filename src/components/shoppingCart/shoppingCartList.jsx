@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { getThumbnail } from 'utils/images'
 import { Card } from 'components/container'
-import { removeItemFromShoppingCart } from './state/actions'
+import { removeItemFromShoppingCart } from 'views/cart/state/actions'
 import { regularPrice } from '../../utils/price'
 
 import './styles.scss'

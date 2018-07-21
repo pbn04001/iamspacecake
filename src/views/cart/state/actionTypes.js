@@ -4,4 +4,6 @@ export default {
   addItemToShoppingCart: `${namespace}/addItemToShoppingCart`,
   emptyShoppingCart: `${namespace}/emptyShoppingCart`,
   removeItemFromShoppingCart: `${namespace}/removeItemFromShoppingCart`,
+  toggleErrorModal: `${namespace}/toggleErrorModal`,
+  purchaseComplete: `${namespace}/purchaseComplete`,
 }

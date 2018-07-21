@@ -2,6 +2,9 @@ import types from './actionTypes'
 
 const initialState = {
   items: {},
+  errorModal: {
+    visible: false,
+  },
 }
 
 const addItemToShoppingCart = (state, item) => {
@@ -49,6 +52,18 @@ function shoppingCart(state = initialState, action) {
       return {
         ...state,
         items: {},
+      }
+    case types.toggleErrorModal:
+      return {
+        ...state,
+        errorModal: {
+          ...action.payload,
+        },
+      }
+    case types.purchaseComplete:
+      return {
+        ...state,
+        orderResults: action.payload.results,
       }
     default:
       return state

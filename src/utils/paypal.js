@@ -1,5 +1,5 @@
 
-export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete) => {
+export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete, purchaseError) => {
   const mapShoppingCartItemsList = () => {
     let total = 0
     const items = shoppingCartItems.map((item) => {
@@ -39,7 +39,14 @@ export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete
           total: itemsList.total,
         },
       })
-        .then(res => res.id)
+        .then((res) => {
+          if (res.error) {
+            return purchaseError(res.error)
+          } else {
+            return res.id
+          }
+        })
+        .catch(purchaseError(error))
     },
     // Execute the payment
     onAuthorize: (data, actions) => {
@@ -52,8 +59,13 @@ export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete
         },
       })
         .then((results) => {
-          purchaseComplete(results)
+          if (results.error) {
+            purchaseError(results.error)
+          } else {
+            purchaseComplete(results)
+          }
         })
+        .catch(purchaseError)
     },
   }, buttonId)
 }
