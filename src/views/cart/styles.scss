@@ -10,6 +10,14 @@
     flex: 1 0;
   }
 
+  &__address-line {
+    display: block;
+  }
+
+  &__body {
+    padding-bottom: $--spacing-unit-x4;
+  }
+
   &-total {
     flex: 0 0 24rem;
     background-color: $black;
@@ -23,10 +31,6 @@
 
     &__title {
       font-size: $font-size-xlarge;
-    }
-
-    &__shipping {
-
     }
 
     &__total {

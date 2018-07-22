@@ -46,7 +46,7 @@ class Cart extends Component {
   }
 
   purchaseComplete = (results) => {
-    this.props.purchaseComplete(results)
+    this.props.purchaseComplete(results.results)
     this.props.history.push('/order-complete')
   }
 

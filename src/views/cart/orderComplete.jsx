@@ -23,23 +23,17 @@ class OrderComplete extends Component {
     orderTotal: PropTypes.number,
   }
 
-  componentDidMount() {
-    if (!this.props.orderResults) {
-      this.props.history.push('/')
-    }
-  }
-
   continueShopping = () => {
     this.props.history.push('/shop')
   }
 
-  shoppingCartRight = () => {
+  shoppingCartRight = (orderResults) => {
     const { orderItems, orderTotal } = this.props
     return !isEmpty(orderItems) && (
       <div className="sp-cart-total">
         <div className="sp-cart-total__title">SHIPPING ADDRESS</div>
         <div className="sp-cart-total__shipping">
-          {this.renderShippingAddress()}
+          {this.renderShippingAddress(orderResults)}
         </div>
         <div className="sp-cart-total__total">
           ORDER TOTAL {regularPrice(orderTotal)}
@@ -47,8 +41,8 @@ class OrderComplete extends Component {
       </div>)
   }
 
-  renderShippingAddress = () => {
-    const shippingAddress = get(this.props.orderResults, 'results.payer.payer_info.shipping_address')
+  renderShippingAddress = (orderResults) => {
+    const shippingAddress = get(orderResults, 'payer.payer_info.shipping_address')
     if (shippingAddress) {
       return (
         <div className="sp-cart__shipping_address">
@@ -72,18 +66,24 @@ class OrderComplete extends Component {
 
   render() {
     const noRemove = true
+    const { orderResults } = this.props
+    if (!orderResults) {
+      this.props.history.push('/')
+      return null
+    }
     return (
       <div className="sp-order-complete sp-page">
         <Container>
           <PageHeader>ORDER COMPLETE</PageHeader>
           <div className="sp-page__body">
-            Thank you for placing your order with Space Cake Productions.
+            Thank you for placing your order with Space Cake Productions.<br />
+            You should receive an email from PayPal about your order @ {orderResults.payer.payer_info.email}
           </div>
           <div className="sp-cart__body">
             <div className="sp-cart__left">
               <ShoppingCartList shoppingCartItems={this.props.orderItems} noRemove={noRemove} />
             </div>
-            {this.shoppingCartRight()}
+            {this.shoppingCartRight(orderResults)}
           </div>
           <button
             className="sp-button"

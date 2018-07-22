@@ -1,6 +1,7 @@
 @import '../common.scss';
 
 .sp-button {
+  display: inline-block;
   color: $black;
   background-color: $white;
   font-size: $font-size-large;
@@ -9,9 +10,9 @@
 
   &__tertiary {
     text-decoration: underline;
-    color: $dark-blue;
     font-size: $font-size-medium;
     background-color: transparent;
     color: $link;
+    padding: 0 $--spacing-unit-x3;
   }
 }

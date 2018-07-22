@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import isEmpty from 'lodash/isEmpty'
 import { NavLink, withRouter } from 'react-router-dom'
 import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { getSmallPicture } from 'utils/images'
@@ -38,7 +39,7 @@ class Products extends Component {
   renderNewProducts = () => {
     const { products } = this.props
     const productsArray = []
-    if (!_.isEmpty(products)) {
+    if (!isEmpty(products)) {
       products.map(product => productsArray.push(this.renderNewProduct(product)))
     }
     return (<div className="sp-products__holder">{productsArray}</div>)
