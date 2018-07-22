@@ -1,5 +1,10 @@
 @mixin breakpoint($point) {
-  @if $point == small {
+  @if $point == mobile {
+    @media only screen and (max-width: $breakpoint-mobile) {
+      @content;
+    }
+  }
+  @else if $point == small {
     @media only screen and (max-width: $breakpoint-small) {
       @content;
     }

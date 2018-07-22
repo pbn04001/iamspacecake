@@ -1,7 +1,10 @@
 @import '../common.scss';
 
 .sp-news {
-  text-align: justify;
+
+  .sp-article-body {
+    text-align: justify;
+  }
 
   &__spacer {
     float: left;
@@ -21,6 +24,11 @@
 
     @include breakpoint(medium) {
       width: 14rem;
+    }
+
+    @include breakpoint(mobile) {
+      padding: $--spacing-unit-x4;
+      float: none;
     }
   }
 

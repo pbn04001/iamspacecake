@@ -7,6 +7,15 @@
   border-top: 1px solid $white;
   border-bottom: 1px solid $white;
   background-color: $black;
+  z-index: 10;
+
+  @include breakpoint(medium) {
+    height: 6rem;
+  }
+
+  @include breakpoint(mobile) {
+    height: 5rem;
+  }
 
   .sp-logo {
     display: block;
@@ -18,15 +27,16 @@
     margin-left: 3.5rem;
 
     @include breakpoint(medium) {
+      margin: 1rem;
+      margin-left: 3rem;
       background-size: 15.4375rem 3.9375rem;
       width: 15.4375rem;
       height: 3.9375rem;
     }
 
-    @include breakpoint(small) {
-      background-size: 13.25rem 3.375rem;
-      width: 13.25rem;
-      height: 3.375rem;
+    @include breakpoint(mobile) {
+      margin: .5rem;
+      margin-left: .5rem;
     }
   }
 
@@ -52,31 +62,43 @@
           display: block;
           position: absolute;
           right: 1.25rem;
-          top: 0.625rem;
+          top: 0.4rem;
           background: $black url(/icons/menu.svg) no-repeat;
-          background-size: 1.375rem 1.25rem;
-          width: 1.375rem;
-          height: 1.25rem;
+          background-size: 1.75rem 1.75rem;
+          width: 1.75rem;
+          height: 1.75rem;
         }
       }
 
+      @include breakpoint(medium) {
+        padding: 1.75rem 1rem;
+      }
+
       @include breakpoint(small) {
-         right: 0.9375rem;
-         top: 0;
-         padding: 2.1875rem 0.625rem 0.3125rem 0;
+        right: 1.5rem;
+        top: 1.75rem;
+        padding: 2.1875rem 0.625rem 0.3125rem 0;
+      }
+
+      @include breakpoint(mobile) {
+        right: .25rem;
+        top: 1.25rem;
       }
 
       li {
         display: inline-block;
         padding: 0.625rem 0 0 3.75rem;
-
-        @include breakpoint(medium) {
-          padding-left: 2.1875rem;
-        }
+        background-color: $black;
 
         @include breakpoint(small) {
-           display: none;
-           padding: 0.3125rem 1.25rem;
+          display: none;
+          padding: 0.3125rem 1.25rem;
+          border-right: 1px solid $dark-gray;
+          border-left: 1px solid $dark-gray;
+
+          &:last-child {
+            border-bottom: 1px solid $dark-gray;
+          }
         }
 
         a {
@@ -84,22 +106,17 @@
           font-size: $font-size-large;
           color: $white;
 
-          @include breakpoint(medium) {
-            font-size: $font-size-medium;
-          }
-
           @include breakpoint(small) {
-            font-size: $font-size-medium;
+            font-size: $font-size-large;
             display: block;
             text-align: right;
           }
         }
       }
 
-      &.sp-active  li {
+      &.sp-active li {
         display: block;
       }
-
 
       &:hover li {
         @include breakpoint(small) {

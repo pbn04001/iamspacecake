@@ -42,6 +42,7 @@
   &__title {
     display: block;
     font-size: $font-size-xxlarge;
+    white-space: pre-wrap;
   }
 
   &__quantity {

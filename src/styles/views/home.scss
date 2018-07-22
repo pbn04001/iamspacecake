@@ -4,6 +4,10 @@
 
   &__top {
     display: flex;
+
+    @include breakpoint(small){
+      display: block;
+    }
   }
 
   &__news {

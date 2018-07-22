@@ -24,7 +24,15 @@
   &__image {
     display: inline-block;
     padding: 0 $--spacing-unit-x5 $--spacing-unit-x5 $--spacing-unit-x5;
-    width: 16rem;
+    width: 17rem;
+
+    @include breakpoint(medium) {
+      width: 14rem;
+    }
+
+    @include breakpoint(small) {
+      width: 17rem;
+    }
 
     img {
       display: block;

@@ -9,6 +9,10 @@
     .sp-page-header {
        display: inline-block;
        margin-right: $--spacing-unit-x10;
+
+      @include breakpoint(small) {
+        margin-bottom:$--spacing-unit-x4;
+      }
     }
 
     .sp-select {

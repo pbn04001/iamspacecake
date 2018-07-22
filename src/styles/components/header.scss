@@ -25,6 +25,7 @@ header {
     top: 0;
 
     .sp-shopping-cart {
+      cursor: pointer;
       background: url(/icons/shopping-cart.svg) no-repeat;
       background-size: 1.5625rem 1.5625rem;
       padding: 0 0 0 $--spacing-unit-x7;
@@ -32,12 +33,6 @@ header {
       text-decoration: none;
       color: $white;
       vertical-align: top;
-
-      @include breakpoint(small){
-        background-size: 1.25rem 1.25rem;
-        height: 1.25rem;
-        padding: 0 0 0 $--spacing-unit-x6;
-      }
     }
 
     .sp-facebook,

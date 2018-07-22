@@ -38,6 +38,11 @@
       width: 99%;
     }
 
+    @include breakpoint(small) {
+      display: inline-block;
+      width: 45%;
+    }
+
     img {
       display: block;
       width: 100%;
@@ -47,6 +52,10 @@
     &:nth-last-child(-n+2){
       @include breakpoint(medium) {
         display: none;
+      }
+
+      @include breakpoint(small) {
+        display: inline-block;
       }
     }
   }

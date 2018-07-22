@@ -32,10 +32,10 @@ class News extends React.Component {
       return (
         <Fragment>
           <article>
+            <PageHeader>{title}</PageHeader>
             <span className="sp-news__spacer" />
             <span className="sp-news__spacer_2" />
             {rightContent}
-            <PageHeader>{title}</PageHeader>
             <div
               className="sp-article-body"
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
