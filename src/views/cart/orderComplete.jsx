@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { Container } from 'components/container'
 import { PageHeader } from 'components/typography'
 import { regularPrice } from 'utils/price'
+import { Button } from 'components/button/button'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 
 import {
@@ -58,6 +59,7 @@ class OrderComplete extends Component {
         </div>
       )
     }
+    return null
   }
 
   render() {
@@ -81,12 +83,11 @@ class OrderComplete extends Component {
             </div>
             {this.shoppingCartRight(orderResults)}
           </div>
-          <button
-            className="sp-button"
+          <Button
             onClick={this.continueShopping}
           >
             CONTINUE SHOPPING
-          </button>
+          </Button>
         </Container>
       </div>)
   }

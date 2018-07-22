@@ -51,7 +51,7 @@ class Cart extends Component {
   }
 
   removeItemFromCart = (itemId) => {
-    const foundItem = this.props.shoppingCartItems.find(item => parseInt(item.nid,10) === itemId)
+    const foundItem = this.props.shoppingCartItems.find(item => parseInt(item.nid, 10) === itemId)
     if (foundItem) this.props.removeItemFromShoppingCart(foundItem)
   }
 
@@ -150,7 +150,9 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(
-  { toggleErrorModal, emptyCart, removeItemFromShoppingCart, purchaseComplete },
+  {
+    toggleErrorModal, emptyCart, removeItemFromShoppingCart, purchaseComplete,
+  },
   dispatch,
 )
 

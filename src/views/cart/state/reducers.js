@@ -9,34 +9,34 @@ const initialState = {
   },
 }
 
-const addItemToShoppingCart = (state, item) => {
-  const shoppingCartItems = {
-    items: state.items,
+const addItemToShoppingCart = (items, item) => {
+  const cartItems = {
+    ...items,
   }
-  const existingItem = shoppingCartItems.items[item.uuid]
+  const existingItem = cartItems[item.uuid]
   if (existingItem) {
     if (item.stock > existingItem.quantity) {
       existingItem.quantity += 1
     }
   } else {
-    shoppingCartItems.items[item.uuid] = {
+    cartItems[item.uuid] = {
       ...item,
       quantity: 1,
     }
   }
-  return shoppingCartItems.items
+  return cartItems
 }
 
-const removeItemFromShoppingCart = (state, item) => {
-  const shoppingCartItems = {}
-  Object.keys(state.items)
+const removeItemFromShoppingCart = (items, item) => {
+  const cartItems = {}
+  Object.keys(items)
     .forEach((key) => {
-      const existingItem = state.items[key]
+      const existingItem = items[key]
       if (key !== item.uuid) {
-        shoppingCartItems[key] = existingItem
+        cartItems[key] = existingItem
       }
     })
-  return shoppingCartItems
+  return cartItems
 }
 
 function cart(state = initialState, action) {
@@ -49,12 +49,12 @@ function cart(state = initialState, action) {
     case types.addItemToShoppingCart:
       return {
         ...state,
-        items: addItemToShoppingCart(state, action.payload.item),
+        items: addItemToShoppingCart(state.items, action.payload.item),
       }
     case types.removeItemFromShoppingCart:
       return {
         ...state,
-        items: removeItemFromShoppingCart(state, action.payload.item),
+        items: removeItemFromShoppingCart(state.items, action.payload.item),
       }
     case types.emptyShoppingCart:
       return {
