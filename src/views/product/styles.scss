@@ -11,7 +11,29 @@
     display: none;
 
     @include breakpoint(small) {
-      display: block;
+      display: inline-block;
+    }
+  }
+
+  &__sold-out {
+    background: $white;
+    border-radius: 4px;
+    padding: 0 $--spacing-unit-x2;
+    color: $red;
+    font-size: $font-size-xlarge;
+    font-weight: bold;
+    margin: 0 0 0 $--spacing-unit-x10;
+
+    @include breakpoint(small) {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+
+      @include breakpoint(small) {
+        display: inline-block;
+      }
     }
   }
 

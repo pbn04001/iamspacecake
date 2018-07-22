@@ -38,7 +38,7 @@ const ProductsService = {
       .then(response => parseProducts(response))
       .catch(error => ({ error: error.message }))
   },
-  fetchProduct: productId => api.doFetch(`/api/products/${productId}?_format=json`)
+  fetchProduct: productId => api.doFetch(`/api/product/${productId}?_format=json`)
     .then((response) => {
       if (response.length > 0) {
         return parseProducts(response)[0]

@@ -52,6 +52,13 @@ class Product extends Component {
     )
   }
 
+  getSold = (product, mobile) => {
+    if (product.stock > 0) return null
+
+    const className = `sp-product__sold-out ${mobile ? 'sp-product__sold-out--mobile' : ''}`
+    return <span className={className}>SOLD OUT</span>
+  }
+
   renderProduct = () => {
     const { product } = this.props
     if (!product) {
@@ -64,19 +71,20 @@ class Product extends Component {
       <Fragment>
         {this.renderModal()}
         <div className="sp-product">
-          <PageHeader className="sp-product__mobile-title">{title}</PageHeader>
+          <PageHeader className="sp-product__mobile-title">{title}</PageHeader>{this.getSold(product, true)}
           <div className="sp-product__image">
             {getPicture(product, title, this.openModal)}
           </div>
           <div className="sp-product__content">
             <PageHeader>{title}</PageHeader>
+            {this.getSold(product)}
             <div
               className="sp-product__body"
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
             <span className="sp-product__buy-line">
               <span className="sp-product__price">{formatPrice(price)}</span>
-              <BuyButton item={product} />
+              { product.stock > 0 && (<BuyButton item={product} />) }
             </span>
           </div>
         </div>
