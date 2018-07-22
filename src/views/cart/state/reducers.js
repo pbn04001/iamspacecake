@@ -71,9 +71,11 @@ function cart(state = initialState, action) {
     case types.purchaseComplete:
       return {
         ...state,
-        orderItems: shoppingCartItems(state.items),
-        orderTotal: shoppingCartTotal(state.items),
-        orderResults: action.payload.results,
+        orderResults: {
+          results: action.payload.results,
+          items: shoppingCartItems(state.items),
+          total: shoppingCartTotal(state.items),
+        },
         items: {},
       }
     default:

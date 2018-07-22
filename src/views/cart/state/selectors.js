@@ -38,13 +38,3 @@ export const getOrderResults = createSelector(
   getShoppingCart,
   cart => cart.orderResults,
 )
-
-export const getOrderItems = createSelector(
-  getShoppingCart,
-  cart => cart.orderItems,
-)
-
-export const getOrderTotal = createSelector(
-  getShoppingCart,
-  cart => cart.orderTotal,
-)

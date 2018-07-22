@@ -11,16 +11,12 @@ import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 
 import {
   getOrderResults,
-  getOrderItems,
-  getOrderTotal,
 } from './state/selectors'
 
 class OrderComplete extends Component {
   static propTypes = {
     history: PropTypes.object.isRequired,
     orderResults: PropTypes.object,
-    orderItems: PropTypes.array,
-    orderTotal: PropTypes.number,
   }
 
   continueShopping = () => {
@@ -28,21 +24,21 @@ class OrderComplete extends Component {
   }
 
   shoppingCartRight = (orderResults) => {
-    const { orderItems, orderTotal } = this.props
-    return !isEmpty(orderItems) && (
+    const { items, total, results } = orderResults
+    return !isEmpty(items) && (
       <div className="sp-cart-total">
         <div className="sp-cart-total__title">SHIPPING ADDRESS</div>
         <div className="sp-cart-total__shipping">
-          {this.renderShippingAddress(orderResults)}
+          {this.renderShippingAddress(results)}
         </div>
         <div className="sp-cart-total__total">
-          ORDER TOTAL {regularPrice(orderTotal)}
+          ORDER TOTAL {regularPrice(total)}
         </div>
       </div>)
   }
 
-  renderShippingAddress = (orderResults) => {
-    const shippingAddress = get(orderResults, 'payer.payer_info.shipping_address')
+  renderShippingAddress = (results) => {
+    const shippingAddress = get(results, 'payer.payer_info.shipping_address')
     if (shippingAddress) {
       return (
         <div className="sp-cart__shipping_address">
@@ -77,11 +73,11 @@ class OrderComplete extends Component {
           <PageHeader>ORDER COMPLETE</PageHeader>
           <div className="sp-page__body">
             Thank you for placing your order with Space Cake Productions.<br />
-            You should have an email from PayPal about your order sent to this address: {orderResults.payer.payer_info.email}
+            You should receive an email from PayPal about your order shortly, sent to this address: {orderResults.results.payer.payer_info.email}
           </div>
           <div className="sp-cart__body">
             <div className="sp-cart__left">
-              <ShoppingCartList shoppingCartItems={this.props.orderItems} noRemove={noRemove} />
+              <ShoppingCartList shoppingCartItems={this.props.orderResults.items} noRemove={noRemove} />
             </div>
             {this.shoppingCartRight(orderResults)}
           </div>
@@ -99,8 +95,6 @@ class OrderComplete extends Component {
 function mapStateToProps(state) {
   return {
     orderResults: getOrderResults(state),
-    orderItems: getOrderItems(state),
-    orderTotal: getOrderTotal(state),
   }
 }
 
