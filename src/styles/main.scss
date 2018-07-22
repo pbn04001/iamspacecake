@@ -19,6 +19,14 @@ body {
   -webkit-font-variant-ligatures: no-common-ligatures;
   font-variant-ligatures: no-common-ligatures;
 
+  &.ReactModal__Body--open {
+    @include breakpoint(small) {
+      #root {
+        display: none;
+      }
+    }
+  }
+
   button {
     cursor: pointer;
     vertical-align: top;

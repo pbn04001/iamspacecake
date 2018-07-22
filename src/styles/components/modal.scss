@@ -17,12 +17,17 @@
     left: 2rem;
     right: 2rem;
     bottom: 2rem;
+    max-width: none;
 
     @include breakpoint(small) {
       top: 0 !important;
       left: 0 !important;
       right: 0 !important;
       bottom: 0 !important;
+
+      img {
+        height: 40rem !important;
+      }
     }
   }
 
@@ -50,7 +55,9 @@
   }
   &__close {
     display: block;
-    float: right;
+    position: absolute;
+    right: 0;
+    top: 0;
     cursor: pointer;
     padding: $--spacing-unit-x4;
     background: transparent;
@@ -62,6 +69,7 @@
   &__title {
     display: inline-block;
     padding: $--spacing-unit-x4 0 0 $--spacing-unit-x6;
+    margin-right: 4rem;
   }
 
   &__contents {
@@ -75,6 +83,4 @@
       padding: 0;
     }
   }
-
-
 }

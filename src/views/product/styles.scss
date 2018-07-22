@@ -2,16 +2,45 @@
 
 .sp-product {
   display: flex;
+
+  @include breakpoint(small) {
+    display: block;
+  }
+
+  &__mobile-title {
+    display: none;
+
+    @include breakpoint(small) {
+      display: block;
+    }
+  }
+
   &__image {
     order: 1;
     flex-basis: 40%;
     cursor: pointer;
+
+    @include breakpoint(small) {
+      img {
+        height: 25rem;
+        width: auto;
+        margin: 0pt auto;
+      }
+    }
   }
 
   &__content {
     order: 2;
     flex-basis: calc(60% - #{$--spacing-unit-x5});
-    padding-left: $--spacing-unit-x5;
+    padding: 0 0 0 $--spacing-unit-x5;
+
+    @include breakpoint(small) {
+      padding: $--spacing-unit-x4;
+
+      .sp-page-header {
+        display: none;
+      }
+    }
   }
 
   &__buy-line {

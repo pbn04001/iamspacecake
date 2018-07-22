@@ -41,6 +41,7 @@ class Product extends Component {
       >
         <div className="sp-modal__container">
           <div className="sp-modal__header">
+            <span className="sp-modal__title">{title}</span>
             <button type="button" className="sp-modal__close" onClick={this.closeModal}>Close</button>
           </div>
           <div className="sp-modal__contents">
@@ -63,6 +64,7 @@ class Product extends Component {
       <Fragment>
         {this.renderModal()}
         <div className="sp-product">
+          <PageHeader className="sp-product__mobile-title">{title}</PageHeader>
           <div className="sp-product__image">
             {getPicture(product, title, this.openModal)}
           </div>
