@@ -1,7 +1,9 @@
 import types from './actionTypes'
+import { shoppingCartTotal, shoppingCartItems } from './selectors'
 
 const initialState = {
   items: {},
+  orderResults: null,
   errorModal: {
     visible: false,
   },
@@ -27,17 +29,23 @@ const addItemToShoppingCart = (state, item) => {
 
 const removeItemFromShoppingCart = (state, item) => {
   const shoppingCartItems = {}
-  Object.keys(state.items).forEach((key) => {
-    const existingItem = state.items[key]
-    if (key !== item.uuid) {
-      shoppingCartItems[key] = existingItem
-    }
-  })
+  Object.keys(state.items)
+    .forEach((key) => {
+      const existingItem = state.items[key]
+      if (key !== item.uuid) {
+        shoppingCartItems[key] = existingItem
+      }
+    })
   return shoppingCartItems
 }
 
-function shoppingCart(state = initialState, action) {
+function cart(state = initialState, action) {
   switch (action.type) {
+    case types.viewDidMount:
+      return {
+        ...state,
+        errorModal: { visible: false },
+      }
     case types.addItemToShoppingCart:
       return {
         ...state,
@@ -63,11 +71,14 @@ function shoppingCart(state = initialState, action) {
     case types.purchaseComplete:
       return {
         ...state,
+        orderItems: shoppingCartItems(state.items),
+        orderTotal: shoppingCartTotal(state.items),
         orderResults: action.payload.results,
+        items: {},
       }
     default:
       return state
   }
 }
 
-export default shoppingCart
+export default cart

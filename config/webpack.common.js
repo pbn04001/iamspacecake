@@ -38,6 +38,7 @@ module.exports = {
       },
     }),
     new webpack.DefinePlugin({
+      __DEBUG__: JSON.stringify(project.__DEBUG__),
       'process.env': {
         REST_ENDPOINT: JSON.stringify(project.rest_context_path),
         NODE_ENDPOINT: JSON.stringify(project.node_context_path),

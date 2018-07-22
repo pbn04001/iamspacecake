@@ -1,28 +1,47 @@
 @import '../common.scss';
 
-.ReactModal__Overlay {
-  z-index: 1000;
-  background-color: $black-transparent !important;
-}
-
-.ReactModal__Content {
+.sp-modal {
   background: $black !important;
   border: 1px solid $dark-gray !important;
-}
+  position: absolute;
+  top: 10rem;
+  left: 10rem;
+  right: 10rem;
+  bottom: 10rem;
+  max-width: 30rem;
+  margin: 0pt auto;
+  outline: none;
 
-@include breakpoint(small) {
-  .ReactModal__Content {
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
+  &--image {
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
+    bottom: 2rem;
+
+    @include breakpoint(small) {
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+    }
   }
-}
 
-.sp-modal {
-  overflow: hidden;
-  height: 100%;
-  width: auto;
+  &__overlay {
+    z-index: 1000;
+    background-color: $black-transparent !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &__container {
+    overflow: hidden;
+    height: 100%;
+    width: auto;
+    outline: none;
+  }
 
   &__header{
     display: table;
@@ -33,17 +52,29 @@
     display: block;
     float: right;
     cursor: pointer;
-    padding-bottom: $--spacing-unit-x2;
+    padding: $--spacing-unit-x4;
     background: transparent;
     color: $link;
     text-decoration: underline;
     font-size: $font-size-medium;
   }
 
+  &__title {
+    display: inline-block;
+    padding: $--spacing-unit-x4 0 0 $--spacing-unit-x6;
+  }
+
   &__contents {
     overflow: auto;
     height: 100%;
     width: auto;
+    padding: $--spacing-unit-x4 $--spacing-unit-x6 $--spacing-unit-x6 $--spacing-unit-x6;
   }
+  &--image {
+    & &__contents {
+      padding: 0;
+    }
+  }
+
 
 }

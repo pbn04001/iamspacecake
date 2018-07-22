@@ -3,11 +3,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import isEmpty from 'lodash/isEmpty'
 import { NavLink, withRouter } from 'react-router-dom'
 import { Container } from 'components/container'
-import { addItemToShoppingCart } from 'components/shoppingCart/state/actions'
+import { addItemToShoppingCart } from 'views/cart/state/actions'
+import { getSmallPicture } from 'utils/images'
 import { loadNewProducts } from './state/actions'
-import { getSmallPicture } from '../../utils/images'
 
 import 'styles/components/products/newProducts.scss'
 
@@ -44,7 +45,7 @@ class NewProducts extends Component {
   renderNewProducts = () => {
     const { products } = this.props
     const productsArray = []
-    if (!_.isEmpty(products)) {
+    if (!isEmpty(products)) {
       products.map(product => productsArray.push(this.renderNewProduct(product)))
     }
     return (<div className="sp-new-products__holder">{productsArray}</div>)

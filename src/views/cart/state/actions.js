@@ -2,6 +2,10 @@ import runSagas from 'store/sagas'
 import { put, takeLatest } from 'redux-saga/effects'
 import types from './actionTypes'
 
+export const viewDidMount = () => ({
+  type: types.viewDidMount,
+})
+
 export const addItemToShoppingCart = item => ({
   type: types.addItemToShoppingCart,
   payload: {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash/isEmpty'
 import { NavLink } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { getThumbnail } from 'utils/images'
@@ -15,6 +15,7 @@ class ShoppingCartList extends Component {
   static propTypes = {
     shoppingCartItems: PropTypes.array.isRequired,
     removeItemFromShoppingCart: PropTypes.func.isRequired,
+    noRemove: PropTypes.bool,
   }
 
   checkShoppingCartItems = () => {
@@ -42,13 +43,14 @@ class ShoppingCartList extends Component {
             QUANTITY:
             <span className="sp-shopping-cart__quantity--value">{quantity}</span>
           </span>
-          <button
-            type="button"
-            className="sp-shopping-cart__remove sp-button__tertiary"
-            onClick={() => this.props.removeItemFromShoppingCart(item)}
-          >
-            REMOVE
-          </button>
+          {!this.props.noRemove && (
+            <button
+              type="button"
+              className="sp-shopping-cart__remove sp-button__tertiary"
+              onClick={() => this.props.removeItemFromShoppingCart(item)}
+            >
+              REMOVE
+            </button>)}
         </div>
         <span className="sp-shopping-cart__price">{regularPrice(price)}</span>
       </Card>)

@@ -42,11 +42,15 @@ export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete
         .then((res) => {
           if (res.error) {
             return purchaseError(res.error)
-          } else {
-            return res.id
           }
+          return res.id
         })
-        .catch(purchaseError(error))
+        .catch((error) => {
+          if (__DEBUG__) {
+            console.log(error) // eslint-disable-line
+          }
+          purchaseError(error)
+        })
     },
     // Execute the payment
     onAuthorize: (data, actions) => {
@@ -65,7 +69,12 @@ export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete
             purchaseComplete(results)
           }
         })
-        .catch(purchaseError)
+        .catch((error) => {
+          if (__DEBUG__) {
+            console.log(error) // eslint-disable-line
+          }
+          purchaseError(error)
+        })
     },
   }, buttonId)
 }

@@ -2,18 +2,18 @@ import { createSelector } from 'reselect'
 
 export const getShoppingCart = state => state && state.cart
 
-const shoppingCartItems = (shoppingCart) => {
+export const shoppingCartItems = (items) => {
   const shoppingCartArray = []
-  Object.keys(shoppingCart.items).forEach((key) => {
-    shoppingCartArray.push(shoppingCart.items[key])
+  Object.keys(items).forEach((key) => {
+    shoppingCartArray.push(items[key])
   })
   return shoppingCartArray
 }
 
-const shoppingCartTotal = (shoppingCart) => {
+export const shoppingCartTotal = (items) => {
   let total = 0
-  Object.keys(shoppingCart.items).forEach((key) => {
-    const item = shoppingCart.items[key]
+  Object.keys(items).forEach((key) => {
+    const item = items[key]
     total += (item.price * item.quantity)
   })
   return total
@@ -21,15 +21,30 @@ const shoppingCartTotal = (shoppingCart) => {
 
 export const getShoppingCartItems = createSelector(
   getShoppingCart,
-  cart => shoppingCartItems(cart),
+  cart => shoppingCartItems(cart.items),
 )
 
 export const getShoppingCartTotal = createSelector(
   getShoppingCart,
-  cart => shoppingCartTotal(cart),
+  cart => shoppingCartTotal(cart.items),
 )
 
 export const getErrorModal = createSelector(
   getShoppingCart,
   cart => cart.errorModal,
+)
+
+export const getOrderResults = createSelector(
+  getShoppingCart,
+  cart => cart.orderResults,
+)
+
+export const getOrderItems = createSelector(
+  getShoppingCart,
+  cart => cart.orderItems,
+)
+
+export const getOrderTotal = createSelector(
+  getShoppingCart,
+  cart => cart.orderTotal,
 )

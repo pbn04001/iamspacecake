@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash/isEmpty'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
 import { Container, CONTAINER_TYPE } from 'components/container'
@@ -19,7 +19,7 @@ class News extends React.Component {
   }
 
   renderNews = () => {
-    if (!_.isEmpty(this.props.recentNews)) {
+    if (!isEmpty(this.props.recentNews)) {
       const mainNews = this.props.recentNews[0]
       const {
         title, fieldImage, body,

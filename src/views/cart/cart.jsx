@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 import { Container, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
-import { isEmpty } from 'lodash'
+import isEmpty from 'lodash/isEmpty'
 import ShoppingCartList from 'components/shoppingCart/shoppingCartList'
 import { connect } from 'react-redux'
 import Modal from 'react-modal'
@@ -10,6 +11,7 @@ import { bindActionCreators } from 'redux'
 import { regularPrice } from 'utils/price'
 import { renderPaypalButton } from 'utils/paypal'
 import { ERROR_TYPES } from 'utils/api/constants'
+
 import {
   getShoppingCartItems,
   getShoppingCartTotal,
@@ -19,6 +21,7 @@ import {
   emptyCart,
   toggleErrorModal,
   removeItemFromShoppingCart,
+  purchaseComplete,
 } from './state/actions'
 import { ERROR_MODAL_MESSAGING } from './state/constants'
 
@@ -26,26 +29,30 @@ import './styles.scss'
 
 class Cart extends Component {
   static propTypes = {
+    history: PropTypes.object.isRequired,
     shoppingCartItems: PropTypes.array.isRequired,
     shoppingCartTotal: PropTypes.number.isRequired,
     toggleErrorModal: PropTypes.func.isRequired,
     errorModal: PropTypes.object.isRequired,
-    emptyCart: PropTypes.func.isRequired,
     removeItemFromShoppingCart: PropTypes.func.isRequired,
+    purchaseComplete: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
     const { shoppingCartItems } = this.props
-    renderPaypalButton(shoppingCartItems, 'paypal-button', this.purchaseComplete, this.purchaseError)
+    if (!isEmpty(shoppingCartItems)) {
+      renderPaypalButton(shoppingCartItems, 'paypal-button', this.purchaseComplete, this.purchaseError)
+    }
   }
 
   purchaseComplete = (results) => {
-    console.log(results)
+    this.props.purchaseComplete(results)
+    this.props.history.push('/order-complete')
   }
 
   removeItemFromCart = (itemId) => {
-    const item = this.props.shoppingCartItems.find(item => item.nid === itemId)
-    if (item) this.props.removeItemFromShoppingCart(item)
+    const foundItem = this.props.shoppingCartItems.find(item => parseInt(item.nid,10) === itemId)
+    if (foundItem) this.props.removeItemFromShoppingCart(foundItem)
   }
 
   purchaseError = (results) => {
@@ -58,12 +65,17 @@ class Cart extends Component {
           this.removeItemFromCart(results.itemId)
           break
         default:
-          this.props.toggleErrorModal(true,
-            ERROR_MODAL_MESSAGING.UNEXPECTED_ERROR.TITLE,
-            ERROR_MODAL_MESSAGING.UNEXPECTED_ERROR.MESSAGE)
           break
       }
+    } else {
+      this.props.toggleErrorModal(true,
+        ERROR_MODAL_MESSAGING.UNEXPECTED_ERROR.TITLE,
+        ERROR_MODAL_MESSAGING.UNEXPECTED_ERROR.MESSAGE)
     }
+  }
+
+  closeModal = () => {
+    this.props.toggleErrorModal(false)
   }
 
   cartCount = () => {
@@ -90,15 +102,16 @@ class Cart extends Component {
   }
 
   renderModal = () => {
-    console.log('Visisble', this.props.errorModal.visible)
     return (
       <Modal
         isOpen={this.props.errorModal.visible}
-        onRequestClose={() => this.props.toggleErrorModal(false)}
+        onRequestClose={this.closeModal}
+        className="sp-modal sp-modal"
+        overlayClassName="sp-modal__overlay"
       >
-        <div className="sp-modal">
+        <div className="sp-modal__container">
           <div className="sp-modal__header">
-            <span className="sp-modal__titel">{this.props.errorModal.title}</span>
+            <span className="sp-modal__title">{this.props.errorModal.title}</span>
             <button type="button" className="sp-modal__close" onClick={this.closeModal}>Close</button>
           </div>
           <div className="sp-modal__contents">
@@ -137,8 +150,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = dispatch => bindActionCreators(
-  { toggleErrorModal, emptyCart, removeItemFromShoppingCart },
+  { toggleErrorModal, emptyCart, removeItemFromShoppingCart, purchaseComplete },
   dispatch,
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Cart)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Cart))

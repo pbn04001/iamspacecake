@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { PageHeader } from 'components/typography'
-import { Container, CONTAINER_TYPE } from 'components/container'
+import { Container } from 'components/container'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import Modal from 'react-modal'
@@ -36,8 +36,10 @@ class Product extends Component {
       <Modal
         isOpen={this.props.modalOpen}
         onRequestClose={() => this.props.toggleModal(false)}
+        className="sp-modal sp-modal--image"
+        overlayClassName="sp-modal__overlay"
       >
-        <div className="sp-modal">
+        <div className="sp-modal__container">
           <div className="sp-modal__header">
             <button type="button" className="sp-modal__close" onClick={this.closeModal}>Close</button>
           </div>
@@ -83,7 +85,7 @@ class Product extends Component {
   render() {
     return (
       <div className="sp-shop sp-page">
-        <Container type={CONTAINER_TYPE.TOP_LEFT}>
+        <Container>
           {this.renderProduct()}
         </Container>
       </div>)

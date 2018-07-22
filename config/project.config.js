@@ -9,11 +9,11 @@ debug('Creating default configuration.')
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
 const __DEV__ = NODE_ENV === 'development'
-const __TEST__ = NODE_ENV === 'test'
 const __PROD__ = NODE_ENV === 'production'
 
 const config = {
   env: NODE_ENV,
+  __DEBUG__: __DEV__,
   devtool: __PROD__ ? null : 'source-map',
 
   // ----------------------------------
