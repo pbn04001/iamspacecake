@@ -59,7 +59,7 @@
     "start": "NODE_ENV=development webpack-dev-server -d --config ./config/webpack.dev.js --port 8080",
     "build": "NODE_ENV=development webpack --config ./config/webpack.dev.js",
     "build:prod": "NODE_ENV=production webpack --config ./config/webpack.prod.js",
-    "deploy:test": "NODE_ENV=production webpack --config ./config/webpack.prod.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake-test/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake-test/",
+    "deploy:test": "NODE_ENV=test webpack --config ./config/webpack.prod.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake-test/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake-test/",
     "deploy:prod": "NODE_ENV=production webpack --config ./config/webpack.prod.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake/",
     "deploy:nginx": "scp -r ./nginx/* root@206.189.208.217:/etc/nginx/sites-enabled/"
   }

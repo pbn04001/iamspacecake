@@ -9,11 +9,12 @@ debug('Creating default configuration.')
 const NODE_ENV = process.env.NODE_ENV || 'development'
 
 const __DEV__ = NODE_ENV === 'development'
+const __TEST__ = NODE_ENV === 'test'
 const __PROD__ = NODE_ENV === 'production'
 
 const config = {
   env: NODE_ENV,
-  __DEBUG__: __DEV__,
+  __DEBUG__: (__DEV__ || __TEST__),
   devtool: __PROD__ ? null : 'source-map',
 
   // ----------------------------------
@@ -29,7 +30,7 @@ const config = {
   // ----------------------------------
   rest_context_path: '/content',
   node_context_path: '/api',
-  pay_pal_environment: (__PROD__ ? 'production' : 'sandbox'),
+  pay_pal_environment: ((__PROD__ || __TEST__) ? 'production' : 'sandbox'),
 }
 
 // ------------------------------------

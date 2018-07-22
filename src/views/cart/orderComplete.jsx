@@ -75,7 +75,7 @@ class OrderComplete extends Component {
           <PageHeader>ORDER COMPLETE</PageHeader>
           <div className="sp-page__body">
             Thank you for placing your order with Space Cake Productions.<br />
-            You should receive an email from PayPal about your order shortly, sent to this address: {orderResults.results.payer.payer_info.email}
+            You should receive an email from PayPal about your order sent to this address: {orderResults.results.payer.payer_info.email}
           </div>
           <div className="sp-cart__body">
             <div className="sp-cart__left">
