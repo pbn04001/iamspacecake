@@ -74,6 +74,10 @@ body {
     @include breakpoint(small) {
       padding-right: 0;
     }
+
+    &__body {
+      padding-bottom: $--spacing-unit-x4;
+    }
   }
 
   .sp-price {

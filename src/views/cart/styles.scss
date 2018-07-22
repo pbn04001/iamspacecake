@@ -4,6 +4,10 @@
 
   &__body {
     display: flex;
+
+    @include breakpoint(small) {
+      display: block;
+    }
   }
 
   &__left {
@@ -39,6 +43,10 @@
         font-size: $font-size-large;
         float: right;
       }
+    }
+
+    &__paypal-button {
+      border-bottom: 0;
     }
   }
 }

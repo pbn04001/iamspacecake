@@ -6,7 +6,6 @@ import { reduxSagaMiddleware } from './sagas'
 import rootReducer from './rootReducer'
 
 export const history = createHistory()
-const initialState = {}
 const enhancers = []
 
 const sagaMiddleware = reduxSagaMiddleware()
@@ -26,4 +25,15 @@ const composedEnhancers = compose(
   ...enhancers,
 )
 
-export default createStore(rootReducer, initialState, composedEnhancers)
+const persistedShoppingCart = localStorage.getItem('shoppingCart') ? JSON.parse(localStorage.getItem('shoppingCart')) : {}
+const initialState = {
+  cart: persistedShoppingCart,
+}
+
+const store = createStore(rootReducer, initialState, composedEnhancers)
+
+store.subscribe(() => {
+  localStorage.setItem('shoppingCart', JSON.stringify(store.getState().cart))
+})
+
+export default store

@@ -8,12 +8,14 @@
 
   &__item {
     display: flex;
+    flex-wrap: wrap;
+    position: relative;
   }
 
   &__image {
     order: 1;
     flex: 0 1 9rem;
-    margin-right: $--spacing-unit-x4;
+    margin: 0 $--spacing-unit-x4 0 0;
 
     img {
       width: 9rem;
@@ -21,12 +23,8 @@
     }
 
     @include breakpoint(medium) {
-      flex: 0 1 6.25rem;
-
-      img {
-        width: 6.25rem;
-        height: 6.25rem;
-      }
+      flex: 1 1 100%;
+      margin: $--spacing-unit-x4 0 0 $--spacing-unit-x4;
     }
   }
 
@@ -41,8 +39,14 @@
 
   &__title {
     display: block;
-    font-size: $font-size-xxlarge;
+    font-size: $font-size-xlarge;
     white-space: pre-wrap;
+    margin-right: 5rem;
+
+    @include breakpoint(medium) {
+      font-size: $font-size-large;
+      margin-right: 0;
+    }
   }
 
   &__quantity {
@@ -54,17 +58,24 @@
       font-weight: $font-weight-strong;
       padding-left: $--spacing-unit-x2;
     }
+
+    @include breakpoint(medium) {
+      margin: $--spacing-unit-x4 $--spacing-unit-x7 0 0;
+    }
   }
 
   &__remove {
     margin: $--spacing-unit-x7 0 0 0;
+
+    @include breakpoint(medium) {
+      margin: $--spacing-unit-x4 0 0 0;
+    }
   }
 
   &__price {
-    order: 3;
-    flex: 0 1 7.5rem;
-    width: 100%;
-    text-align: right;
+    position: absolute;
+    top: 0;
+    right: 0;
     padding: $--spacing-unit-x7;
     font-size: $font-size-large;
 
