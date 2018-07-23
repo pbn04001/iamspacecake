@@ -27,6 +27,16 @@ body {
     }
   }
 
+  .sp-not-production {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $red;
+    color: $white;
+    z-index: 10000;
+    padding: $--spacing-unit-x2;
+  }
+
   button {
     cursor: pointer;
     vertical-align: top;

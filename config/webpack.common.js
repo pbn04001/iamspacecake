@@ -27,16 +27,6 @@ module.exports = {
     }],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: project.paths.client('index.html'),
-      hash: false,
-      favicon: project.paths.public('favicon.ico'),
-      filename: 'index.html',
-      inject: 'body',
-      minify: {
-        collapseWhitespace: true,
-      },
-    }),
     new webpack.DefinePlugin({
       __DEBUG__: JSON.stringify(project.__DEBUG__),
       'process.env': {

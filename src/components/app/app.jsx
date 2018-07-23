@@ -26,6 +26,7 @@ class App extends React.Component {
       <div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
         onClick={event => this.screenClicked(event)}
       >
+        { __DEBUG__ && (<div className="sp-not-production">{process.env.NODE_ENV}</div>)}
         <Header />
         <Nav location={location} menuClicked={() => this.menuClicked()} />
         { children }

@@ -1,7 +1,7 @@
 const merge = require('webpack-merge')
+const common = require('./webpack.common.js')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const common = require('./webpack.common.js')
 const project = require('./project.config')
 
 const extractPlugin = new ExtractTextPlugin({
@@ -30,21 +30,8 @@ common.module.rules.push({
   }),
 })
 
-common.module.rules.push({
-  test: /\.(js|jsx)$/,
-  enforce: 'pre',
-  exclude: /src\/static/,
-  use: [{
-    loader: 'eslint-loader',
-    options: {
-      configFile: project.paths.base('.eslintrc'),
-      emitWarning: true,
-    },
-  }],
-})
-
 common.plugins.push(new HtmlWebpackPlugin({
-  template: project.paths.client('index.dev.html'),
+  template: project.paths.client('index.test.html'),
   hash: false,
   favicon: project.paths.public('favicon.ico'),
   filename: 'index.html',
@@ -55,11 +42,4 @@ common.plugins.push(extractPlugin)
 
 module.exports = merge(common, {
   devtool: 'inline-source-map',
-  devServer: {
-    contentBase: ['./public', './assets'],
-    historyApiFallback: true,
-    stats: {
-      children: false,
-    },
-  },
 })
