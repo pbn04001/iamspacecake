@@ -14,7 +14,7 @@ import 'styles/components/products/newProducts.scss'
 
 class NewProducts extends Component {
   componentWillMount() {
-    this.props.loadNewProducts(4)
+    this.props.loadNewProducts()
   }
 
   addToShoppingCart = (product) => {

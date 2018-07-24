@@ -29,6 +29,15 @@ const parseProducts = (products) => {
 }
 
 const ProductsService = {
+  fetchNewProducts: (limit, category) => {
+    const url = category
+      ? `/api/products/category/new/${category}?_format=json`
+      : '/api/products/new?_format=json'
+    return api.doFetch(url,
+      { urlParams: { limit } })
+      .then(response => parseProducts(response))
+      .catch(error => ({ error: error.message }))
+  },
   fetchProducts: (limit, category) => {
     const url = category
       ? `/api/products/category/${category}?_format=json`
