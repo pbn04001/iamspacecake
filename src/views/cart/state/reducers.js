@@ -1,3 +1,4 @@
+import moment from 'moment'
 import types from './actionTypes'
 import { shoppingCartTotal, shoppingCartItems } from './selectors'
 
@@ -7,6 +8,7 @@ const initialState = {
   errorModal: {
     visible: false,
   },
+  lastUpdated: null,
 }
 
 const addItemToShoppingCart = (items, item) => {
@@ -50,16 +52,19 @@ function cart(state = initialState, action) {
       return {
         ...state,
         items: addItemToShoppingCart(state.items, action.payload.item),
+        lastUpdated: moment().format('YYYY-MM-DD HH:mm Z'),
       }
     case types.removeItemFromShoppingCart:
       return {
         ...state,
         items: removeItemFromShoppingCart(state.items, action.payload.item),
+        lastUpdated: moment().format('YYYY-MM-DD HH:mm Z'),
       }
     case types.emptyShoppingCart:
       return {
         ...state,
         items: {},
+        lastUpdated: null,
       }
     case types.toggleErrorModal:
       return {
@@ -77,6 +82,7 @@ function cart(state = initialState, action) {
           total: shoppingCartTotal(state.items),
         },
         items: {},
+        lastUpdated: null,
       }
     default:
       return state

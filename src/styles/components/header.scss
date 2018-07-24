@@ -6,6 +6,10 @@ header {
   font-size: $font-size-large;
   height: 1.5625rem;
 
+  @include breakpoint(small) {
+    margin: $--spacing-unit-x3 $--spacing-unit-x3 $--spacing-unit-x3 $--spacing-unit-x11;
+  }
+
   .sp-search {
     background: url(/icons/search.svg) no-repeat;
     background-size: 1.5625rem 1.5625rem;
