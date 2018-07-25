@@ -19,6 +19,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "~3.6.0",
+    "redux-form": "^7.4.2",
     "redux-saga": "^0.16.0",
     "redux-saga-middleware": "^1.0.3",
     "reselect": "^3.0.1",
@@ -60,6 +61,7 @@
     "start": "NODE_ENV=development webpack-dev-server -d --config ./config/webpack.dev.js --port 8080",
     "build": "NODE_ENV=development webpack --config ./config/webpack.dev.js",
     "build:prod": "NODE_ENV=production webpack --config ./config/webpack.prod.js",
+    "deploy:splash": "scp -r ./splash/* root@206.189.208.217:/var/www/html/iamspacecake/",
     "deploy:test": "NODE_ENV=test webpack --config ./config/webpack.test.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake-test/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake-test/",
     "deploy:prod": "NODE_ENV=production webpack --config ./config/webpack.prod.js; scp -r ./assets/* root@206.189.208.217:/var/www/html/iamspacecake/;scp -r ./dist/* root@206.189.208.217:/var/www/html/iamspacecake/",
     "deploy:nginx": "scp -r ./nginx/* root@206.189.208.217:/etc/nginx/sites-enabled/"

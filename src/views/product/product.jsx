@@ -26,6 +26,13 @@ class Product extends Component {
     this.props.loadProduct(match.params.id)
   }
 
+  getSold = (product, mobile) => {
+    if (product.stock > 0) return null
+
+    const className = `sp-product__sold-out ${mobile ? 'sp-product__sold-out--mobile' : ''}`
+    return <span className={className}>SOLD OUT</span>
+  }
+
   openModal = () => this.props.toggleModal(true)
 
   closeModal = () => this.props.toggleModal(false)
@@ -50,13 +57,6 @@ class Product extends Component {
         </div>
       </Modal>
     )
-  }
-
-  getSold = (product, mobile) => {
-    if (product.stock > 0) return null
-
-    const className = `sp-product__sold-out ${mobile ? 'sp-product__sold-out--mobile' : ''}`
-    return <span className={className}>SOLD OUT</span>
   }
 
   renderProduct = () => {

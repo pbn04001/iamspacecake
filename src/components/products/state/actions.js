@@ -3,7 +3,7 @@ import productsService from 'service/product'
 import runSagas from 'store/sagas'
 import types from './actionTypes'
 
-export const loadNewProducts = (category) => ({
+export const loadNewProducts = category => ({
   type: types.loadNewProducts,
   payload: {
     category,

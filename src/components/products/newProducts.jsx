@@ -14,7 +14,7 @@ import 'styles/components/products/newProducts.scss'
 
 class NewProducts extends Component {
   componentWillMount() {
-    this.props.loadNewProducts()
+    this.props.loadNewProducts(this.props.category)
   }
 
   addToShoppingCart = (product) => {
@@ -67,6 +67,7 @@ NewProducts.propTypes = {
   loadNewProducts: PropTypes.func.isRequired,
   addItemToShoppingCart: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
+  category: PropTypes.string,
 }
 
 function mapStateToProps(state) {

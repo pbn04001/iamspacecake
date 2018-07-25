@@ -6,6 +6,7 @@ import Cart from '../views/cart/cart'
 import Shop from '../views/shop/shop'
 import Product from '../views/product/product'
 import OrderComplete from '../views/cart/orderComplete'
+import Contact from '../views/contact/contact'
 
 // Clean up when first 'real' route is implemented
 const PublicRoutes = routeProps => (
@@ -16,6 +17,7 @@ const PublicRoutes = routeProps => (
       <Route exact path="/shop" component={Shop} />
       <Route exact path="/product/:id" component={Product} />
       <Route exact path="/order-complete" component={OrderComplete} />
+      <Route exact path="/contact" component={Contact} />
     </Switch>
   </App>
 )
