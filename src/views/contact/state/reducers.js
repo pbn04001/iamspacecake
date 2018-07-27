@@ -9,7 +9,12 @@ function contact(state = initialState, action) {
     case types.messageSent:
       return {
         ...state,
-        results: action.payload.results,
+        messageSentResults: action.payload.results,
+      }
+    case types.clearResults:
+      return {
+        ...state,
+        messageSentResults: null,
       }
     default:
       return state

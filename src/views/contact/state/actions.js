@@ -10,6 +10,10 @@ export const sendMessage = args => ({
   },
 })
 
+export const clearResults = () => ({
+  type: types.clearResults,
+})
+
 function* sendMessageSaga(action) {
   const results = yield call(contactService.sendMessage, action.payload)
   yield put({

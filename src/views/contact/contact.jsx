@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Button } from 'components/button/button'
 import { Container } from 'components/container'
-import { sendMessage } from './state/actions'
+import { sendMessage, clearResults } from './state/actions'
 import PageHeader from '../../components/typography/pageHeader'
 
 const FORM_NAME = 'contactForm'
@@ -13,7 +13,17 @@ const FORM_NAME = 'contactForm'
 class Contact extends Component {
   static propTypes = {
     sendMessage: PropTypes.func.isRequired,
+    clearResults: PropTypes.func.isRequired,
     messageSentResults: PropTypes.object,
+    pristine: PropTypes.bool.isRequired,
+    submitting: PropTypes.bool.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+  }
+
+  componentDidMount() {
+    if (this.props.messageSentResults !== null) {
+      this.props.clearResults()
+    }
   }
 
   onSubmit = (values) => {
@@ -24,12 +34,17 @@ class Contact extends Component {
     })
   }
 
-  render() {
+  getBody = () => {
     const { pristine, submitting, handleSubmit } = this.props
-    return (
-      <div className="sp-contact sp-page">
-        <Container>
-          <PageHeader>CONTACT</PageHeader>
+    let body = null
+    if (submitting) {
+      body = <div className="sp-body">Message sending....</div>
+    } else if (this.props.messageSentResults !== null) {
+      body = <div className="sp-body">Thank you for contacting me. I will be in touch with you shortly.</div>
+    } else {
+      body = (
+        <Fragment>
+          <div className="sp-body">If you would like to me to perform at an event, please provide information about the event along with the best way to reach you.</div>
           <form className="sp-form" onSubmit={handleSubmit(this.onSubmit)}>
             <div>
               <label htmlFor="contact-name">NAME</label>
@@ -69,9 +84,20 @@ class Contact extends Component {
               SEND MESSAGE
             </Button>
           </form>
+        </Fragment>
+      )
+    }
+    return body;
+  }
+
+  render() {
+    return (
+      <div className="sp-contact sp-page">
+        <Container>
+          <PageHeader>CONTACT</PageHeader>
+          {this.getBody()}
         </Container>
-      </div>
-    )
+      </div>)
   }
 }
 
@@ -82,7 +108,7 @@ function mapStateToProps(state) {
 }
 
 export const mapDispatchToProps = dispatch => bindActionCreators(
-  { sendMessage },
+  { sendMessage, clearResults },
   dispatch,
 )
 

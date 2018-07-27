@@ -131,7 +131,7 @@ body {
   }
 
   .sp-form {
-    width: 20rem;
+    max-width: 20rem;
 
     label {
       font-size: $font-size-medium;
@@ -147,5 +147,11 @@ body {
     textarea {
       height: 5rem;
     }
+  }
+
+  .sp-body {
+    padding: 0 0 $--spacing-unit-x4 0;
+    font-size: $font-size-medium;
+    max-width: 30rem;
   }
 }
