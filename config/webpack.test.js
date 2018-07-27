@@ -33,7 +33,7 @@ common.module.rules.push({
 common.plugins.push(new HtmlWebpackPlugin({
   template: project.paths.client('index.test.html'),
   hash: false,
-  favicon: project.paths.public('favicon.new.ico'),
+  favicon: project.paths.public('favicon.ico'),
   filename: 'index.html',
   inject: 'body',
 }))

@@ -4,7 +4,9 @@ import { bindActionCreators } from 'redux'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Button } from 'components/button/button'
+import { Container } from 'components/container'
 import { sendMessage } from './state/actions'
+import PageHeader from '../../components/typography/pageHeader'
 
 const FORM_NAME = 'contactForm'
 
@@ -26,45 +28,48 @@ class Contact extends Component {
     const { pristine, submitting, handleSubmit } = this.props
     return (
       <div className="sp-contact sp-page">
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <div>
-            <label htmlFor="contact-name">Name</label>
+        <Container>
+          <PageHeader>CONTACT</PageHeader>
+          <form className="sp-form" onSubmit={handleSubmit(this.onSubmit)}>
             <div>
-              <Field
-                id="contact-name"
-                name="name"
-                component="input"
-                type="text"
-                placeholder="Name"
-              />
+              <label htmlFor="contact-name">NAME</label>
+              <div>
+                <Field
+                  id="contact-name"
+                  name="name"
+                  component="input"
+                  type="text"
+                  placeholder="Name"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <label htmlFor="contact-email">Email</label>
             <div>
-              <Field
-                id="contact-email"
-                name="email"
-                component="input"
-                type="text"
-                placeholder="Email"
-              />
+              <label htmlFor="contact-email">EMAIL</label>
+              <div>
+                <Field
+                  id="contact-email"
+                  name="email"
+                  component="input"
+                  type="text"
+                  placeholder="Email"
+                />
+              </div>
             </div>
-          </div>
-          <div>
-            <label htmlFor="contact-message">Message</label>
             <div>
-              <Field
-                id="contact-message"
-                name="message"
-                component="textarea"
-              />
+              <label htmlFor="contact-message">MESSAGE</label>
+              <div>
+                <Field
+                  id="contact-message"
+                  name="message"
+                  component="textarea"
+                />
+              </div>
             </div>
-          </div>
-          <Button buttonType="submit" disabled={pristine || submitting}>
-            Submit
-          </Button>
-        </form>
+            <Button buttonType="submit" disabled={pristine || submitting}>
+              SEND MESSAGE
+            </Button>
+          </form>
+        </Container>
       </div>
     )
   }
