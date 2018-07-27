@@ -45,6 +45,14 @@ const ProductsService = {
       .then(response => parseProducts(response))
       .catch(error => ({ error: error.message }))
   },
+  fetchGallery: (category) => {
+    const url = category
+      ? `/api/gallery/category/${category}?_format=json`
+      : '/api/gallery?_format=json'
+    return api.doFetch(url)
+      .then(response => parseProducts(response))
+      .catch(error => ({ error: error.message }))
+  },
   fetchProduct: productId => api.doFetch(`/api/product/${productId}?_format=json`)
     .then((response) => {
       if (response.length > 0) {

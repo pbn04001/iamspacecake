@@ -40,4 +40,19 @@
       height: auto;
     }
   }
+
+  &--gallery {
+    .sp-products {
+      &__image {
+        max-width: 30rem;
+        width: calc(50% - #{$--spacing-unit-x10});
+        vertical-align: top;
+
+        @include breakpoint(small) {
+          width: 90%;
+          max-width: none;
+        }
+      }
+    }
+  }
 }

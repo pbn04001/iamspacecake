@@ -30,7 +30,7 @@ class Product extends Component {
     if (product.stock > 0) return null
 
     const className = `sp-product__sold-out ${mobile ? 'sp-product__sold-out--mobile' : ''}`
-    return <span className={className}>SOLD OUT</span>
+    return <span className={className}>SOLD</span>
   }
 
   openModal = () => this.props.toggleModal(true)

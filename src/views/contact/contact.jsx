@@ -87,7 +87,7 @@ class Contact extends Component {
         </Fragment>
       )
     }
-    return body;
+    return body
   }
 
   render() {

@@ -25,7 +25,7 @@ class Shop extends Component {
   }
 
   fetchProducts = (category) => {
-    this.props.loadProducts(50, category)
+    this.props.loadProducts(category)
   }
 
   categorySelect = () => {

@@ -12,7 +12,7 @@ export const loadProducts = category => ({
 
 function* loadProductsSaga(action) {
   const { category } = action.payload
-  const products = yield call(productsService.fetchProducts, category)
+  const products = yield call(productsService.fetchGallery, category)
   yield put({
     type: types.productsLoaded,
     payload: {

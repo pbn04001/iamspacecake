@@ -7,9 +7,10 @@ const adjustImagePath = (imageUrl) => {
 
 export const getImages = (product) => {
   const images = {}
-  images.original = adjustImagePath(product.fieldImage)
-  images.small = adjustImagePath(product.fieldImage1)
-  images.thumbnail = adjustImagePath(product.fieldImage2)
+  images.original = adjustImagePath(product.defaultImage)
+  images.small = adjustImagePath(product.smallImage)
+  images.medium = adjustImagePath(product.mediumImage)
+  images.thumbnail = adjustImagePath(product.thumbnailImage)
   return images
 }
 
@@ -26,6 +27,11 @@ export const getPicture = (product, altText, onClick = null) => {
 export const getSmallPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
   return (<img src={images.small} alt={altText} onClick={onClick} />) // eslint-disable-line
+}
+
+export const getMediumPicture = (product, altText, onClick = null) => {
+  const images = getImages(product)
+  return (<img src={images.medium} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getThumbnail = (product, altText, onClick = null) => {
