@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import Header from '../header/header'
 import Nav from '../nav/nav'
+import Footer from '../footer/footer'
 import { setMenuActive } from './state/actions'
 
 let isStopMenuDeactivate = false
@@ -30,6 +31,7 @@ class App extends React.Component {
         <Header />
         <Nav location={location} menuClicked={() => this.menuClicked()} />
         { children }
+        <Footer />
       </div>
     )
   }

@@ -22,9 +22,9 @@ class News extends React.Component {
     if (!isEmpty(this.props.recentNews)) {
       const mainNews = this.props.recentNews[0]
       const {
-        title, fieldImage, body,
+        title, defaultImage, body,
       } = mainNews
-      const rightContent = (!isEmpty(fieldImage))
+      const rightContent = (!isEmpty(defaultImage))
         ? (
           <div className="sp-news__image">
             {getSmallPicture(mainNews, title)}

@@ -40,11 +40,18 @@ class Contact extends Component {
     if (submitting) {
       body = <div className="sp-body">Message sending....</div>
     } else if (this.props.messageSentResults !== null) {
-      body = <div className="sp-body">Thank you for contacting me. I will be in touch with you shortly.</div>
+      body = this.props.messageSentResults.error
+        ? (
+          <div className="sp-body">SORRY, SOMETHING WENT WRONG. PLEASE TRY AGAIN SHORTLY OR EMAIL ME DIRECTLY AT
+            <a className="sp-link" href="mailto:al@iamspacecake.com">AL@IAMSPACECAKE.COM</a>
+          </div>)
+        : <div className="sp-body">THANK YOU FOR CONTACTING ME. I WILL BE IN TOUCH WITH YOUR SHORTLY.</div>
     } else {
       body = (
         <Fragment>
-          <div className="sp-body">If you would like to me to perform at an event, please provide information about the event along with the best way to reach you.</div>
+          <div className="sp-body">If you would like to me to perform at an event, please provide information about the event along with the best way
+            to reach you.
+          </div>
           <form className="sp-form" onSubmit={handleSubmit(this.onSubmit)}>
             <div>
               <label htmlFor="contact-name">NAME</label>
