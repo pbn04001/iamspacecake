@@ -9,7 +9,6 @@
     "history": "^4.7.2",
     "humps": "^2.0.1",
     "isomorphic-fetch": "^2.2.1",
-    "moment": "^2.22.2",
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.1.0",

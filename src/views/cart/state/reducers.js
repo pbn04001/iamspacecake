@@ -1,4 +1,3 @@
-import moment from 'moment'
 import types from './actionTypes'
 import { shoppingCartTotal, shoppingCartItems } from './selectors'
 
@@ -52,13 +51,13 @@ function cart(state = initialState, action) {
       return {
         ...state,
         items: addItemToShoppingCart(state.items, action.payload.item),
-        lastUpdated: moment().format('YYYY-MM-DD HH:mm Z'),
+        lastUpdated: (new Date()).toString(),
       }
     case types.removeItemFromShoppingCart:
       return {
         ...state,
         items: removeItemFromShoppingCart(state.items, action.payload.item),
-        lastUpdated: moment().format('YYYY-MM-DD HH:mm Z'),
+        lastUpdated: (new Date()).toString(),
       }
     case types.emptyShoppingCart:
       return {
