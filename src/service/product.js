@@ -37,10 +37,24 @@ const ProductsService = {
       .then(response => parseProducts(response))
       .catch(error => ({ error: error.message }))
   },
+  fetchProductsRecent: (category) => {
+    const url = `/api/products/recent/${category}?_format=json`
+    return api.doFetch(url)
+      .then(response => parseProducts(response))
+      .catch(error => ({ error: error.message }))
+  },
   fetchProducts: (category) => {
     const url = category
       ? `/api/products/category/${category}?_format=json`
       : '/api/products?_format=json'
+    return api.doFetch(url)
+      .then(response => parseProducts(response))
+      .catch(error => ({ error: error.message }))
+  },
+  fetchProductsPreview: (category) => {
+    const url = category
+      ? `/api/products/preview/category/${category}?_format=json`
+      : '/api/products/preview?_format=json'
     return api.doFetch(url)
       .then(response => parseProducts(response))
       .catch(error => ({ error: error.message }))

@@ -2,7 +2,15 @@ import React from 'react'
 import { ENDPOINTS } from './api/constants'
 
 const adjustImagePath = (imageUrl) => {
-  return imageUrl ? `/${ENDPOINTS.CONTENT}/${imageUrl.split('/drupal/')[1]}` : ''
+  if (imageUrl) {
+    const images = imageUrl.split(',')
+    const imageArray = []
+    images.forEach((image) => {
+      imageArray.push(`/${ENDPOINTS.CONTENT}/${image.split('/drupal/')[1]}`)
+    })
+    return imageArray
+  }
+  return []
 }
 
 export const getImages = (product) => {
@@ -16,25 +24,25 @@ export const getImages = (product) => {
 
 export const getFullPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.original} alt={altText} style={{ width: 'auto', height: 'auto' }} onClick={onClick} />)  // eslint-disable-line
+  return (<img src={images.original[0]} alt={altText} style={{ width: 'auto', height: 'auto' }} onClick={onClick} />)  // eslint-disable-line
 }
 
 export const getPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.original} alt={altText} onClick={onClick} />) // eslint-disable-line
+  return (<img src={images.original[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getSmallPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.small} alt={altText} onClick={onClick} />) // eslint-disable-line
+  return (<img src={images.small[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getMediumPicture = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.medium} alt={altText} onClick={onClick} />) // eslint-disable-line
+  return (<img src={images.medium[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getThumbnail = (product, altText, onClick = null) => {
   const images = getImages(product)
-  return (<img src={images.thumbnail} alt={altText} onClick={onClick} />) // eslint-disable-line
+  return (<img src={images.thumbnail[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }

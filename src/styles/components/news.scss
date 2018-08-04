@@ -6,24 +6,32 @@
     text-align: justify;
   }
 
+  &__title {
+    padding-bottom: $--spacing-unit-x4;
+  }
+
   &__spacer {
-    float: left;
-    height: 8rem;
+    float: right;
+    height: 3rem;
     width: 0;
 
     &_2 {
-      float: left;
-      clear: left;
+      float: right;
+      clear: right;
+    }
+
+    @include breakpoint(medium) {
+      height: 0;
     }
   }
 
   &__image {
-    float: left;
+    float: right;
     width: 18rem;
-    padding: $--spacing-unit-x6 $--spacing-unit-x8 $--spacing-unit-x8 0;
+    padding: $--spacing-unit-x6 0 $--spacing-unit-x8 $--spacing-unit-x8;
 
     @include breakpoint(medium) {
-      width: 14rem;
+      width: 100%;
     }
 
     @include breakpoint(mobile) {

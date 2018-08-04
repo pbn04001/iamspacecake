@@ -34,6 +34,9 @@ module.exports = {
         NODE_ENDPOINT: JSON.stringify(project.node_context_path),
         NODE_ENV: JSON.stringify(project.env),
         PAY_PAL_ENVIRONMENT: JSON.stringify(project.pay_pal_environment),
+        FEATURES: {
+          SEARCH: project.feature_search,
+        },
       },
     }),
     new CleanWebpackPlugin(['dist']),

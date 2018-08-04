@@ -8,6 +8,7 @@ import { NavLink, withRouter } from 'react-router-dom'
 import { Container } from 'components/container'
 import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { getSmallPicture } from 'utils/images'
+import { Button } from 'components/button'
 import { loadNewProducts } from './state/actions'
 
 import 'styles/components/products/newProducts.scss'
@@ -43,7 +44,10 @@ class NewProducts extends Component {
   }
 
   renderNewProducts = () => {
-    const { products } = this.props
+    let { products } = this.props
+    if (products.length > 4) {
+      products = products.slice(0, 4)
+    }
     const productsArray = []
     if (!isEmpty(products)) {
       products.map(product => productsArray.push(this.renderNewProduct(product)))
@@ -54,8 +58,11 @@ class NewProducts extends Component {
   render() {
     return (
       <Container className={classnames('sp-new-products', this.props.className)}>
-        <h3>NEW ARRIVALS</h3>
+        <h3>JEWERLY</h3>
         {this.renderNewProducts()}
+        <NavLink to="/shop">
+          <Button>SHOP NOW</Button>
+        </NavLink>
       </Container>
     )
   }

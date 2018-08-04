@@ -3,18 +3,18 @@ import productsService from 'service/product'
 import runSagas from 'store/sagas'
 import types from './actionTypes'
 
-export const loadNewProducts = category => ({
-  type: types.loadNewProducts,
+export const loadProducts = category => ({
+  type: types.loadProducts,
   payload: {
     category,
   },
 })
 
-function* loadNewProductsSaga(action) {
+function* loadProductsSaga(action) {
   const { category } = action.payload
-  const products = yield call(productsService.fetchProductsRecent, category)
+  const products = yield call(productsService.fetchProductsPreview, category)
   yield put({
-    type: types.newProductsLoaded,
+    type: types.productsLoaded,
     payload: {
       products,
       category,
@@ -23,7 +23,7 @@ function* loadNewProductsSaga(action) {
 }
 
 export function* getWatchers() {
-  yield takeLatest(types.loadNewProducts, loadNewProductsSaga)
+  yield takeLatest(types.loadProducts, loadProductsSaga)
 }
 
 runSagas(getWatchers)

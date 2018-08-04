@@ -33,7 +33,7 @@ body {
   .sp-not-production {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 43%;
     background-color: $red;
     color: $white;
     z-index: 10000;
@@ -43,6 +43,7 @@ body {
   button {
     cursor: pointer;
     vertical-align: top;
+    font-weight: 300;
     font-size: $font-size-large;
     display: inline-block;
     border: none;

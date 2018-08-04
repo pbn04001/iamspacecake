@@ -11,26 +11,22 @@
   }
 
   &__news {
-    order: 1;
-    flex-basis: 60%;
-
-    @include breakpoint(medium) {
-      flex-basis: 75%;
-    }
-  }
-
-  &__products {
     order: 2;
     flex-basis: 40%;
 
     @include breakpoint(medium) {
-      flex-basis: 35%;
+      flex-basis: 45%;
     }
+  }
 
+  &__products {
+    order: 1;
+    flex-basis: 60%;
     padding-top: 2rem;
+
+    @include breakpoint(medium) {
+      flex-basis: 55%;
+    }
   }
 
-  &__new-jewelry {
-
-  }
 }

@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import isEmpty from 'lodash/isEmpty'
 import classnames from 'classnames'
-import { NavLink } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
+import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { Container, CONTAINER_TYPE } from 'components/container'
 import { Button } from 'components/button'
 import { PageHeader } from 'components/typography'
@@ -18,11 +19,16 @@ class News extends React.Component {
     this.props.getRecentNews()
   }
 
+  addToShoppingCart = (product) => {
+    this.props.addItemToShoppingCart(product)
+    this.props.history.push('/cart')
+  }
+
   renderNews = () => {
     if (!isEmpty(this.props.recentNews) && !this.props.recentNews.error) {
       const mainNews = this.props.recentNews[0]
       const {
-        title, defaultImage, body,
+        title, defaultImage, body, price,
       } = mainNews
       const rightContent = (!isEmpty(defaultImage))
         ? (
@@ -32,7 +38,8 @@ class News extends React.Component {
       return (
         <Fragment>
           <article>
-            <PageHeader>{title}</PageHeader>
+            <PageHeader>NEW ARRIVALS</PageHeader>
+            <div className="sp-news__title">{title}</div>
             <span className="sp-news__spacer" />
             <span className="sp-news__spacer_2" />
             {rightContent}
@@ -40,9 +47,11 @@ class News extends React.Component {
               className="sp-article-body"
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
-            <NavLink to="/shop">
-              <Button>Shop Now</Button>
-            </NavLink>
+            <Button
+              onClick={() => this.addToShoppingCart(mainNews)}
+            >
+              ${price} &nbsp; BUY NOW
+            </Button>
           </article>
         </Fragment>)
     }
@@ -62,6 +71,8 @@ News.propTypes = {
   className: PropTypes.string,
   recentNews: PropTypes.array.isRequired,
   getRecentNews: PropTypes.func.isRequired,
+  history: PropTypes.object,
+  addItemToShoppingCart: PropTypes.func,
 }
 
 function mapStateToProps(state) {
@@ -71,8 +82,8 @@ function mapStateToProps(state) {
 }
 
 export const mapDispatchToProps = dispatch => bindActionCreators(
-  { getRecentNews },
+  { getRecentNews, addItemToShoppingCart },
   dispatch,
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(News)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(News))

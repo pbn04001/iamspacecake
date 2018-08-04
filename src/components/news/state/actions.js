@@ -1,14 +1,14 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import runSagas from 'store/sagas'
 import types from './actionTypes'
-import newsService from './service'
+import productsService from 'service/product'
 
 export const getRecentNews = () => ({
   type: types.getRecentNews,
 })
 
 function* getRecentNewsSaga() {
-  const recentNews = yield call(newsService.fetchRecentNews)
+  const recentNews = yield call(productsService.fetchNewProducts)
   yield put({
     type: types.updateRecentNews,
     payload: {
@@ -17,8 +17,8 @@ function* getRecentNewsSaga() {
   })
 }
 
-export function* getRecentNewsWatcher() {
+export function* addWatchers() {
   yield takeLatest(types.getRecentNews, getRecentNewsSaga)
 }
 
-runSagas(getRecentNewsWatcher)
+runSagas(addWatchers)

@@ -5,7 +5,7 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-47.000000, -5.000000)">
-        <g id="Top-Menu" transform="translate(47.000000, 5.000000)" fill="#000000" fill-rule="nonzero">
+        <g id="Top-Menu" transform="translate(47.000000, 5.000000)" fill="#FFFFFF" fill-rule="nonzero">
             <g id="Search">
                 <g id="Magnifying-Glass">
                     <path d="M13.396054,11.2747337 L19.0606602,16.9393398 L16.9393398,19.0606602 L11.2747337,13.396054 C10.1855772,14.0947944 8.89010903,14.5 7.5,14.5 C3.63400675,14.5 0.5,11.3659932 0.5,7.5 C0.5,3.63400675 3.63400675,0.5 7.5,0.5 C11.3659932,0.5 14.5,3.63400675 14.5,7.5 C14.5,8.89010903 14.0947944,10.1855772 13.396054,11.2747337 Z M7.5,11.5 C9.709139,11.5 11.5,9.709139 11.5,7.5 C11.5,5.290861 9.709139,3.5 7.5,3.5 C5.290861,3.5 3.5,5.290861 3.5,7.5 C3.5,9.709139 5.290861,11.5 7.5,11.5 Z" id="Oval"></path>
