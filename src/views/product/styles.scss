@@ -46,7 +46,12 @@
     top: 48%;
     left: .5rem;
     z-index: 1;
-    opacity: .3
+    opacity: .3;
+
+    @include breakpoint(small) {
+      background-size: 1.25rem;
+      width: 1.25rem;
+    }
   }
 
   &__image-right {
@@ -57,7 +62,12 @@
     position: absolute;
     top: 48%;
     right: .5rem;
-    opacity: .3
+    opacity: .3;
+
+    @include breakpoint(small) {
+      background-size: 1.25rem;
+      width: 1.25rem;
+    }
   }
 
   &__image {
@@ -68,9 +78,8 @@
 
     @include breakpoint(small) {
       img {
-        height: 25rem;
-        width: auto;
-        margin: 0pt auto;
+        width: 100%;
+        height: auto;
       }
     }
 
