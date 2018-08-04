@@ -9,6 +9,7 @@ import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { Container, CONTAINER_TYPE } from 'components/container'
 import { Button } from 'components/button'
 import { PageHeader } from 'components/typography'
+import { formatPrice } from 'utils/price'
 import { getRecentNews } from './state/actions'
 import { getSmallPicture } from '../../utils/images'
 
@@ -46,11 +47,14 @@ class News extends React.Component {
               className="sp-article-body"
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
-            <Button
-              onClick={() => this.addToShoppingCart(mainNews)}
-            >
-              ${price} &nbsp; BUY NOW
-            </Button>
+            <div className="sp-news__price-buy">
+              <span className="sp-news__price">{formatPrice(price)}</span>
+              <Button
+                onClick={() => this.addToShoppingCart(mainNews)}
+              >
+                BUY NOW
+              </Button>
+            </div>
           </article>
         </Fragment>)
     }

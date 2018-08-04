@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="31px" height="53px" viewBox="0 0 31 53" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Left arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.75" stroke-linecap="square">
+        <g id="Left-arrow" transform="translate(4.000000, 4.000000)" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="7">
+            <path d="M0.5,22.5 L22.9764046,0.0235954103" id="Line"></path>
+            <path d="M0.5,44.5 L22.9764046,22.0235954" id="Line-Copy" transform="translate(11.500000, 33.500000) scale(1, -1) translate(-11.500000, -33.500000) "></path>
+        </g>
+    </g>
+</svg>

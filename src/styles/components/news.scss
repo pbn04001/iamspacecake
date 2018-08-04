@@ -40,7 +40,9 @@
     }
   }
 
-  button {
-    margin-top: $--spacing-unit-x4;
+  &__price {
+    display: inline-block;
+    font-size: $font-size-large;
+    padding: .5rem 2rem 0 0;
   }
 }
