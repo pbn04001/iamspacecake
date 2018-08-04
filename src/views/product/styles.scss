@@ -37,16 +37,46 @@
     }
   }
 
+  &__image-left {
+    cursor: pointer;
+    background: url(/icons/leftArrow.svg) no-repeat;
+    width: 2.2rem;
+    height: 3.4rem;
+    position: absolute;
+    top: 48%;
+    left: .5rem;
+    z-index: 1;
+    opacity: .3
+  }
+
+  &__image-right {
+    cursor: pointer;
+    background: url(/icons/rightArrow.svg) no-repeat;
+    width: 2.2rem;
+    height: 3.4rem;
+    position: absolute;
+    top: 48%;
+    right: .5rem;
+    opacity: .3
+  }
+
   &__image {
     order: 1;
     flex-basis: 40%;
     cursor: pointer;
+    position: relative;
 
     @include breakpoint(small) {
       img {
         height: 25rem;
         width: auto;
         margin: 0pt auto;
+      }
+    }
+
+    &:hover {
+      .sp-product__image-right, .sp-product__image-left {
+        opacity: 1;
       }
     }
   }

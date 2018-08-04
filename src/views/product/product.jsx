@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux'
 import Modal from 'react-modal'
 import { formatPrice } from 'utils/price'
 import BuyButton from 'components/shoppingCart/buyButton'
-import { getPicture, getFullPicture } from 'utils/images'
+import { getImages, getProductPicture, getFullPicture } from 'utils/images'
 import { loadProduct, toggleModal } from './state/actions'
 
 import './styles.scss'
@@ -19,6 +19,10 @@ class Product extends Component {
     toggleModal: PropTypes.func.isRequired,
     product: PropTypes.object,
     modalOpen: PropTypes.bool.isRequired,
+  }
+
+  state = {
+    currentImage: 0,
   }
 
   componentDidMount() {
@@ -37,7 +41,7 @@ class Product extends Component {
 
   closeModal = () => this.props.toggleModal(false)
 
-  renderModal = () => {
+  renderModal = (images) => {
     const { title } = this.props.product
     return (
       <Modal
@@ -52,11 +56,38 @@ class Product extends Component {
             <button type="button" className="sp-modal__close" onClick={this.closeModal}>Close</button>
           </div>
           <div className="sp-modal__contents">
-            {getFullPicture(this.props.product, title)}
+            {this.renderImagePicker(images)}
+            {getFullPicture(images, this.state.currentImage, title)}
           </div>
         </div>
       </Modal>
     )
+  }
+
+  setNewImage = (images, backward) => {
+    let newIndex = backward ? this.state.currentImage - 1 : this.state.currentImage + 1
+    if (newIndex < 0) {
+      newIndex = images.original.length - 1
+    } else if (newIndex > images.original.length - 1) {
+      newIndex = 0
+    }
+    this.setState({ currentImage: newIndex })
+  }
+
+  renderImagePicker = (images) => {
+    if (images.original.length > 1) {
+      return (<Fragment>
+        <div
+          className="sp-product__image-left"
+          onClick={() => { this.setNewImage(images, true)}}
+        ></div>
+        <div
+          className="sp-product__image-right"
+          onClick={() => { this.setNewImage(images, false)}}
+        ></div>
+      </Fragment>)
+    }
+    return null;
   }
 
   renderProduct = () => {
@@ -67,13 +98,15 @@ class Product extends Component {
     const {
       title, body, price,
     } = product
+    const images = getImages(this.props.product)
     return (
       <Fragment>
-        {this.renderModal()}
+        {this.renderModal(images)}
         <div className="sp-product">
           <PageHeader className="sp-product__mobile-title">{title}</PageHeader>{this.getSold(product, true)}
           <div className="sp-product__image">
-            {getPicture(product, title, this.openModal)}
+            {this.renderImagePicker(images)}
+            {getProductPicture(images, this.state.currentImage, title, this.openModal)}
           </div>
           <div className="sp-product__content">
             <PageHeader>{title}</PageHeader>
@@ -83,9 +116,9 @@ class Product extends Component {
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
             <span className="sp-product__buy-line">
-              <span className="sp-product__price">{formatPrice(price)}</span>
-              { product.stock > 0 && (<BuyButton item={product} />) }
-            </span>
+      <span className="sp-product__price">{formatPrice(price)}</span>
+              {product.stock > 0 && (<BuyButton item={product} />)}
+      </span>
           </div>
         </div>
       </Fragment>

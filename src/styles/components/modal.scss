@@ -12,11 +12,25 @@
   margin: 0pt auto;
   outline: none;
 
+  .sp-product__image-left {
+    left: 1rem;
+  }
+
+  .sp-product__image-right {
+    right: 1rem;
+  }
+
+  &:hover, & sp-modal:hover {
+    .sp-product__image-right, .sp-product__image-left {
+      opacity: 1;
+    }
+  }
+
   &--image {
-    top: 2rem;
-    left: 2rem;
-    right: 2rem;
-    bottom: 2rem;
+    top: 0rem;
+    left: 0rem;
+    right: 0rem;
+    bottom: 0rem;
     max-width: none;
 
     @include breakpoint(small) {
@@ -82,5 +96,8 @@
     & &__contents {
       padding: 0;
     }
+  }
+  img {
+    margin: 0 3rem;
   }
 }

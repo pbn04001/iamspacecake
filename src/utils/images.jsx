@@ -22,9 +22,12 @@ export const getImages = (product) => {
   return images
 }
 
-export const getFullPicture = (product, altText, onClick = null) => {
-  const images = getImages(product)
-  return (<img src={images.original[0]} alt={altText} style={{ width: 'auto', height: 'auto' }} onClick={onClick} />)  // eslint-disable-line
+export const getFullPicture = (images, currentImage = 0, altText, onClick = null) => {
+  return (<img src={images.original[currentImage]} alt={altText} style={{ width: 'auto', height: 'auto' }} onClick={onClick} />)  // eslint-disable-line
+}
+
+export const getProductPicture = (images, currentImage = 0, altText, onClick = null) => {
+  return (<img src={images.original[currentImage]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getPicture = (product, altText, onClick = null) => {

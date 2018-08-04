@@ -9,7 +9,7 @@ const Home = () => (
   <div className="sp-home sp-page">
     <div className="sp-home__top">
       <News className="sp-home__news" />
-      <NewProducts className="sp-home__products" category={CATEGORY.JEWELRY}/>
+      <NewProducts className="sp-home__products" category={CATEGORY.JEWELRY} />
     </div>
   </div>
 )
