@@ -19,7 +19,7 @@ class News extends React.Component {
   }
 
   renderNews = () => {
-    if (!isEmpty(this.props.recentNews)) {
+    if (!isEmpty(this.props.recentNews) && !this.props.recentNews.error) {
       const mainNews = this.props.recentNews[0]
       const {
         title, defaultImage, body,
