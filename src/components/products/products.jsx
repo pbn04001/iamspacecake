@@ -34,14 +34,13 @@ class Products extends Component {
           {this.getPicture(product, title)}
         </NavLink>
         <span className="sp-products__title">{title}</span>
-        {this.props.type === null && (
-          <button
-            type="button"
-            onClick={() => this.addToShoppingCart(product)}
-            className="sp-products__buy-now"
-          >
-            ${price} BUY NOW
-          </button>)}
+        <button
+          type="button"
+          onClick={() => this.addToShoppingCart(product)}
+          className="sp-products__buy-now"
+        >
+          ${price} BUY NOW
+        </button>
       </div>)
   }
 
