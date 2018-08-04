@@ -25,6 +25,7 @@ class App extends React.Component {
     const { children, location } = this.props
     return (
       <div // eslint-disable-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+        className="sp-app-container"
         onClick={event => this.screenClicked(event)}
       >
         { __DEBUG__ && (<div className="sp-not-production">{process.env.NODE_ENV}</div>)}

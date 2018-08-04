@@ -12,7 +12,7 @@
 
   &__spacer {
     float: right;
-    height: 3rem;
+    height: 6rem;
     width: 0;
 
     &_2 {
@@ -27,8 +27,8 @@
 
   &__image {
     float: right;
-    width: 18rem;
-    padding: $--spacing-unit-x6 0 $--spacing-unit-x8 $--spacing-unit-x8;
+    width: 55%;
+    padding: $--spacing-unit-x3 0 $--spacing-unit-x8 $--spacing-unit-x8;
 
     @include breakpoint(medium) {
       width: 100%;

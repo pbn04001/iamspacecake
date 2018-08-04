@@ -92,6 +92,9 @@ body {
 
   .sp-page {
     padding-right: $--spacing-unit-x2;
+    max-width: 1300px;
+    margin: 0pt auto;
+
 
     @include breakpoint(small) {
       padding-right: 0;

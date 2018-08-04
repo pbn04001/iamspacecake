@@ -38,8 +38,7 @@ class News extends React.Component {
       return (
         <Fragment>
           <article>
-            <PageHeader>NEW ARRIVALS</PageHeader>
-            <div className="sp-news__title">{title}</div>
+            <PageHeader>NEW: {title}</PageHeader>
             <span className="sp-news__spacer" />
             <span className="sp-news__spacer_2" />
             {rightContent}

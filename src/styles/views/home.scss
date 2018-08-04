@@ -12,7 +12,7 @@
 
   &__news {
     order: 2;
-    flex-basis: 40%;
+    flex-basis: 45%;
 
     @include breakpoint(medium) {
       flex-basis: 45%;
@@ -21,7 +21,7 @@
 
   &__products {
     order: 1;
-    flex-basis: 60%;
+    flex-basis: 55%;
     padding-top: 2rem;
 
     @include breakpoint(medium) {
