@@ -31,9 +31,7 @@ const config = {
   rest_context_path: '/content',
   node_context_path: '/api',
   pay_pal_environment: ((__PROD__) ? 'production' : 'sandbox'),
-
-  // FEATURE FLAGS
-  feature_search: __DEV__ ? true : false,
+  pay_pal_environment: ((__PROD__) ? 'production' : 'sandbox'),
 }
 
 // ------------------------------------

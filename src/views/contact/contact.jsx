@@ -49,10 +49,6 @@ class Contact extends Component {
     } else {
       body = (
         <Fragment>
-          <div className="sp-body">
-            IF YOU WOULD LIKE ME TO PERFORM AT AN EVENT, PLEASE PROVIDE INFORMATION
-            ABOUT THE EVENT ALONG WITH THE BEST WAY TO REACH YOU.
-          </div>
           <form className="sp-form" onSubmit={handleSubmit(this.onSubmit)}>
             <div>
               <label htmlFor="contact-name">NAME</label>

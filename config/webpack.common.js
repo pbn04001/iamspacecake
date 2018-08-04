@@ -33,10 +33,7 @@ module.exports = {
         REST_ENDPOINT: JSON.stringify(project.rest_context_path),
         NODE_ENDPOINT: JSON.stringify(project.node_context_path),
         NODE_ENV: JSON.stringify(project.env),
-        PAY_PAL_ENVIRONMENT: JSON.stringify(project.pay_pal_environment),
-        FEATURES: {
-          SEARCH: project.feature_search,
-        },
+        PAY_PAL_ENVIRONMENT: JSON.stringify(project.pay_pal_environment)
       },
     }),
     new CleanWebpackPlugin(['dist']),

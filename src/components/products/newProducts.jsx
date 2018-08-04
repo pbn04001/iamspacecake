@@ -58,7 +58,7 @@ class NewProducts extends Component {
   render() {
     return (
       <Container className={classnames('sp-new-products', this.props.className)}>
-        <h3>JEWERLY</h3>
+        <h3>JEWELRY</h3>
         {this.renderNewProducts()}
         <NavLink to="/shop">
           <Button>SHOP NOW</Button>

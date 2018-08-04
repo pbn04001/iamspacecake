@@ -7,7 +7,6 @@ export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete
       return {
         sku: item.nid, // Product Id
         name: item.title,
-        description: `https://www.iamspacecake.com/product/${item.nid}`,
         price: `${item.price}`,
         currency: 'USD',
         quantity: item.quantity,
