@@ -9,7 +9,7 @@ import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { getSmallPicture, getMediumPicture } from 'utils/images'
 import { PRODUCTS_TYPE } from './constants'
 
-import 'styles/components/products/products.scss'
+import './productsStyles.scss'
 
 class Products extends Component {
   getPicture = (product, title) => {

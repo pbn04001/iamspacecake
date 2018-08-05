@@ -1,7 +1,7 @@
 @import 'src/styles/common.scss';
 
 .sp-products{
-  padding: $--spacing-unit-x4;
+  padding: $--spacing-unit-x4 0;
 
   &__title {
     font-size: $font-size-medium;
@@ -23,15 +23,19 @@
 
   &__image {
     display: inline-block;
-    padding: 0 $--spacing-unit-x5 $--spacing-unit-x5 $--spacing-unit-x5;
-    width: 17rem;
+    padding: 0 $--spacing-unit-x5 $--spacing-unit-x5 0;
+    width: calc(25% - #{$--spacing-unit-x5});
 
     @include breakpoint(medium) {
-      width: 14rem;
+      width: calc(33% - #{$--spacing-unit-x5});
     }
 
     @include breakpoint(small) {
-      width: 17rem;
+      width: calc(50% - #{$--spacing-unit-x5});
+    }
+
+    @include breakpoint(mobile) {
+      width: 100%;
     }
 
     img {

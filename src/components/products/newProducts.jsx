@@ -44,31 +44,34 @@ class NewProducts extends Component {
       </div>)
   }
 
-  renderNewProducts = () => {
-    let { products, category } = this.props
-    if (category) {
-      products = this.props.productsCategory[category]
-    }
+  renderNewProducts = (products) => {
+    const someProducts = products.length > 4 ?  products.slice(0, 4) : products
     const productsArray = []
-    if (!isEmpty(products)) {
-      if (products.length > 4) {
-        products = products.slice(0, 4)
-      }
-      products.forEach(product => productsArray.push(this.renderNewProduct(product)))
+    if (!isEmpty(someProducts)) {
+      someProducts.forEach(product => productsArray.push(this.renderNewProduct(product)))
     }
     return (<div className="sp-new-products__holder">{productsArray}</div>)
   }
 
   render() {
-    return (
-      <Container className={classnames('sp-new-products', this.props.className)}>
-        <h3>{ this.props.category ? this.props.category.toUpperCase() : 'NEW ARRIVALS'}</h3>
-        {this.renderNewProducts()}
-        { /* <NavLink to="/shop">
-          <Button>SEE MORE</Button>
-        </NavLink> */ }
-      </Container>
-    )
+    let { products } = this.props
+    const { category } = this.props
+    if (category) {
+      products = this.props.productsCategory[category]
+    }
+    if (products && products.length > 0) {
+      const link = category ? `/shop/${category}` : '/shop'
+      return (
+        <Container className={classnames('sp-new-products', this.props.className)}>
+          <h3>{this.props.category ? this.props.category.toUpperCase() : 'NEW ARRIVALS'}</h3>
+          {this.renderNewProducts(products)}
+          <NavLink to={link}>
+            <Button>SEE MORE</Button>
+          </NavLink>
+        </Container>
+      )
+    }
+    return null;
   }
 }
 

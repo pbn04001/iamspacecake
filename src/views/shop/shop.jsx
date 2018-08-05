@@ -14,10 +14,13 @@ class Shop extends Component {
     loadProducts: PropTypes.func.isRequired,
     products: PropTypes.array.isRequired,
     category: PropTypes.string,
+    match: PropTypes.object.isRequired,
   }
 
   componentDidMount() {
-    this.fetchProducts(this.props.category)
+    const { match } = this.props
+    const category = match.params.category ? match.params.category : this.props.category
+    this.fetchProducts(category)
   }
 
   categoryChange = (e) => {

@@ -14,7 +14,7 @@ const PublicRoutes = routeProps => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/cart" component={Cart} />
-      <Route exact path="/shop" component={Shop} />
+      <Route exact path="/shop/:category" component={Shop} />
       <Route exact path="/product/:id" component={Product} />
       <Route exact path="/order-complete" component={OrderComplete} />
       <Route exact path="/contact" component={Contact} />
