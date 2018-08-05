@@ -13,6 +13,7 @@ const Home = () => (
       <NewArrivals className="sp-home__new-arrivals" />
     </div>
     <NewProducts className="sp-home__products" category={CATEGORY.JEWELRY} />
+    <NewProducts className="sp-home__products" category={CATEGORY.PAINTING} />
   </div>
 )
 

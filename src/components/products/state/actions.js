@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'redux-saga/effects'
 import productsService from 'service/product'
 import runSagas from 'store/sagas'
 import types from './actionTypes'
@@ -23,7 +23,7 @@ function* loadNewProductsSaga(action) {
 }
 
 export function* getWatchers() {
-  yield takeLatest(types.loadNewProducts, loadNewProductsSaga)
+  yield takeEvery(types.loadNewProducts, loadNewProductsSaga)
 }
 
 runSagas(getWatchers)

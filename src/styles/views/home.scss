@@ -19,5 +19,9 @@
     order: 2;
     width: 200px;
     flex: 0 0 200px;
+
+    @include breakpoint(small){
+      display: none;
+    }
   }
 }

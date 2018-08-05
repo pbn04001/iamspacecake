@@ -11,10 +11,10 @@ import { getSmallPicture } from 'utils/images'
 import { Button } from 'components/button'
 import { loadNewProducts } from './state/actions'
 
-import 'styles/components/products/newProducts.scss'
+import './newProductsStyles.scss'
 
 class NewProducts extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.loadNewProducts(this.props.category)
   }
 
@@ -25,10 +25,11 @@ class NewProducts extends Component {
 
   renderNewProduct = (product) => {
     const {
-      title, uuid, nid, price,
+      title, nid, price,
     } = product
+    const key = this.props.category ? `sp-new-${this.props.category}-${nid}` : `sp-new-products-${nid}`
     return (
-      <div className="sp-new-products__image" key={`sp-new-products-${uuid}`}>
+      <div className="sp-new-products__image" key={key}>
         <NavLink to={`/product/${nid}`}>
           {getSmallPicture(product, title)}
         </NavLink>
@@ -44,13 +45,16 @@ class NewProducts extends Component {
   }
 
   renderNewProducts = () => {
-    let { products } = this.props
-    if (products.length > 4) {
-      products = products.slice(0, 4)
+    let { products, category } = this.props
+    if (category) {
+      products = this.props.productsCategory[category]
     }
     const productsArray = []
     if (!isEmpty(products)) {
-      products.map(product => productsArray.push(this.renderNewProduct(product)))
+      if (products.length > 4) {
+        products = products.slice(0, 4)
+      }
+      products.forEach(product => productsArray.push(this.renderNewProduct(product)))
     }
     return (<div className="sp-new-products__holder">{productsArray}</div>)
   }
@@ -58,11 +62,11 @@ class NewProducts extends Component {
   render() {
     return (
       <Container className={classnames('sp-new-products', this.props.className)}>
-        <h3>JEWELRY</h3>
+        <h3>{ this.props.category ? this.props.category.toUpperCase() : 'NEW ARRIVALS'}</h3>
         {this.renderNewProducts()}
-        <NavLink to="/shop">
+        { /* <NavLink to="/shop">
           <Button>SEE MORE</Button>
-        </NavLink>
+        </NavLink> */ }
       </Container>
     )
   }
@@ -71,6 +75,7 @@ class NewProducts extends Component {
 NewProducts.propTypes = {
   className: PropTypes.string,
   products: PropTypes.array,
+  productsCategory: PropTypes.object,
   loadNewProducts: PropTypes.func.isRequired,
   addItemToShoppingCart: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
@@ -79,6 +84,7 @@ NewProducts.propTypes = {
 
 function mapStateToProps(state) {
   return {
+    productsCategory: state.products.productsCategory,
     products: state.products.products,
   }
 }

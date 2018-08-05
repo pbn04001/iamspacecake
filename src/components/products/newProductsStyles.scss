@@ -1,10 +1,10 @@
-@import '../../common.scss';
+@import 'src/styles/common.scss';
 
 .sp-new-products{
   width: 100%;
 
   &.sp-container {
-    padding: $--spacing-unit-x6 $--spacing-unit-x2 $--spacing-unit-x6 $--spacing-unit-x6;
+    padding: 0 $--spacing-unit-x2 $--spacing-unit-x6 $--spacing-unit-x6;
   }
 
   &__holder {
@@ -33,15 +33,15 @@
   &__image {
     display: inline-block;
     margin: 0 $--spacing-unit-x4 $--spacing-unit-x4 0;
-    width: calc(50% - #{$--spacing-unit-x4});
+    width: calc(25% - #{$--spacing-unit-x4});
 
     @include breakpoint(medium) {
-      width: 99%;
+      width: calc(50% - #{$--spacing-unit-x4});
     }
 
     @include breakpoint(small) {
       display: inline-block;
-      width: 45%;
+      width: 100;
     }
 
     img {
