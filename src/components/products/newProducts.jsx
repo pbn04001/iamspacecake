@@ -63,7 +63,7 @@ class NewProducts extends Component {
       const link = category ? `/shop/${category}` : '/shop'
       return (
         <Container className={classnames('sp-new-products', this.props.className)}>
-          <h3>{this.props.category ? this.props.category.toUpperCase() : 'NEW ARRIVALS'}</h3>
+          <h3>{this.props.title ? this.props.title : 'NEW ARRIVALS'}</h3>
           {this.renderNewProducts(products)}
           <NavLink to={link}>
             <Button>SEE MORE</Button>
@@ -83,6 +83,7 @@ NewProducts.propTypes = {
   addItemToShoppingCart: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   category: PropTypes.string,
+  title: PropTypes.string,
 }
 
 function mapStateToProps(state) {

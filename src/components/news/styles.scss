@@ -7,5 +7,13 @@
     padding-top: $--spacing-unit-x8;
     text-align: justify;
     font-size: $font-size-xlarge;
+
+    @include breakpoint(medium) {
+      font-size: $font-size-large;
+    }
+
+    @include breakpoint(small) {
+      font-size: $font-size-medium;
+    }
   }
 }
