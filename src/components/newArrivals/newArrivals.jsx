@@ -29,7 +29,7 @@ class NewArrivals extends React.Component {
         title, price, nid,
       } = product
       return (
-        <article>
+        <article key={`new-arrivals-${nid}`}>
           <NavLink to={`/product/${nid}`}>
             {getSmallPicture(product, title)}
           </NavLink>
