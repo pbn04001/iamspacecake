@@ -1,28 +1,27 @@
 @import '../common.scss';
 
 .sp-shop {
-
-  &.sp-page {
-
-  }
-
   &__header {
     display: inline-block;
     margin: $--spacing-unit-x6 $--spacing-unit-x8 0 $--spacing-unit-x8;
 
     .sp-page-header {
-       display: inline-block;
-       margin-right: $--spacing-unit-x10;
+      display: inline-block;
+      margin-right: $--spacing-unit-x10;
 
       @include breakpoint(small) {
-        margin-bottom:$--spacing-unit-x4;
+        margin-bottom: $--spacing-unit-x4;
       }
     }
 
     .sp-select {
       vertical-align: top;
-       display: inline-block;
-       margin: $--spacing-unit-x2;
+      display: inline-block;
+      margin-left: 3rem;
+      padding: $--spacing-unit-x2;
+      font-size: $font-size-large;
+      width: 12rem;
+      height: 2rem;
     }
   }
 }
