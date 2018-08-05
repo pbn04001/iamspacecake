@@ -46,7 +46,7 @@ export const getMediumPicture = (product, altText, onClick = null) => {
   return (<img src={images.medium[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
-export const getLargePicture = (product, altText, onClick = null) => {
+export const getNewsImage = (product, altText, onClick = null) => {
   const images = getImages(product)
   return (<img src={images.large[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }

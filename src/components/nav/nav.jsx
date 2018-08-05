@@ -27,19 +27,21 @@ class Nav extends Component {
     return (
       <Fragment>
         <div className="sp-nav-bar">
-          <NavLink
-            to="/"
-            className="sp-logo"
-            title="SpaceCake Productions"
-          />
-          <nav className={`sp-location-${this.locationString(location)}`}>
-            <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
-              <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
-              <li><NavLink to="/shop">SHOP</NavLink></li>
-              { /* <li><NavLink to="/gallery">GALLERY</NavLink></li> */ }
-              <li><NavLink to="/contact">CONTACT</NavLink></li>
-            </ul>
-          </nav>
+          <div className="sp-nav-bar__inner">
+            <NavLink
+              to="/"
+              className="sp-logo"
+              title="SpaceCake Productions"
+            />
+            <nav className={`sp-location-${this.locationString(location)}`}>
+              <ul className={this.props.isMenuActive ? 'sp-active' : ''}>
+                <button type="button" className="sp-mobile-menu" onClick={() => this.toggleMenuActive()} />
+                <li><NavLink to="/shop">SHOP</NavLink></li>
+                {/* <li><NavLink to="/gallery">GALLERY</NavLink></li> */}
+                <li><NavLink to="/contact">CONTACT</NavLink></li>
+              </ul>
+            </nav>
+          </div>
         </div>
       </Fragment>)
   }

@@ -9,6 +9,14 @@
   background-color: $black;
   z-index: 10;
 
+  &__inner {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    max-width: 1300px;
+    height: auto;
+  }
+
   @include breakpoint(medium) {
     height: 6rem;
   }
@@ -24,7 +32,7 @@
     width: 18.375rem;
     height: 4.6875rem;
     margin: 1.25rem;
-    margin-left: 3.5rem;
+    margin-left: 2rem;
 
     @include breakpoint(medium) {
       margin: 1rem;
@@ -52,7 +60,7 @@
       right: 3.125rem;
       list-style: none;
       overflow: visible;
-      padding: 2rem 1.5rem;
+      padding: 2rem 0 2rem 1.5rem;
 
       .sp-mobile-menu {
         display: none;
@@ -71,7 +79,7 @@
       }
 
       @include breakpoint(medium) {
-        padding: 1.75rem 1rem;
+        padding: 1.75rem 0 1.75rem 1rem;
       }
 
       @include breakpoint(small) {

@@ -10,6 +10,14 @@ header {
     margin: $--spacing-unit-x3 $--spacing-unit-x3 $--spacing-unit-x3 $--spacing-unit-x11;
   }
 
+  .sp-header {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+    max-width: 1300px;
+    height: auto;
+  }
+
   .sp-search {
     background: url(/icons/search.svg) no-repeat;
     background-size: 1.5625rem 1.5625rem;

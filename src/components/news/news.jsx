@@ -6,10 +6,9 @@ import isEmpty from 'lodash/isEmpty'
 import classnames from 'classnames'
 import { NavLink } from 'react-router-dom'
 import { Container, CONTAINER_TYPE } from 'components/container'
-import { Button } from 'components/button'
 import { PageHeader } from 'components/typography'
 import { getRecentNews } from './state/actions'
-import { getLargePicture } from '../../utils/images'
+import { getNewsImage } from '../../utils/images'
 
 import './styles.scss'
 
@@ -29,7 +28,7 @@ class News extends React.Component {
           <article>
             <PageHeader>{title}</PageHeader>
             <NavLink to="/shop">
-              {getLargePicture(mainNews, title)}
+              {getNewsImage(mainNews, title)}
             </NavLink>
             <div
               className="sp-article-body"
