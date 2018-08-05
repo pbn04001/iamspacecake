@@ -1,7 +1,3 @@
-import { createSelector } from 'reselect'
-
-export const getShoppingCart = state => state && state.cart
-
 export const shoppingCartItems = (items) => {
   const shoppingCartArray = []
   Object.keys(items).forEach((key) => {
@@ -19,22 +15,10 @@ export const shoppingCartTotal = (items) => {
   return total
 }
 
-export const getShoppingCartItems = createSelector(
-  getShoppingCart,
-  cart => shoppingCartItems(cart.items),
-)
+export const getShoppingCartItems = state => shoppingCartItems(state.cart.items)
 
-export const getShoppingCartTotal = createSelector(
-  getShoppingCart,
-  cart => shoppingCartTotal(cart.items),
-)
+export const getShoppingCartTotal = state => shoppingCartTotal(state.cart.items)
 
-export const getErrorModal = createSelector(
-  getShoppingCart,
-  cart => cart.errorModal,
-)
+export const getErrorModal = state => state.cart.errorModal
 
-export const getOrderResults = createSelector(
-  getShoppingCart,
-  cart => cart.orderResults,
-)
+export const getOrderResults = state => state.cart.orderResults

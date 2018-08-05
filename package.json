@@ -5,24 +5,18 @@
   "main": "index.js",
   "dependencies": {
     "classnames": "^2.2.6",
-    "custom-event-polyfill": "^0.3.0",
     "history": "^4.7.2",
     "humps": "^2.0.1",
-    "isomorphic-fetch": "^2.2.1",
     "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.1.0",
     "react-modal": "^3.5.1",
     "react-redux": "~5.0.5",
-    "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "redux": "~3.6.0",
     "redux-form": "^7.4.2",
-    "redux-saga": "^0.16.0",
-    "redux-saga-middleware": "^1.0.3",
-    "reselect": "^3.0.1",
-    "url-search-params-polyfill": "^4.0.0"
+    "redux-saga": "^0.16.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
