@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import runSagas from 'store/sagas'
-import types from './actionTypes'
 import productsService from 'service/product'
+import types from './actionTypes'
 
 export const getNewArrivals = () => ({
   type: types.getNewArrivals,

@@ -53,8 +53,6 @@ News.propTypes = {
   className: PropTypes.string,
   recentNews: PropTypes.array.isRequired,
   getRecentNews: PropTypes.func.isRequired,
-  history: PropTypes.object,
-  addItemToShoppingCart: PropTypes.func,
 }
 
 function mapStateToProps(state) {

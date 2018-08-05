@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { withRouter } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { Container, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
@@ -26,11 +26,13 @@ class NewArrivals extends React.Component {
     const { newArrivals } = this.props
     return newArrivals.map((product) => {
       const {
-        title, price,
+        title, price, nid,
       } = product
       return (
         <article>
-          {getSmallPicture(product, title)}
+          <NavLink to={`/product/${nid}`}>
+            {getSmallPicture(product, title)}
+          </NavLink>
           <span className="sp-new-arrivals__title">{title}</span>
           <button
             type="button"
@@ -45,7 +47,7 @@ class NewArrivals extends React.Component {
 
   render() {
     const { newArrivals } = this.props
-    if (newArrivals && newArrivals.length > 0 ) {
+    if (newArrivals && newArrivals.length > 0) {
       return (
         <Container type={CONTAINER_TYPE.TOP_LEFT} className={classnames('sp-new-arrivals', this.props.className)}>
           <PageHeader>NEW ARRIVALS</PageHeader>
@@ -53,7 +55,7 @@ class NewArrivals extends React.Component {
         </Container>
       )
     }
-    return null;
+    return null
   }
 }
 

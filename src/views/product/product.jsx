@@ -38,7 +38,7 @@ class Product extends Component {
   }
 
   setNewImage = (images, backward) => {
-    const currentImage = this.state.currentImage // eslint-disable-line react/no-access-state-in-setstate
+    const { currentImage } = this.state
     let newIndex = backward ? currentImage - 1 : currentImage + 1
     if (newIndex < 0) {
       newIndex = images.original.length - 1
@@ -77,22 +77,25 @@ class Product extends Component {
 
   renderImagePicker = (images) => {
     if (images.original.length > 1) {
-      return (<Fragment>
-        <div
-          className="sp-product__image-left"
-          onClick={() => {
-            this.setNewImage(images, true)
-          }}
-        ></div>
-        <div
-          className="sp-product__image-right"
-          onClick={() => {
-            this.setNewImage(images, false)
-          }}
-        ></div>
-      </Fragment>)
+      return (
+        <Fragment>
+          <button
+            type="button"
+            className="sp-product__image-left"
+            onClick={() => {
+              this.setNewImage(images, true)
+            }}
+          />
+          <button
+            type="button"
+            className="sp-product__image-right"
+            onClick={() => {
+              this.setNewImage(images, false)
+            }}
+          />
+        </Fragment>)
     }
-    return null;
+    return null
   }
 
   renderProduct = () => {
@@ -121,9 +124,9 @@ class Product extends Component {
               dangerouslySetInnerHTML={{ __html: body }} // eslint-disable-line react/no-danger
             />
             <span className="sp-product__buy-line">
-      <span className="sp-product__price">{formatPrice(price)}</span>
+              <span className="sp-product__price">{formatPrice(price)}</span>
               {product.stock > 0 && (<BuyButton item={product} />)}
-      </span>
+            </span>
           </div>
         </div>
       </Fragment>

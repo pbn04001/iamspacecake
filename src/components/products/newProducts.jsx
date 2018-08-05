@@ -45,7 +45,7 @@ class NewProducts extends Component {
   }
 
   renderNewProducts = (products) => {
-    const someProducts = products.length > 4 ?  products.slice(0, 4) : products
+    const someProducts = products.length > 4 ? products.slice(0, 4) : products
     const productsArray = []
     if (!isEmpty(someProducts)) {
       someProducts.forEach(product => productsArray.push(this.renderNewProduct(product)))
@@ -55,7 +55,7 @@ class NewProducts extends Component {
 
   render() {
     let { products } = this.props
-    const { category } = this.props
+    const { category, title } = this.props
     if (category) {
       products = this.props.productsCategory[category]
     }
@@ -66,12 +66,12 @@ class NewProducts extends Component {
           <h3>{this.props.title ? this.props.title : 'NEW ARRIVALS'}</h3>
           {this.renderNewProducts(products)}
           <NavLink to={link}>
-            <Button>SEE MORE</Button>
+            <Button>SEE MORE {title}</Button>
           </NavLink>
         </Container>
       )
     }
-    return null;
+    return null
   }
 }
 
