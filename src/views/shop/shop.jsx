@@ -7,7 +7,7 @@ import Products from 'components/products/products'
 import PageHeader from 'components/typography/pageHeader'
 import { loadProducts } from './state/actions'
 
-import 'styles/views/shop.scss'
+import './styles.scss'
 
 class Shop extends Component {
   static propTypes = {

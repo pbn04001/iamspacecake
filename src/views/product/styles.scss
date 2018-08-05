@@ -38,6 +38,7 @@
   }
 
   &__image-left {
+    outline: none;
     cursor: pointer;
     background: url(/icons/leftArrow.svg) no-repeat;
     width: 3rem;
@@ -55,6 +56,7 @@
   }
 
   &__image-right {
+    outline: none;
     cursor: pointer;
     background: url(/icons/rightArrow.svg) no-repeat;
     width: 3rem;

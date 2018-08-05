@@ -4,7 +4,7 @@ import NewProducts from 'components/products/newProducts'
 import NewArrivals from 'components/newArrivals/newArrivals'
 import { CATEGORY } from 'service/product'
 
-import 'styles/views/home.scss'
+import './styles.scss'
 
 const Home = () => (
   <div className="sp-home sp-page">

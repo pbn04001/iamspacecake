@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-import 'styles/components/container.scss'
+import './styles.scss'
 
 export const CONTAINER_TYPE = {
   TOP_LEFT: 'TOP_LEFT',
