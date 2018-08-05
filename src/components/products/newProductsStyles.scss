@@ -44,7 +44,7 @@
       width: calc(50% - #{$--spacing-unit-x4});
     }
 
-    @include breakpoint(small) {
+    @include breakpoint(mobile) {
       display: inline-block;
       width: 100%;
     }

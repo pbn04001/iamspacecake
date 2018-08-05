@@ -45,7 +45,7 @@ class NewArrivals extends React.Component {
 
   render() {
     const { newArrivals } = this.props
-    if (newArrivals & newArrivals.length > 0 ) {
+    if (newArrivals && newArrivals.length > 0 ) {
       return (
         <Container type={CONTAINER_TYPE.TOP_LEFT} className={classnames('sp-new-arrivals', this.props.className)}>
           <PageHeader>NEW ARRIVALS</PageHeader>
