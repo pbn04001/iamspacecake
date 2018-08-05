@@ -61,7 +61,7 @@ class NewProducts extends Component {
         <h3>JEWELRY</h3>
         {this.renderNewProducts()}
         <NavLink to="/shop">
-          <Button>SHOP NOW</Button>
+          <Button>SEE MORE</Button>
         </NavLink>
       </Container>
     )

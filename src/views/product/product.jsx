@@ -37,6 +37,17 @@ class Product extends Component {
     return <span className={className}>SOLD</span>
   }
 
+  setNewImage = (images, backward) => {
+    const currentImage = this.state.currentImage // eslint-disable-line react/no-access-state-in-setstate
+    let newIndex = backward ? currentImage - 1 : currentImage + 1
+    if (newIndex < 0) {
+      newIndex = images.original.length - 1
+    } else if (newIndex > images.original.length - 1) {
+      newIndex = 0
+    }
+    this.setState({ currentImage: newIndex })
+  }
+
   openModal = () => this.props.toggleModal(true)
 
   closeModal = () => this.props.toggleModal(false)
@@ -64,26 +75,20 @@ class Product extends Component {
     )
   }
 
-  setNewImage = (images, backward) => {
-    let newIndex = backward ? this.state.currentImage - 1 : this.state.currentImage + 1
-    if (newIndex < 0) {
-      newIndex = images.original.length - 1
-    } else if (newIndex > images.original.length - 1) {
-      newIndex = 0
-    }
-    this.setState({ currentImage: newIndex })
-  }
-
   renderImagePicker = (images) => {
     if (images.original.length > 1) {
       return (<Fragment>
         <div
           className="sp-product__image-left"
-          onClick={() => { this.setNewImage(images, true)}}
+          onClick={() => {
+            this.setNewImage(images, true)
+          }}
         ></div>
         <div
           className="sp-product__image-right"
-          onClick={() => { this.setNewImage(images, false)}}
+          onClick={() => {
+            this.setNewImage(images, false)
+          }}
         ></div>
       </Fragment>)
     }

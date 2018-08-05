@@ -29,7 +29,7 @@ const parseProducts = (products) => {
 }
 
 const ProductsService = {
-  fetchNewProducts: (category) => {
+  fetchNewArrivals: (category) => {
     const url = category
       ? `/api/products/category/new/${category}?_format=json`
       : '/api/products/new?_format=json'

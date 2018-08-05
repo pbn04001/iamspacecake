@@ -1,21 +1,15 @@
 import types from './actionTypes'
 
 const initialState = {
-  category: '',
-  products: [],
+  newArrivals: [],
 }
 
 function news(state = initialState, action) {
   switch (action.type) {
-    case types.loadProducts:
+    case types.updateNewArrivals:
       return {
         ...state,
-        category: action.payload.category,
-      }
-    case types.productsLoaded:
-      return {
-        ...state,
-        products: action.payload.products,
+        newArrivals: action.payload.newArrivals,
       }
     default:
       return state

@@ -1,0 +1,11 @@
+@import 'src/styles/common.scss';
+
+.sp-news {
+
+  .sp-article-body {
+    display: block;
+    padding-top: $--spacing-unit-x4;
+    text-align: justify;
+    font-size: $font-size-xlarge;
+  }
+}

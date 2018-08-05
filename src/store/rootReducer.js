@@ -9,7 +9,7 @@ import news from 'components/news/state/reducers'
 import products from 'components/products/state/reducers'
 import cart from 'views/cart/state/reducers'
 import contact from 'views/contact/state/reducers'
-import preview from 'views/preview/state/reducers'
+import newArrivals from 'components/newArrivals/state/reducers'
 
 const appReducer = combineReducers({
   routing: routerReducer,
@@ -22,7 +22,7 @@ const appReducer = combineReducers({
   product,
   shop,
   contact,
-  preview,
+  newArrivals,
 })
 
 const rootReducer = (state, action) => appReducer(state, action)
