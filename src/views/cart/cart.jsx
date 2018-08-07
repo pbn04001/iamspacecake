@@ -20,7 +20,6 @@ import {
 import {
   toggleErrorModal,
   removeItemFromShoppingCart,
-  purchaseComplete,
 } from './state/actions'
 import { ERROR_MODAL_MESSAGING } from './state/constants'
 
@@ -28,13 +27,11 @@ import './styles.scss'
 
 class Cart extends Component {
   static propTypes = {
-    history: PropTypes.object.isRequired,
     shoppingCartItems: PropTypes.array.isRequired,
     shoppingCartTotal: PropTypes.number.isRequired,
     toggleErrorModal: PropTypes.func.isRequired,
     errorModal: PropTypes.object.isRequired,
     removeItemFromShoppingCart: PropTypes.func.isRequired,
-    purchaseComplete: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
@@ -146,7 +143,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    toggleErrorModal, removeItemFromShoppingCart, purchaseComplete,
+    toggleErrorModal, removeItemFromShoppingCart,
   },
   dispatch,
 )

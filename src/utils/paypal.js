@@ -48,9 +48,9 @@ export const renderPaypalButton = (shoppingCartItems, buttonId, purchaseComplete
           })
           if (linkFound) {
             window.location.href = linkFound.href
-          } else {
-            return purchaseError('No redirect link found')
+            return res.id
           }
+          return purchaseError('No redirect link found')
         })
         .catch((error) => {
           if (__DEBUG__) {

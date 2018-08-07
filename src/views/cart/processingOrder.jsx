@@ -6,9 +6,8 @@ import { Container, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { ERROR_MODAL_MESSAGING } from './state/constants'
 import { ERROR_TYPES } from 'utils/api/constants'
-
+import { ERROR_MODAL_MESSAGING } from './state/constants'
 import {
   purchaseComplete,
   retrievePayment,
@@ -23,6 +22,7 @@ class ProcessingOrder extends Component {
     purchaseComplete: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
     retrievePayment: PropTypes.func.isRequired,
+    orderResults: PropTypes.object,
     retrievedPayment: PropTypes.object,
   }
 
@@ -39,7 +39,7 @@ class ProcessingOrder extends Component {
 
     if (orderResults) {
       this.props.history.push('/')
-    }else if (retrievedPayment) {
+    } else if (retrievedPayment) {
       if (retrievedPayment.success) {
         this.props.purchaseComplete(retrievedPayment.results)
         this.props.history.push('/order-complete')
