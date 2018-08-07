@@ -38,11 +38,10 @@ class ProcessingOrder extends Component {
     const { retrievedPayment, orderResults } = this.props
 
     if (orderResults) {
-      this.props.history.push('/')
+      this.props.history.push('/order-complete')
     } else if (retrievedPayment) {
       if (retrievedPayment.success) {
         this.props.purchaseComplete(retrievedPayment.results)
-        this.props.history.push('/order-complete')
       } else if (retrievedPayment.error) {
         let title
         let message
