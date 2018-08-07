@@ -7,4 +7,6 @@ export default {
   removeItemFromShoppingCart: `${namespace}/removeItemFromShoppingCart`,
   toggleErrorModal: `${namespace}/toggleErrorModal`,
   purchaseComplete: `${namespace}/purchaseComplete`,
+  retrievePayment: `${namespace}/retrievePayment`,
+  paymentRetrieved: `${namespace}/paymentRetrieved`,
 }

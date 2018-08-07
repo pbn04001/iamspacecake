@@ -45,11 +45,6 @@ class Cart extends Component {
     }
   }
 
-  purchaseComplete = (results) => {
-    this.props.purchaseComplete(results.results)
-    this.props.history.push('/order-complete')
-  }
-
   removeItemFromCart = (itemId) => {
     const foundItem = this.props.shoppingCartItems.find(item => parseInt(item.nid, 10) === itemId)
     if (foundItem) this.props.removeItemFromShoppingCart(foundItem)
@@ -124,6 +119,7 @@ class Cart extends Component {
 
   render() {
     const { shoppingCartItems } = this.props
+
     return (
       <div className="sp-cart sp-page">
         {this.renderModal()}

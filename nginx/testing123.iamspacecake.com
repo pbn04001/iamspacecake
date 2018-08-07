@@ -14,19 +14,8 @@
 # Default server configuration
 #
 server {
-    listen 80;
-
-    server_name testing123.iamspacecake.com;
-    return 301 https://testing123.iamspacecake.com$request_uri;
-}
-
-server {
-	listen 443 ssl http2;
-    listen [::]:443 ssl http2;
-
-    ssl on;
-    ssl_certificate /etc/ssl/cert_chain.crt;
-    ssl_certificate_key /etc/ssl/iamspacecake_com.key;
+	listen 80;
+    listen [::]:80;
 
     root /var/www/html/iamspacecake-test;
     index index.html;

@@ -2,6 +2,11 @@
 
 .sp-news {
 
+  h2 {
+    display: block;
+    text-align: center;
+  }
+
   .sp-article-body {
     display: block;
     padding-top: $--spacing-unit-x8;

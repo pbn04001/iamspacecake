@@ -8,6 +8,7 @@ const initialState = {
     visible: false,
   },
   lastUpdated: null,
+  retrievedPayment: null,
 }
 
 const addItemToShoppingCart = (items, item) => {
@@ -46,6 +47,7 @@ function cart(state = initialState, action) {
       return {
         ...state,
         errorModal: { visible: false },
+        retrievedPayment: null,
       }
     case types.addItemToShoppingCart:
       return {
@@ -82,7 +84,14 @@ function cart(state = initialState, action) {
         },
         items: {},
         lastUpdated: null,
+        retrievedPayment: null,
       }
+    case types.paymentRetrieved: {
+      return {
+        ...state,
+        retrievedPayment: action.payload.results,
+      }
+    }
     default:
       return state
   }

@@ -3,6 +3,7 @@ import { withRouter, Switch, Route } from 'react-router-dom'
 import App from 'components/app/app'
 import Home from '../views/home/home'
 import Cart from '../views/cart/cart'
+import ProcessingOrder from '../views/cart/processingOrder'
 import Shop from '../views/shop/shop'
 import Product from '../views/product/product'
 import OrderComplete from '../views/cart/orderComplete'
@@ -14,6 +15,7 @@ const PublicRoutes = routeProps => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/cart" component={Cart} />
+      <Route exact path="/processing-order" component={ProcessingOrder} />
       <Route exact path="/shop" component={Shop} />
       <Route exact path="/shop/:category" component={Shop} />
       <Route exact path="/product/:id" component={Product} />
