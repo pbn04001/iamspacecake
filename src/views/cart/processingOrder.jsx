@@ -6,11 +6,14 @@ import { Container, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { ERROR_MODAL_MESSAGING } from './state/constants'
+import { ERROR_TYPES } from 'utils/api/constants'
 
 import {
   purchaseComplete,
   retrievePayment,
 } from './state/actions'
+import { getOrderResults } from './state/selectors'
 
 import './styles.scss'
 
@@ -26,23 +29,43 @@ class ProcessingOrder extends Component {
   componentDidMount() {
     const { location } = this.props
     const parsed = qs.parse(location.search)
-    if (parsed.paymentId) {
-      this.props.retrievePayment(parsed.paymentId)
+    if (parsed.paymentId && parsed.PayerID) {
+      this.props.retrievePayment(parsed.paymentId, parsed.PayerID)
     }
   }
 
-
   render() {
-    const { retrievedPayment } = this.props
+    const { retrievedPayment, orderResults } = this.props
 
-    if (retrievedPayment) {
+    if (orderResults) {
+      this.props.history.push('/')
+    }else if (retrievedPayment) {
       if (retrievedPayment.success) {
-        console.log(JSON.stringify(retrievedPayment))
-        debugger
-        this.props.purchaseComplete(retrievedPayment.transaction)
+        this.props.purchaseComplete(retrievedPayment.results)
         this.props.history.push('/order-complete')
-      } else {
-        // TODO: Show error message
+      } else if (retrievedPayment.error) {
+        let title
+        let message
+        switch (retrievedPayment.error.type) {
+          case ERROR_TYPES.PURCHASED_ITEMS_NO_LONGER_AVAILABLE:
+            title = ERROR_MODAL_MESSAGING.OUT_OF_STOCK.TITLE
+            message = ERROR_MODAL_MESSAGING.OUT_OF_STOCK.MESSAGE
+            break
+          case ERROR_TYPES.UNABLE_TO_EXECUTE_PAYPAL_PAYMENT:
+            title = ERROR_MODAL_MESSAGING.UNABLE_TO_EXECUTE_PAYMENT.TITLE
+            message = ERROR_MODAL_MESSAGING.UNABLE_TO_EXECUTE_PAYMENT.MESSAGE
+            break
+          default:
+            title = ERROR_MODAL_MESSAGING.UNEXPECTED_ERROR.TITLE
+            message = ERROR_MODAL_MESSAGING.UNEXPECTED_ERROR.MESSAGE
+        }
+        return (
+          <Container type={CONTAINER_TYPE.TOP_LEFT}>
+            <PageHeader>{title}</PageHeader>
+            <div className="sp-cart__body">
+              {message}
+            </div>
+          </Container>)
       }
     }
 
@@ -59,6 +82,7 @@ class ProcessingOrder extends Component {
 function mapStateToProps(state) {
   return {
     retrievedPayment: state.cart.retrievedPayment,
+    orderResults: getOrderResults(state),
   }
 }
 

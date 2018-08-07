@@ -18,7 +18,6 @@ import {
   getErrorModal,
 } from './state/selectors'
 import {
-  emptyCart,
   toggleErrorModal,
   removeItemFromShoppingCart,
   purchaseComplete,
@@ -147,7 +146,7 @@ function mapStateToProps(state) {
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
-    toggleErrorModal, emptyCart, removeItemFromShoppingCart, purchaseComplete,
+    toggleErrorModal, removeItemFromShoppingCart, purchaseComplete,
   },
   dispatch,
 )

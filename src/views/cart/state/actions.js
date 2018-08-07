@@ -3,10 +3,6 @@ import { put, call, takeLatest } from 'redux-saga/effects'
 import cartService from 'service/cart'
 import types from './actionTypes'
 
-export const viewDidMount = () => ({
-  type: types.viewDidMount,
-})
-
 export const addItemToShoppingCart = item => ({
   type: types.addItemToShoppingCart,
   payload: {
@@ -37,25 +33,16 @@ export const purchaseComplete = results => ({
   },
 })
 
-export const retrievePayment = (paymentId) => ({
+export const retrievePayment = (paymentId, payerId) => ({
   type: types.retrievePayment,
   payload: {
     paymentId,
+    payerId,
   },
 })
 
-export const emptyCart = () => ({
-  type: types.emptyShoppingCart,
-})
-
-function* purchaseCompleteSaga() {
-  yield put({
-    type: types.emptyShoppingCart,
-  })
-}
-
 function* retrievePaymentSaga(action) {
-  const results = yield call(cartService.retrievePayment, action.payload.paymentId)
+  const results = yield call(cartService.retrievePayment, action.payload.paymentId, action.payload.payerId)
   yield put({
     type: types.paymentRetrieved,
     payload: {
@@ -65,7 +52,6 @@ function* retrievePaymentSaga(action) {
 }
 
 export function* getWatchers() {
-  yield takeLatest(types.purchaseComplete, purchaseCompleteSaga)
   yield takeLatest(types.retrievePayment, retrievePaymentSaga)
 }
 

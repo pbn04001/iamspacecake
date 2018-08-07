@@ -21,7 +21,7 @@ class OrderComplete extends Component {
   }
 
   continueShopping = () => {
-    this.props.history.push('/shop')
+    this.props.history.push('/')
   }
 
   shoppingCartRight = (orderResults) => {
@@ -39,11 +39,11 @@ class OrderComplete extends Component {
   }
 
   renderShippingAddress = (results) => {
-    const shippingAddress = get(results, 'payer.payer_info.shipping_address')
+    const shippingAddress = get(results, 'payer.payerInfo.shippingAddress')
     if (shippingAddress) {
       return (
         <div className="sp-cart__shipping_address">
-          <span className="sp-cart__address-line">{shippingAddress.recipient_name}</span>
+          <span className="sp-cart__address-line">{shippingAddress.recipientName}</span>
           {!!shippingAddress.line1 && (
             <span className="sp-cart__address-line">{shippingAddress.line1}</span>
           )}
@@ -54,7 +54,7 @@ class OrderComplete extends Component {
             <span className="sp-cart__address-line">{shippingAddress.line3}</span>
           )}
           <span className="sp-cart__address-line">
-            {shippingAddress.city}, { shippingAddress.state } { shippingAddress.postal_code }
+            {shippingAddress.city}, { shippingAddress.state } { shippingAddress.postalCode }
           </span>
         </div>
       )
@@ -75,7 +75,7 @@ class OrderComplete extends Component {
           <PageHeader>ORDER COMPLETE</PageHeader>
           <div className="sp-page__body">
             Thank you for placing your order with Space Cake Productions.<br />
-            You should receive an email from PayPal about your order sent to this address: {orderResults.results.payer.payer_info.email}
+            You should receive an email from PayPal about your order sent to this address: {orderResults.results.payer.payerInfo.email}
           </div>
           <div className="sp-cart__body">
             <div className="sp-cart__left">
