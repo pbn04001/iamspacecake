@@ -5,6 +5,8 @@ import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Button } from 'components/button/button'
 import { Container } from 'components/container'
+import { Validation } from 'utils/validation'
+import 'styles/components/forms.scss'
 import { sendMessage, clearResults } from './state/actions'
 import PageHeader from '../../components/typography/pageHeader'
 
@@ -36,6 +38,7 @@ class Contact extends Component {
 
   getBody = () => {
     const { pristine, submitting, handleSubmit } = this.props
+    const disabled = pristine || submitting;
     let body = null
     if (submitting) {
       body = <div className="sp-body">Message sending....</div>
@@ -47,44 +50,51 @@ class Contact extends Component {
           </div>)
         : <div className="sp-body">THANK YOU FOR CONTACTING ME. I WILL BE IN TOUCH WITH YOUR SHORTLY.</div>
     } else {
+      const { email, required } = Validation;
       body = (
         <Fragment>
           <form className="sp-form" onSubmit={handleSubmit(this.onSubmit)}>
             <div>
               <label htmlFor="contact-name">NAME</label>
-              <div>
+              <div className="sp-form__row">
                 <Field
                   id="contact-name"
                   name="name"
-                  component="input"
+                  component={this.input}
                   type="text"
                   placeholder="Name"
+                  className="sp-form__input"
+                  validate={[required]}
                 />
               </div>
             </div>
-            <div>
+            <div className="sp-form__row">
               <label htmlFor="contact-email">EMAIL</label>
               <div>
                 <Field
                   id="contact-email"
                   name="email"
-                  component="input"
+                  component={this.input}
                   type="text"
                   placeholder="Email"
+                  className="sp-form__input"
+                  validate={[required, email]}
                 />
               </div>
             </div>
-            <div>
+            <div className="sp-form__row">
               <label htmlFor="contact-message">MESSAGE</label>
               <div>
                 <Field
                   id="contact-message"
                   name="message"
-                  component="textarea"
+                  component={this.textArea}
+                  className="sp-form__input"
+                  validate={[required]}
                 />
               </div>
             </div>
-            <Button buttonType="submit" disabled={pristine || submitting}>
+            <Button buttonType="submit" disabled={disabled} className={disabled && 'sp-button--disabled'}>
               SEND MESSAGE
             </Button>
           </form>
@@ -92,6 +102,26 @@ class Contact extends Component {
       )
     }
     return body
+  }
+
+  input = (args) => {
+    const { input, meta } = args
+    const error = meta.touched && meta.invalid && meta.error
+    return (
+      <Fragment>
+        <input {...input} className={`${args.className} ${error && 'sp-form__input--error'}`} />
+        { error && (<div className="sp-form__error">{meta.error}</div>)}
+      </Fragment>)
+  }
+
+  textArea = (args) => {
+    const { input, meta } = args
+    const error = meta.touched && meta.invalid && meta.error
+    return (
+      <Fragment>
+        <textarea {...input} className={`${args.className} ${error && 'sp-form__input--error'}`} />
+        { error && (<div className="sp-form__error">{meta.error}</div>)}
+      </Fragment>)
   }
 
   render() {

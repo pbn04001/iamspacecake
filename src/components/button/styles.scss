@@ -15,4 +15,9 @@
     color: $link;
     padding: 0 $--spacing-unit-x3;
   }
+
+  &--disabled {
+    cursor: none;
+    opacity: .5;
+  }
 }

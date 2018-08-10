@@ -28,7 +28,7 @@ export const getFullPicture = (images, currentImage = 0, altText, onClick = null
 }
 
 export const getProductPicture = (images, currentImage = 0, altText, onClick = null) => {
-  return (<img src={images.original[currentImage]} alt={altText} onClick={onClick} />) // eslint-disable-line
+  return (<img src={images.medium[currentImage]} alt={altText} onClick={onClick} />) // eslint-disable-line
 }
 
 export const getPicture = (product, altText, onClick = null) => {

@@ -1,0 +1,34 @@
+@import '../common.scss';
+
+.sp-form {
+  max-width: 20rem;
+
+  label {
+    font-size: $font-size-medium;
+  }
+
+  &__row {
+    margin: 0 0 $--spacing-unit-x4 0;
+  }
+
+  &__input, textarea {
+    font-size: $font-size-medium;
+    padding: $--spacing-unit-x2;
+    width: 100%;
+    margin: 0;
+
+    &--error {
+      border: 3px solid $red;
+    }
+  }
+
+  textarea {
+    height: 5rem;
+  }
+
+  .sp-form__error {
+    font-size: $font-size-medium;
+    color: $red;
+    padding: $--spacing-unit-x2 0 0 0;
+  }
+}
