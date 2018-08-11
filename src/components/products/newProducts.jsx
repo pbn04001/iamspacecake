@@ -7,7 +7,7 @@ import isEmpty from 'lodash/isEmpty'
 import { NavLink, withRouter } from 'react-router-dom'
 import { Container } from 'components/container'
 import { addItemToShoppingCart } from 'views/cart/state/actions'
-import { getSmallPicture } from 'utils/images'
+import { getNewProductsPicture } from 'utils/images'
 import { Button } from 'components/button'
 import { loadNewProducts } from './state/actions'
 
@@ -31,7 +31,7 @@ class NewProducts extends Component {
     return (
       <div className="sp-new-products__image" key={key}>
         <NavLink to={`/product/${nid}`}>
-          {getSmallPicture(product, title)}
+          {getNewProductsPicture(product, title)}
         </NavLink>
         <span className="sp-new-products__title">{title}</span>
         <button

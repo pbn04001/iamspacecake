@@ -18,6 +18,7 @@ export const getImages = (product) => {
   images.original = adjustImagePath(product.defaultImage)
   images.small = adjustImagePath(product.smallImage)
   images.medium = adjustImagePath(product.mediumImage)
+  images.mediumSquare = adjustImagePath(product.mediumSquareImage)
   images.large = adjustImagePath(product.largeImage)
   images.thumbnail = adjustImagePath(product.thumbnailImage)
   return images
@@ -54,4 +55,27 @@ export const getNewsImage = (product, altText, onClick = null) => {
 export const getThumbnail = (product, altText, onClick = null) => {
   const images = getImages(product)
   return (<img src={images.thumbnail[0]} alt={altText} onClick={onClick} />) // eslint-disable-line
+}
+
+export const getNewProductsPicture = (product, altText) => {
+  const images = getImages(product)
+  return (
+    <picture>
+      <source
+        srcSet={images.mediumSquare[0]}
+        media="(max-width: 1024px) and (min-width: 680px)"
+        type="image/png"
+      />
+      <source
+        srcSet={images.small[0]}
+        media="(max-width: 680px) and (min-width: 500px)"
+        type="image/png"
+      />
+      <source
+        srcSet={images.mediumSquare[0]}
+        media="(max-width: 500px)"
+        type="image/png"
+      />
+      <img src={images.small[0]} alt={altText} />
+    </picture>)
 }
