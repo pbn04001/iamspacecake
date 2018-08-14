@@ -17,6 +17,7 @@ class Shop extends Component {
     match: PropTypes.object.isRequired,
     page: PropTypes.number.isRequired,
     loadingProducts: PropTypes.bool.isRequired,
+    endOfProducts: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {

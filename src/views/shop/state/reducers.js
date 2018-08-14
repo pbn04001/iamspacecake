@@ -28,7 +28,7 @@ function news(state = initialState, action) {
         products: getProducts(state, action),
         page: action.payload.page,
         loadingProducts: false,
-        endOfProducts: action.payload.endOfProducts
+        endOfProducts: action.payload.endOfProducts,
       }
     default:
       return state
