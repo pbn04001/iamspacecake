@@ -1,7 +1,7 @@
 @import 'src/styles/common.scss';
 
 .sp-products{
-  padding: $--spacing-unit-x4 0;
+  padding: $--spacing-unit-x4 0 0 $--spacing-unit-x4;
 
   &__title {
     font-size: $font-size-medium;

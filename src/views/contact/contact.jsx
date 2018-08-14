@@ -38,7 +38,7 @@ class Contact extends Component {
 
   getBody = () => {
     const { pristine, submitting, handleSubmit } = this.props
-    const disabled = pristine || submitting;
+    const disabled = pristine || submitting
     let body = null
     if (submitting) {
       body = <div className="sp-body">Message sending....</div>
@@ -50,7 +50,7 @@ class Contact extends Component {
           </div>)
         : <div className="sp-body">THANK YOU FOR CONTACTING ME. I WILL BE IN TOUCH WITH YOUR SHORTLY.</div>
     } else {
-      const { email, required } = Validation;
+      const { email, required } = Validation
       body = (
         <Fragment>
           <form className="sp-form" onSubmit={handleSubmit(this.onSubmit)}>

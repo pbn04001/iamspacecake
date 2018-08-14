@@ -15,20 +15,47 @@ class Shop extends Component {
     products: PropTypes.array.isRequired,
     category: PropTypes.string,
     match: PropTypes.object.isRequired,
+    page: PropTypes.number.isRequired,
+    loadingProducts: PropTypes.bool.isRequired,
   }
 
   componentDidMount() {
-    const { match } = this.props
-    const category = match.params.category ? match.params.category : this.props.category
-    this.fetchProducts(category)
+    const {
+      match, page, category, loadingProducts,
+    } = this.props
+    if (!loadingProducts) {
+      const curCategory = match.params.category ? match.params.category : category
+      this.fetchProducts(curCategory, page)
+    }
+    this.onScrollEvent = this.onScroll.bind(this)
+    window.addEventListener('scroll', this.onScrollEvent)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScrollEvent)
+  }
+
+  onScroll = () => {
+    const scrollMarker = document.getElementById('sp-shop-bottom-marker')
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    if (scrollMarker.offsetTop < window.innerHeight + scrollTop) {
+      this.fetchMoreProducts()
+    }
   }
 
   categoryChange = (e) => {
-    this.fetchProducts(e.target.value)
+    this.fetchProducts(e.target.value, 0)
   }
 
-  fetchProducts = (category) => {
-    this.props.loadProducts(category)
+  fetchProducts = (category, page, append = false) => {
+    this.props.loadProducts(category, page, append)
+  }
+
+  fetchMoreProducts = () => {
+    if (!this.props.loadingProducts && !this.props.endOfProducts) {
+      const { category, page } = this.props
+      this.fetchProducts(category, page + 1, true)
+    }
   }
 
   categorySelect = () => {
@@ -54,6 +81,7 @@ class Shop extends Component {
           {this.categorySelect()}
         </div>
         <Products category={category} products={products} />
+        <div id="sp-shop-bottom-marker" />
       </div>)
   }
 }
@@ -62,6 +90,9 @@ function mapStateToProps(state) {
   return {
     category: state.shop.category,
     products: state.shop.products,
+    page: state.shop.page,
+    loadingProducts: state.shop.loadingProducts,
+    endOfProducts: state.shop.endOfProducts,
   }
 }
 

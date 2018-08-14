@@ -1,6 +1,6 @@
 import React from 'react'
 import News from 'components/news/news'
-import NewProducts from 'components/products/newProducts'
+import NewProducts from 'components/newProducts/newProducts'
 import NewArrivals from 'components/newArrivals/newArrivals'
 import { CATEGORY } from 'service/product'
 

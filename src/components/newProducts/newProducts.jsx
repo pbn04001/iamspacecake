@@ -88,8 +88,8 @@ NewProducts.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    productsCategory: state.products.productsCategory,
-    products: state.products.products,
+    productsCategory: state.newProducts.productsCategory,
+    products: state.newProducts.products,
   }
 }
 

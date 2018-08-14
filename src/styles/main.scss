@@ -90,6 +90,7 @@ body {
     padding-right: $--spacing-unit-x2;
     max-width: 1300px;
     margin: 0pt auto;
+    min-height: 60vh;
 
 
     @include breakpoint(small) {
