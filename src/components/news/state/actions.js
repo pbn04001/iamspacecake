@@ -11,7 +11,10 @@ export const getRecentNews = preview => ({
 })
 
 function* getRecentNewsSaga(action) {
-  const recentNews = yield call(newsService.fetchRecentNews, action.payload.preview)
+  let recentNews = yield call(newsService.fetchRecentNews, action.payload.preview)
+  if (recentNews.length === 0) {
+    recentNews = yield call(newsService.fetchRecentNews, false)
+  }
   yield put({
     type: types.updateRecentNews,
     payload: {
