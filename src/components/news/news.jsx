@@ -14,7 +14,7 @@ import './styles.scss'
 
 class News extends React.Component {
   componentWillMount() {
-    this.props.getRecentNews()
+    this.props.getRecentNews(this.props.preview)
   }
 
   renderNews = () => {
@@ -53,6 +53,7 @@ News.propTypes = {
   className: PropTypes.string,
   recentNews: PropTypes.array.isRequired,
   getRecentNews: PropTypes.func.isRequired,
+  preview: PropTypes.bool,
 }
 
 function mapStateToProps(state) {
