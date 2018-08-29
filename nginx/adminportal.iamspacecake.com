@@ -33,6 +33,8 @@ server {
 
     index index.php index.html index.htm;
 
+    client_max_body_size 64M;
+
     location = /favicon.ico {
         log_not_found off;
         access_log off;
