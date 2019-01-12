@@ -1,6 +1,12 @@
 @import 'src/styles/common.scss';
 
 .sp-new-arrivals {
+  .sp-page-header {
+    @include breakpoint(small) {
+      display: block;
+    }
+  }
+
   &__title {
     font-size: $font-size-medium;
     display: block;
@@ -13,6 +19,16 @@
 
   &__image {
     width: 100%;
+
+    @include breakpoint(small) {
+      width: calc(50% - #{$--spacing-unit-x8});
+      display: inline-block;
+      padding-left: $--spacing-unit-x4;
+    }
+
+    @include breakpoint(mobile) {
+      width: calc(100% - #{$--spacing-unit-x12});
+    }
   }
 
   &__buy-now {

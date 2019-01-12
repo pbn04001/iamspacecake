@@ -29,7 +29,7 @@ class NewArrivals extends React.Component {
         title, price, nid,
       } = product
       return (
-        <article key={`new-arrivals-${nid}`}>
+        <article key={`new-arrivals-${nid}`} className="sp-new-arrivals__image">
           <NavLink to={`/product/${nid}`}>
             {getSmallPicture(product, title)}
           </NavLink>
@@ -50,7 +50,9 @@ class NewArrivals extends React.Component {
     if (newArrivals && newArrivals.length > 0) {
       return (
         <Container type={CONTAINER_TYPE.TOP_LEFT} className={classnames('sp-new-arrivals', this.props.className)}>
-          <PageHeader>NEW ARRIVALS</PageHeader>
+          <PageHeader>
+            NEW ARRIVALS
+          </PageHeader>
           {this.renderNewArrivals()}
         </Container>
       )

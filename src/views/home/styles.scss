@@ -20,8 +20,8 @@
     width: 200px;
     flex: 0 0 200px;
 
-    @include breakpoint(small){
-      display: none;
+    @include breakpoint(small) {
+      width: 100%;
     }
   }
 }
