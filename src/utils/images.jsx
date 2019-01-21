@@ -59,23 +59,5 @@ export const getThumbnail = (product, altText, onClick = null) => {
 
 export const getNewProductsPicture = (product, altText) => {
   const images = getImages(product)
-  return (
-    <picture>
-      <source
-        srcSet={images.mediumSquare[0]}
-        media="(max-width: 1024px) and (min-width: 680px)"
-        type="image/png"
-      />
-      <source
-        srcSet={images.small[0]}
-        media="(max-width: 680px) and (min-width: 500px)"
-        type="image/png"
-      />
-      <source
-        srcSet={images.mediumSquare[0]}
-        media="(max-width: 500px)"
-        type="image/png"
-      />
-      <img src={images.small[0]} alt={altText} />
-    </picture>)
+  return (<img src={images.mediumSquare[0]} alt={altText} />)
 }

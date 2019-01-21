@@ -8,6 +8,7 @@ export const ERROR_TYPE = {
 export const CATEGORY = {
   PAINTING: 'Painting',
   JEWELRY: 'Jewelry',
+  GLASS: 'Glass',
 }
 
 const parseProducts = (products) => {

@@ -18,6 +18,7 @@ const Home = ({ location }) => {
       </div>
       <NewProducts className="sp-home__products" category={CATEGORY.JEWELRY} title="JEWELRY" />
       <NewProducts className="sp-home__products" category={CATEGORY.PAINTING} title="PAINTINGS" />
+      <NewProducts className="sp-home__products" category={CATEGORY.GLASS} title="GLASS" />
     </div>
   )
 }

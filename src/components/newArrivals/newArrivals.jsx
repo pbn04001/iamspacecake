@@ -8,7 +8,7 @@ import { addItemToShoppingCart } from 'views/cart/state/actions'
 import { Container, CONTAINER_TYPE } from 'components/container'
 import { PageHeader } from 'components/typography'
 import { getNewArrivals } from './state/actions'
-import { getSmallPicture } from '../../utils/images'
+import { getNewProductsPicture } from '../../utils/images'
 
 import './styles.scss'
 
@@ -31,7 +31,7 @@ class NewArrivals extends React.Component {
       return (
         <article key={`new-arrivals-${nid}`} className="sp-new-arrivals__image">
           <NavLink to={`/product/${nid}`}>
-            {getSmallPicture(product, title)}
+            {getNewProductsPicture(product, title)}
           </NavLink>
           <span className="sp-new-arrivals__title">{title}</span>
           <button

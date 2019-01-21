@@ -13,10 +13,7 @@ import './styles.scss'
 
 class Products extends Component {
   getPicture = (product, title) => {
-    if (this.props.type && this.props.type === PRODUCTS_TYPE.GALLERY) {
-      return getMediumPicture(product, title)
-    }
-    return getSmallPicture(product, title)
+    return getMediumPicture(product, title)
   }
 
   addToShoppingCart = (product) => {

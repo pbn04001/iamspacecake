@@ -69,6 +69,7 @@ class Shop extends Component {
         <option value="">All</option>
         <option value={CATEGORY.PAINTING}>Painting</option>
         <option value={CATEGORY.JEWELRY}>Jewelry</option>
+        <option value={CATEGORY.GLASS}>Glass</option>
       </select>
     )
   }
